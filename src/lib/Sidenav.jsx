@@ -103,6 +103,7 @@ const SideNav = () => {
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
 
+    {/* Top Navbar Section */}
         <AppBar position="fixed" open={open}>
           <Toolbar>
             <IconButton
