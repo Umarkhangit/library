@@ -1,7 +1,6 @@
 import logo from './logo.svg';
 // import './App.css';
 import Login from './lib/Login';
-import Login2 from './lib/Login2';
 import Home from './lib/Home';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'react-toastify/dist/ReactToastify.css';
