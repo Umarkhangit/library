@@ -1,8 +1,6 @@
 import logo from './logo.svg';
 // import './App.css';
 import Login, { loginCondition } from './lib/Login';
-import Home from './lib/Home';
-import Login from './lib/Login';
 import Admin from './lib/Admin/Admin';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -29,9 +27,8 @@ function App() {
       <ToastContainer/>
       <Routes>
         <Route path='/' element={<Login/>}/>
-       <Route path='/home' element={<Home/>}/> 
+      
        <Route path='/user' element={<UserDashboard/>}>  
-        <Route path='/user/book' element={<Books/>} />
        </Route>
       
         
