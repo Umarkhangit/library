@@ -52,12 +52,9 @@ function App() {
     console.log(checkEmail.email);
 
      if(checkEmail?.email==data.email && checkPassword?.password==data.password){
-<<<<<<< HEAD
       navigate("/home")
       loginCondition = true;
-=======
       navigate("/admin")
->>>>>>> 326d321d5dc16e6db7c36b88f148b33b96e3a045
      }else{
       toast.error("Invalid Credentials")
       loginCondition = false;
