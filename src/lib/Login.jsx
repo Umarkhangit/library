@@ -4,7 +4,6 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { Creds } from "./loginId";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import axios from "axios";
@@ -14,11 +13,14 @@ function App() {
   useEffect(() => {
     axios
       .get("http://localhost:3001/admin")
-      .then((res) => setCred(res.data))
+      .then(res => {
+        setCred(res.data)
+        console.log(res.data);
+      })
       .catch((err) => console.log(err));
   }, []);
 
-  // const validate=Creds
+ 
   const vali = useSelector((state) => state);
   // console.log(vali);
 
@@ -45,7 +47,7 @@ function App() {
     console.log(checkEmail.email);
 
      if(checkEmail?.email==data.email && checkPassword?.password==data.password){
-      navigate("/home")
+      navigate("/admin")
      }else{
       toast.error("Invalid Credentials")
      }
@@ -107,7 +109,7 @@ function App() {
                     </p>
                   )}
                 </Form.Group>
-                <Button className="mt-3  btn" type="submit">
+                <Button className="mt-3 btnn" type="submit">
                   Login to your account
                 </Button>
               </form>

@@ -43,7 +43,7 @@
   p{
     color: white;
   }
-  .btn{
+  .btnn{
     background-color: black !important;
     font-weight: 500 !important;
     letter-spacing: .3px;
@@ -57,7 +57,7 @@
     display: grid;
   
   }
-  /* #013142 */
+ 
   .left-background{
     background-color: black;
     color: white;
@@ -65,14 +65,18 @@
     padding-bottom: 0 !important;
     border-radius: 10px 0 0 10px;
   }
- 
- li{
-  list-style-type: none;
-  margin-left: -6px;
-  margin-top: 20px;
-  font-size: 18px;
- }
-  
+/* data table */
+ .rdt_TableCol{
+  font-size:18px;
+  background-color:rgb(25, 86, 161);
+  color: #fff;
+
+}
+.rdt_TableCell{
+  font-size:18px;
+
+}
+
   @media only screen and (max-width: 425px) {
   form{
     width: 66vw;
