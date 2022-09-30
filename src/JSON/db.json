@@ -1,19 +1,35 @@
 {
-    "admin":[
-        {
-            "id":1,
-            "email":"thabrez@gmail.com",
-            "password":"Ahamed"
-        },
-        {
-            "id":2,
-            "email":"rauf@gmail.com",
-            "password":"Rahman"
-        },
-        {
-            "id":3,
-            "email":"margoob@gmail.com",
-            "password":"Mohammed"
-        }
-    ]
+  "admin": [
+    {
+      "id": 1,
+      "email": "thabrez@gmail.com",
+      "password": "Ahamed"
+    },
+    {
+      "id": 2,
+      "email": "rauf@gmail.com",
+      "password": "Rahman"
+    },
+    {
+      "id": 3,
+      "email": "margoob@gmail.com",
+      "password": "Mohammed"
+    }
+  ],
+  "user": [
+    {
+      "empid": "101",
+      "empname": "rauf",
+      "empemail": "rauf@gmail.com",
+      "emppassword": "rahman",
+      "id": 2
+    },
+    {
+      "empid": "103",
+      "empname": "margoob",
+      "empemail": "margoob@gmail.com",
+      "emppassword": "moahmmed",
+      "id": 4
+    }
+  ]
 }

@@ -18,11 +18,14 @@ function App() {
   useEffect(() => {
     axios
       .get("http://localhost:3001/admin")
-      .then((res) => setCred(res.data))
+      .then(res => {
+        setCred(res.data)
+        console.log(res.data);
+      })
       .catch((err) => console.log(err));
   }, []);
 
-  // const validate=Creds
+ 
   const vali = useSelector((state) => state);
   // console.log(vali);
 
@@ -49,8 +52,12 @@ function App() {
     console.log(checkEmail.email);
 
      if(checkEmail?.email==data.email && checkPassword?.password==data.password){
+<<<<<<< HEAD
       navigate("/home")
       loginCondition = true;
+=======
+      navigate("/admin")
+>>>>>>> 326d321d5dc16e6db7c36b88f148b33b96e3a045
      }else{
       toast.error("Invalid Credentials")
       loginCondition = false;
@@ -114,7 +121,7 @@ function App() {
                     </p>
                   )}
                 </Form.Group>
-                <Button className="mt-3  btn" type="submit">
+                <Button className="mt-3 btnn" type="submit">
                   Login to your account
                 </Button>
               </form>

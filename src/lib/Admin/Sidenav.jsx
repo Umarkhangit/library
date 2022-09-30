@@ -20,8 +20,9 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import Collapse from "@mui/material/Collapse";
 import { red } from '@mui/material/colors';
-import "./Login.css";
+import "../Login.css";
 import { NavLink } from "react-router-dom";
+import "../Login.css";
 
 
 const drawerWidth = 200;
@@ -98,6 +99,11 @@ const SideNav = () => {
     setLOpen2(!lopen2);
   };
   
+  //for navlink style
+  let activeStyle = {
+    color: "red",
+  };
+
   return (
     <>
       <Box sx={{ display: "flex" }}>
@@ -121,6 +127,7 @@ const SideNav = () => {
           </Toolbar>
         </AppBar>
 
+      {/* Side nav bar */}
         <Drawer
           sx={{
             width: drawerWidth,
@@ -164,10 +171,13 @@ const SideNav = () => {
             <Collapse in={lopen} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
                 <ListItemButton sx={{ pl: 4 }}>
-                  <ListItemText primary="Add user" />
+                  <div className="active">
+
+                  <NavLink to="/admin/add" className="text-decoration-none text-light ">Add User</NavLink>
+                  </div>
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
-                  <ListItemText primary="View/Edit user" />
+                  <NavLink to="/admin/viewedit" className="text-decoration-none text-light">View/Edit</NavLink>
                 </ListItemButton>
               </List>
             </Collapse>
