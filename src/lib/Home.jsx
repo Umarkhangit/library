@@ -1,10 +1,15 @@
 import React from 'react'
-import SideNav from './Sidenav' 
+import SideNav from './Sidenav'
+
+
+
 const Home = () => {
+  
   return (
     <div>
-
+      
       <SideNav/>
+    
       
     </div>
   )

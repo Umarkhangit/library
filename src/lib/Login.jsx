@@ -4,13 +4,17 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { Creds } from "./loginId";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
+export var loginCondition = false;
+
 function App() {
   const [cred, setCred] = useState([]);
+
+  
+
   useEffect(() => {
     axios
       .get("http://localhost:3001/admin")
@@ -46,9 +50,12 @@ function App() {
 
      if(checkEmail?.email==data.email && checkPassword?.password==data.password){
       navigate("/home")
+      loginCondition = true;
      }else{
       toast.error("Invalid Credentials")
+      loginCondition = false;
      }
+     console.log(loginCondition)
   };
 
   return (
