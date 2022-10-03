@@ -76,6 +76,10 @@
   font-size:18px;
 
 }
+.active:hover{
+  background-color: #fff;
+  color: black;
+}
 
   @media only screen and (max-width: 425px) {
   form{
@@ -103,3 +107,4 @@
   }
   
   }
+

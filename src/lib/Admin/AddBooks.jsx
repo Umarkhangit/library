@@ -6,13 +6,13 @@ import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { toast } from "react-toastify";
 
-const AddUser = () => {
+const AddBooks = () => {
 
 
     const {register,handleSubmit,formState: { errors },reset} = useForm();
     const onSubmit=(data) =>{
         // console.log(data)
-        axios.post("http://localhost:3001/user",data)
+        axios.post("",)
         .then(res=> console.log(res.data))
         .catch(err=> console.log(err))        
         reset()
@@ -27,63 +27,53 @@ const AddUser = () => {
         
         <Card sx={{ p: 5,border:"1px solid black" }} style={{boxShadow: "5px 5px 10px #dedede"}}>
         <form onSubmit={handleSubmit(onSubmit)}>
-        <h3>Add New User</h3>
+        <h3>Add New Books</h3>
         <div>
         <TextField          
           id="standard-required"
-          label="EmpID"
+          label="Book ISBN"
           variant="outlined"
           className='mt-4 col-10'
-          name='empid'
-          {...register("empid",{required:true})}
+          name='bisbn'
+          {...register("bisbn",{required:true})}
         />
-        {errors.empid && <p style={{ color: "red", fontSize: 17 }}>Id required</p>}
+        {errors.bisbn && <p style={{ color: "red", fontSize: 17 }}>Field Required</p>}
         </div>
 
         <div>
         <TextField         
           id="standard-required"
-          label="EmpName"
+          label="Title"
           variant="outlined"
           className='mt-4 col-10'
-          name='empname'
-          {...register("empname",{required:true})}
+          name='btitle'
+          {...register("btitle",{required:true})}
         />
-        {errors.empname && <p style={{ color: "red", fontSize: 17 }}>name required</p>}
+        {errors.btitle && <p style={{ color: "red", fontSize: 17 }}>Field Required</p>}
         </div>
 
         <div>
         <TextField          
           id="standard-required"
-          label="EmpEmail"
+          label="Author"
           variant="outlined"
           className='mt-4 col-10'
-          name='empemail'
-          {...register("empemail", {
-            required: "email is required",
-            pattern: {
-              value: /[a-z0-9]+@[a-z]+\.[a-z]{3,3}/,
-              message: "Invalid Email",
-            },
-          })}
+          name='bauthor'
+          {...register("bauthor", {required: true })}
         />
-        {errors.empemail && (
-                    <p style={{ color: "red", fontSize: 17 }}>
-                      {errors.empemail.message}
-                    </p>
-                  )}
+        {errors.bauthor && (<p style={{ color: "red", fontSize: 17 }}>Field Required </p> )}
         </div>
 
         <div>
         <TextField
           id="standard-required"
-          label="EmpPassword"
+          label="Description"
           variant="outlined"
           className='mt-4 col-10 pb-2'
-          name='emppassword'
-          {...register("emppassword",{required:true})}
+          name='bdescription'
+          {...register("bdescription",{required:true})}
         />
-        {errors.emppassword && <p style={{ color: "red", fontSize: 17 }}>password required</p>}
+        {errors.bdescription && <p style={{ color: "red", fontSize: 17 }}>Field Required</p>}
         </div>
         <Button variant="contained" className='mt-2 w-50' type="submit">Add</Button>
         </form>
@@ -96,4 +86,4 @@ const AddUser = () => {
   )
 }
 
-export default AddUser
+export default AddBooks

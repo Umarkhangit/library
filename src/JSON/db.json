@@ -18,18 +18,25 @@
   ],
   "user": [
     {
+      "empid": "105",
+      "empname": "riffath",
+      "empemail": "riffath@gmail.com",
+      "emppassword": "123456",
+      "id": 1
+    },
+    {
       "empid": "101",
-      "empname": "rauf",
-      "empemail": "rauf@gmail.com",
-      "emppassword": "rahman",
+      "empname": "shahid",
+      "empemail": "shahid@gmail.com",
+      "emppassword": "shahid1234",
       "id": 2
     },
     {
-      "empid": "103",
-      "empname": "margoob",
-      "empemail": "margoob@gmail.com",
-      "emppassword": "moahmmed",
-      "id": 4
+      "empid": "7",
+      "empname": "Mohamed Anas",
+      "empemail": "anas@gmail.com",
+      "emppassword": "anas123",
+      "id": 3
     }
   ]
 }

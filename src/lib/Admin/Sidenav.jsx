@@ -12,17 +12,15 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItem from '@mui/material/ListItem';
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import Collapse from "@mui/material/Collapse";
-import { red } from '@mui/material/colors';
 import "../Login.css";
 import { NavLink } from "react-router-dom";
 import "../Login.css";
+
 
 
 const drawerWidth = 200;
@@ -100,10 +98,11 @@ const SideNav = () => {
   };
   
   //for navlink style
-  let activeStyle = {
-    color: "red",
-  };
+  // let activeStyle = {
+  //   color: "red",
+  // };
 
+ 
   return (
     <>
       <Box sx={{ display: "flex" }}>
@@ -159,46 +158,66 @@ const SideNav = () => {
           </DrawerHeader>
           <Divider />
 
-          <List>
-
-            <ListItemButton>
+          <List >
+            <ListItem className="active">
+              <ListItemButton >
               <ListItemText primary="Dashboard" />
-            </ListItemButton>
-
-            <ListItemButton onClick={handleClick}>
-              <ListItemText primary="Employee" />
-            </ListItemButton>
+              </ListItemButton>
+            </ListItem>
+                      
+              <ListItemButton onClick={handleClick}>
+                <ListItemText primary="Employee" />
+              </ListItemButton>
+           
             <Collapse in={lopen} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
-                <ListItemButton sx={{ pl: 4 }}>
-                  <div className="active">
 
-                  <NavLink to="/admin/add" className="text-decoration-none text-light ">Add User</NavLink>
-                  </div>
-                </ListItemButton>
+                <ListItem className="active">
                 <ListItemButton sx={{ pl: 4 }}>
-                  <NavLink to="/admin/viewedit" className="text-decoration-none text-light">View/Edit</NavLink>
+                 <NavLink to="/admin/add" className="text-decoration-none text-light ">Add User</NavLink>
                 </ListItemButton>
+                </ListItem>
+               <ListItem className="active">
+                <ListItemButton sx={{ pl: 4 }}>
+                    <NavLink to="/admin/view" className="text-decoration-none text-light">View Users</NavLink>
+                  </ListItemButton>
+               </ListItem>
+                
               </List>
             </Collapse>
 
-            <ListItemButton onClick={handleClick2}>
+          <ListItem>
+          <ListItemButton onClick={handleClick2}>
               <ListItemText primary="Library" />
             </ListItemButton>
+          </ListItem>
+           
             <Collapse in={lopen2} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
+                <ListItem className="active">
                 <ListItemButton sx={{ pl: 4 }}>
                   <ListItemText primary="All Books" />
                 </ListItemButton>
+                </ListItem>
+
+                <ListItem className="active">
                 <ListItemButton sx={{ pl: 4 }}>
                   <ListItemText primary="Pending" />
                 </ListItemButton>
+                </ListItem>
+                
+                <ListItem className="active">
                 <ListItemButton sx={{ pl: 4 }}>
                   <ListItemText primary="Availaible" />
                 </ListItemButton>
-                <ListItemButton sx={{ pl: 4 }}>
+                </ListItem>
+               
+               <ListItem className="active"> 
+               <ListItemButton sx={{ pl: 4 }}>
                   <ListItemText primary="Dues/Penalty" />
                 </ListItemButton>
+               </ListItem>
+                
               </List>
             </Collapse>
           </List>

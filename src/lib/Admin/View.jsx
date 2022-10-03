@@ -5,26 +5,40 @@ import DataTable from 'react-data-table-component'
 import "../Login.css";
 import Button from 'react-bootstrap/Button';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
-const ViewEdit = () => {
+const View = () => {
 
   const [datas,setDatas]=useState([])
+  const [render,setRender]=useState(false)
 
   useEffect(()=>{
     axios.get("http://localhost:3001/user")
     .then(res=> setDatas(res.data))
     .catch(err =>console.log(err))
-  },[])
+   
+  },[render])
   console.log(datas);
 
   //for deleting
  const del=(id)=>{
   console.log(id)
   axios.delete(`http://localhost:3001/user/${id}`)
-  .then(res =>console.log(res.data))
+  .then(res =>{
+    console.log(res.data)
+    toast.success("deleted successfully")
+  })
   .catch(err =>console.log(err))
+  setRender(true)
  }
 
+ //for editing
+ const navigate=useNavigate()
+ const edit=(row)=>{
+  navigate("/admin/edit",{state:row})
+
+ }
   // react table data comp
   const columns = [
     {
@@ -48,7 +62,7 @@ const ViewEdit = () => {
       sortable: true
     },
     {			
-      cell: () => <Button variant="outline-primary">Edit</Button>,
+      cell: (row) => <Button variant="outline-primary" onClick={()=>edit(row)}>Edit</Button>,
       button: true,
     },
     {			
@@ -70,4 +84,4 @@ const ViewEdit = () => {
   )
 }
 
-export default ViewEdit
+export default View

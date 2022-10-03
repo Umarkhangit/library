@@ -5,18 +5,34 @@ import Button from '@mui/material/Button';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { toast } from "react-toastify";
+import { useLocation, useNavigate } from 'react-router-dom';
 
-const AddUser = () => {
+const Edit = () => {
+
+    const location=useLocation()
+    console.log(location.state.id)
 
 
-    const {register,handleSubmit,formState: { errors },reset} = useForm();
+    // for prefilling form data
+     const prefill={
+            empid:location.state?location.state.empid:"",
+            empname:location.state?location.state.empname:"",
+            empemail:location.state?location.state.empemail:"",
+            emppassword:location.state?location.state.emppassword:""
+        
+     }
+
+     const navigate=useNavigate()
+    //  console.log(prefill)
+    const {register,handleSubmit,formState: { errors }} = useForm({defaultValues:prefill});
     const onSubmit=(data) =>{
-        // console.log(data)
-        axios.post("http://localhost:3001/user",data)
-        .then(res=> console.log(res.data))
-        .catch(err=> console.log(err))        
-        reset()
-        toast.success("Added Successfully")
+        console.log(data)
+        axios.put(`http://localhost:3001/user/${location.state.id}`,data)
+        .then(res =>console.log(res.data))
+        .catch(err =>console.log(err))
+        navigate("/admin/view")
+        toast.success("Edited Successfully")
+        
     }
 
 
@@ -27,7 +43,7 @@ const AddUser = () => {
         
         <Card sx={{ p: 5,border:"1px solid black" }} style={{boxShadow: "5px 5px 10px #dedede"}}>
         <form onSubmit={handleSubmit(onSubmit)}>
-        <h3>Add New User</h3>
+        <h3>Edit</h3>
         <div>
         <TextField          
           id="standard-required"
@@ -69,7 +85,7 @@ const AddUser = () => {
         />
         {errors.empemail && (
                     <p style={{ color: "red", fontSize: 17 }}>
-                      {errors.empemail.message}
+                      {errors.email.message}
                     </p>
                   )}
         </div>
@@ -96,4 +112,4 @@ const AddUser = () => {
   )
 }
 
-export default AddUser
+export default Edit

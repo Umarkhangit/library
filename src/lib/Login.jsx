@@ -49,17 +49,16 @@ function App() {
     const checkEmail=cred.find(val =>val.email==data.email)
     const checkPassword=cred.find(val =>val.password == data.password)
 
-    console.log(checkEmail.email);
+    // console.log(checkEmail.email);
 
      if(checkEmail?.email==data.email && checkPassword?.password==data.password){
-      navigate("/home")
-      loginCondition = true;
+      
       navigate("/admin")
      }else{
       toast.error("Invalid Credentials")
-      loginCondition = false;
+      
      }
-     console.log(loginCondition)
+    
   };
 
   return (
