@@ -9,12 +9,12 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 const ViewEdit = () => {
 
   const [datas,setDatas]=useState([])
-
+  const [render, setRender] = useState(false);
   useEffect(()=>{
     axios.get("http://localhost:3001/user")
     .then(res=> setDatas(res.data))
     .catch(err =>console.log(err))
-  },[])
+  },[render])
   console.log(datas);
 
   //for deleting
@@ -23,6 +23,7 @@ const ViewEdit = () => {
   axios.delete(`http://localhost:3001/user/${id}`)
   .then(res =>console.log(res.data))
   .catch(err =>console.log(err))
+  setRender(true)
  }
 
   // react table data comp

@@ -170,13 +170,13 @@ const SideNav = () => {
             </ListItemButton>
             <Collapse in={lopen} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
-                <ListItemButton sx={{ pl: 4 }}>
-                  <div className="active">
+                <ListItemButton  sx={{ pl: 4 }}>
+                  
 
                   <NavLink to="/admin/add" className="text-decoration-none text-light ">Add User</NavLink>
-                  </div>
+                  
                 </ListItemButton>
-                <ListItemButton sx={{ pl: 4 }}>
+                <ListItemButton autoFocus selected sx={{ pl: 4 }}>
                   <NavLink to="/admin/viewedit" className="text-decoration-none text-light">View/Edit</NavLink>
                 </ListItemButton>
               </List>

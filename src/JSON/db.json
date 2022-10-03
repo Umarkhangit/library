@@ -16,20 +16,5 @@
       "password": "Mohammed"
     }
   ],
-  "user": [
-    {
-      "empid": "101",
-      "empname": "rauf",
-      "empemail": "rauf@gmail.com",
-      "emppassword": "rahman",
-      "id": 2
-    },
-    {
-      "empid": "103",
-      "empname": "margoob",
-      "empemail": "margoob@gmail.com",
-      "emppassword": "moahmmed",
-      "id": 4
-    }
-  ]
+  "user": []
 }
