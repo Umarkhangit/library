@@ -175,6 +175,15 @@ const SideNav = () => {
                 <ListItem className="active">
                 <ListItemButton sx={{ pl: 4 }}>
                  <NavLink to="/admin/add" className="text-decoration-none text-light ">Add User</NavLink>
+                 </ListItemButton>
+                <ListItemButton  sx={{ pl: 4 }}>
+                  
+
+                  <NavLink to="/admin/add" className="text-decoration-none text-light ">Add User</NavLink>
+                  
+                </ListItemButton>
+                <ListItemButton autoFocus selected sx={{ pl: 4 }}>
+                  <NavLink to="/admin/viewedit" className="text-decoration-none text-light">View/Edit</NavLink>
                 </ListItemButton>
                 </ListItem>
                <ListItem className="active">

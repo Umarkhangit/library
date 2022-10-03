@@ -30,7 +30,7 @@ let cardsData = [
     title: "Will you still love me?",
     Author: "Ravinder Singh",
     desc: "There is more to love than just loving...It is also a promise Lavanya Gogoi is from the scenic hills of Shillong while Rajveer Saini belongs to the shahi city of Patiala.",
-    imgUrl: "https://unsplash.it/200/200",
+    imgUrl: "/assets/love.jpg",
     published : 2018,
     ISBN : 9789387625457,
   },
@@ -45,45 +45,57 @@ let cardsData = [
   },
   {
     id: 5,
-    title: "400 Days",
-    Author: "Chetan Bhagat",
-    desc: "Alia wouldn't stop looking, though. She wanted to know if I could help her",
-    imgUrl: "https://unsplash.it/200/200",
+    title: "Ponniyin Selvi 4",
+    Author: "Kalki",
+    desc: "It's the calm before the storm.  Will all three succeed in their quests? Will Arulmozhi Varmar recover from his ague? Will Aniruddhar's schemes and stratagems save the royal family? Will Azhwarkkadiyaan's efforts bear fruit? And lastly ... will Chozha Nadu be free of the tangled web of conspiracies?",
+    imgUrl: "/assets/ps4.jpg",
     published : 2021,
-    ISBN : 9781542094085,
+    ISBN : 9788194973416,
   },
   {
     id: 6,
-    title: "400 Days",
-    Author: "Chetan Bhagat",
-    desc: "Alia wouldn't stop looking, though. She wanted to know if I could help her",
-    imgUrl: "https://unsplash.it/200/200",
-    published : 2021,
-    ISBN : 9781542094085,
+    title: "Hidden",
+    Author: "Catherine McKenzie",
+    desc: "After Jeff Manning suddenly dies, two women who loved him—his wife, Claire, and his co-worker, Tish, are both sent reeling and must figure out how to cope in this new novel from the author of Forgotten.",
+    imgUrl: "/assets/hidden.jpg",
+    published : 2014,
+    ISBN : 9780544264456,
   },
   {
     id: 7,
-    title: "CARD 7",
-    content: "Peter Quill",
-    imgUrl: "https://unsplash.it/199/199",
+    title: "Peter Pan",
+    Author: "Catherine McKenzie",
+    desc: "All children grow up. All except one.” That special child is Peter Pan, and since making his debut on the stage in 1904, this eternal youth has carried boys and girls off to magical, marvelous Neverland.",
+    imgUrl: "/assets/peterpan.jpg",
+    published : 2009,
+    ISBN : 97805442622437,
   },
   {
     id: 8,
-    title: "CARD 8",
-    content: "Steven Rogers",
-    imgUrl: "https://unsplash.it/199/200",
+    title: "Road to React",
+    Author: "Robin Weirch",
+    desc: "In 'The Road to React' you will learn about all the fundamentals of React.js with Hooks while building a full-blown React application step by step. While you create the React application, every chapter will introduce you to a new React key feature.",
+    imgUrl: "/assets/react.png",
+    published : 2014,
+    ISBN : 9780544264977,
   },
   {
     id: 9,
-    title: "CARD 9",
-    content: "Bruce Banner",
-    imgUrl: "https://unsplash.it/200/198",
+    title: "Alice in Wonderland",
+    Author: "Lewis Carroll",
+    desc: "One normal summer day, Alice is sitting on the riverbank when a big, white, talking rabbit runs past. He pops into a big rabbit hole, and Alice follows him down, down, down into a strange and magical land.",
+    imgUrl: "/assets/alice.jpg",
+    published : 2002,
+    ISBN : 9780544264977,
   },
   {
     id: 10,
-    title: "CARD 10",
-    content: "Vincent Strange",
-    imgUrl: "https://unsplash.it/198/199",
+    title: "Javascript & Jquery",
+    Author: "Jon Duckett",
+    desc: "A visual and accessible guide to JavaScript and jQuery in a built-to-last hardcover edition In JavaScript & jQuery renowned author Jon Duckett discards the traditional programming book template and approaches writing code in a more relevant, less intimidating way.",
+    imgUrl: "/assets/js.png",
+    published : 2014,
+    ISBN : 9780544264977,
   },
 ];
 
@@ -135,14 +147,13 @@ const Books = () => {
                 <div
                   className="slider-card-image"
                   style={{
-                    backgroundImage: `url(${slide.imgUrl})`,
-                    backgroundSize: "cover",
+                    backgroundImage: `url(${slide.imgUrl})`
                   }}
                 ></div>
                 <p  className="slider-card-title text-black">{slide.title}</p>
-                <p  className="slider-card-description ">
+                {/* <p  className="slider-card-description ">
                   {slide.desc}
-                </p>
+                </p> */}
               </div>
             );
           })}
