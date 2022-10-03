@@ -159,7 +159,7 @@ const SideNav = () => {
           <Divider />
 
           <List >
-            <ListItem className="active">
+            <ListItem >
               <ListItemButton >
               <ListItemText primary="Dashboard" />
               </ListItemButton>
@@ -172,21 +172,13 @@ const SideNav = () => {
             <Collapse in={lopen} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
 
-                <ListItem className="active">
+                <ListItem >
                 <ListItemButton sx={{ pl: 4 }}>
                  <NavLink to="/admin/add" className="text-decoration-none text-light ">Add User</NavLink>
                  </ListItemButton>
-                <ListItemButton  sx={{ pl: 4 }}>
-                  
-
-                  <NavLink to="/admin/add" className="text-decoration-none text-light ">Add User</NavLink>
-                  
-                </ListItemButton>
-                <ListItemButton autoFocus selected sx={{ pl: 4 }}>
-                  <NavLink to="/admin/viewedit" className="text-decoration-none text-light">View/Edit</NavLink>
-                </ListItemButton>
-                </ListItem>
-               <ListItem className="active">
+                 </ListItem>
+                
+               <ListItem >
                 <ListItemButton sx={{ pl: 4 }}>
                     <NavLink to="/admin/view" className="text-decoration-none text-light">View Users</NavLink>
                   </ListItemButton>
@@ -203,25 +195,26 @@ const SideNav = () => {
            
             <Collapse in={lopen2} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
-                <ListItem className="active">
+                <ListItem >
                 <ListItemButton sx={{ pl: 4 }}>
-                  <ListItemText primary="All Books" />
+                <NavLink to="/admin/allbooks" className="text-decoration-none text-light">All Books</NavLink>
+
                 </ListItemButton>
                 </ListItem>
 
-                <ListItem className="active">
+                <ListItem >
                 <ListItemButton sx={{ pl: 4 }}>
                   <ListItemText primary="Pending" />
                 </ListItemButton>
                 </ListItem>
                 
-                <ListItem className="active">
+                <ListItem >
                 <ListItemButton sx={{ pl: 4 }}>
                   <ListItemText primary="Availaible" />
                 </ListItemButton>
                 </ListItem>
                
-               <ListItem className="active"> 
+               <ListItem > 
                <ListItemButton sx={{ pl: 4 }}>
                   <ListItemText primary="Dues/Penalty" />
                 </ListItemButton>
