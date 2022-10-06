@@ -5,84 +5,78 @@ import Button from '@mui/material/Button';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { toast } from "react-toastify";
+import { useNavigate } from 'react-router-dom';
+
 
 const AddBooks = () => {
 
+    const [vals,setVals]=useState({
+        isbn:"",
+        title:"",
+        author:"",
+        genre:"",
+        desc:"",
+        year:"",
+        img:""
+    })
+    const handleChange= (e) =>{
+        // console.log(e.target.value)
+        setVals({...vals,[e.target.name]:e.target.value})
 
-    const {register,handleSubmit,formState: { errors },reset} = useForm();
-    const onSubmit=(data) =>{
-        // console.log(data)
-        axios.post("",)
-        .then(res=> console.log(res.data))
-        .catch(err=> console.log(err))        
-        reset()
-        toast.success("Added Successfully")
     }
+    // const handleChange2= (e) =>{
+    //     // console.log(e.target.name)
+    //     var img=e.target.files[0]
+    //     setVals({...vals,img:e.target.files[0]})
+    //     console.log(img)
+    // }
+    console.log(vals);
+
+    const navigate=useNavigate()
+    const handleSubmit= (e)=>{
+        e.preventDefault()
+     axios.post("http://localhost:3001/books",vals)
+     .then(res=>console.log(res.data))
+     .catch(err=>console.log(err))   
+     navigate("/admin/allbooks")
+     toast.success("Book Added successfully")
+    }
+    // const {register,handleSubmit,formState: { errors },reset} = useForm();
+    // const onSubmit=(data) =>{
+    //     // console.log(data)
+    //     axios.post("http://localhost:3001/books",data)
+    //     .then(res=> console.log(res.data))
+    //     .catch(err=> console.log(err))        
+    //     // reset()
+    //     toast.success("Added Successfully")
+    // }
 
 
   return (
-    <div className='container d-flex flex-column align-items-center' style={{marginTop:'8%'}}>
-        <div className='col-5 text-center'>
-
-        
-        <Card sx={{ p: 5,border:"1px solid black" }} style={{boxShadow: "5px 5px 10px #dedede"}}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-        <h3>Add New Books</h3>
-        <div>
-        <TextField          
-          id="standard-required"
-          label="Book ISBN"
-          variant="outlined"
-          className='mt-4 col-10'
-          name='bisbn'
-          {...register("bisbn",{required:true})}
-        />
-        {errors.bisbn && <p style={{ color: "red", fontSize: 17 }}>Field Required</p>}
+   <div className="container" style={{marginTop:'8%'}}>
+    
+    <form style={{marginLeft:"7%"}} onSubmit={handleSubmit}>
+        <h3 >Add Books</h3>
+        <div className="row">
+            <TextField label="Book ISBN" variant='outlined' className='col-4' name='isbn' onChange={handleChange}/>
+            <TextField label="Title" variant='outlined' className='col-6' style={{marginLeft:"10px"}} name='title' onChange={handleChange}/>
         </div>
-
-        <div>
-        <TextField         
-          id="standard-required"
-          label="Title"
-          variant="outlined"
-          className='mt-4 col-10'
-          name='btitle'
-          {...register("btitle",{required:true})}
-        />
-        {errors.btitle && <p style={{ color: "red", fontSize: 17 }}>Field Required</p>}
+        <div className="row">
+            <TextField label="Author" variant='outlined' className='col-6 mt-3' name='author' onChange={handleChange}/>
+            <TextField label="Genre" variant='outlined' className='col-4 mt-3' style={{marginLeft:"10px"}} name='genre' onChange={handleChange}/>
         </div>
-
-        <div>
-        <TextField          
-          id="standard-required"
-          label="Author"
-          variant="outlined"
-          className='mt-4 col-10'
-          name='bauthor'
-          {...register("bauthor", {required: true })}
-        />
-        {errors.bauthor && (<p style={{ color: "red", fontSize: 17 }}>Field Required </p> )}
+        <div className="row">
+            <TextField label="Description" variant='outlined' className='col-10 mt-3' multiline rows={4} name='desc' onChange={handleChange}/>
         </div>
-
-        <div>
-        <TextField
-          id="standard-required"
-          label="Description"
-          variant="outlined"
-          className='mt-4 col-10 pb-2'
-          name='bdescription'
-          {...register("bdescription",{required:true})}
-        />
-        {errors.bdescription && <p style={{ color: "red", fontSize: 17 }}>Field Required</p>}
+        <div className="row">
+            <TextField label="Published Year" variant='outlined' className='col-6 mt-3' name='year' onChange={handleChange}/>
+            <input type="file" className='col-6 mt-3' placeholder='hi' name='img' />
+           
         </div>
-        <Button variant="contained" className='mt-2 w-50' type="submit">Add</Button>
-        </form>
-        </Card>
-        
-        </div>
+        <Button variant="contained" className='mt-2' type="submit" style={{float:"right",marginRight:"45px"}}>Submit</Button>
 
-        
-    </div>
+    </form>
+   </div>
   )
 }
 

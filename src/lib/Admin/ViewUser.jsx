@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import Table from 'react-bootstrap/Table';
 import DataTable from 'react-data-table-component'
 import "../Login.css";
 import Button from 'react-bootstrap/Button';
@@ -8,10 +7,10 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
-const View = () => {
+const ViewUser = () => {
 
   const [datas,setDatas]=useState([])
-  const [render,setRender]=useState(false)
+  const [render,setRender]=useState(0)
 
   useEffect(()=>{
     axios.get("http://localhost:3001/user")
@@ -30,7 +29,7 @@ const View = () => {
     toast.success("deleted successfully")
   })
   .catch(err =>console.log(err))
-  setRender(true)
+  setRender(render+1)
  }
 
  //for editing
@@ -84,4 +83,4 @@ const View = () => {
   )
 }
 
-export default View
+export default ViewUser

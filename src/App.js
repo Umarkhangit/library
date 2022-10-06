@@ -10,10 +10,11 @@ import { useEffect } from 'react';
 
 import AddUser from './lib/Admin/AddUser';
 import Dashboard from './lib/Admin/Dashboard';
-import View from './lib/Admin/View';
-import Edit from './lib/Admin/Edit';
+import ViewUser from './lib/Admin/ViewUser';
+import EditUser from './lib/Admin/EditUser';
 import AllBooks from './lib/Admin/AllBooks';
 import AddBooks from './lib/Admin/AddBooks';
+import EditBooks from './lib/Admin/EditBooks';
 
 
 function App() {
@@ -36,10 +37,11 @@ function App() {
         <Route path='/admin' element={<Admin/>}>
            <Route path='/admin/dash' element={<Dashboard/>}/>
            <Route path='/admin/add' element={<AddUser/>}/>
-           <Route path='/admin/view' element={<View/>}/>
-           <Route path='/admin/edit' element={<Edit/>}/>
+           <Route path='/admin/view' element={<ViewUser/>}/>
+           <Route path='/admin/edit' element={<EditUser/>}/>
            <Route path='/admin/allbooks' element={<AllBooks/>}/>
            <Route path='/admin/addbooks' element={<AddBooks/>}/>
+           <Route path='/admin/editbooks' element={<EditBooks/>}/>
         </Route>
 
       </Routes>
