@@ -14,12 +14,9 @@ import ViewUser from './lib/Admin/ViewUser';
 import EditUser from './lib/Admin/EditUser';
 import AllBooks from './lib/Admin/AllBooks';
 import AddBooks from './lib/Admin/AddBooks';
-<<<<<<< HEAD
 import Cards from './lib/user/Cards';
 import Books from './lib/user/Books';
-=======
 import EditBooks from './lib/Admin/EditBooks';
->>>>>>> e35df956936cab4b80648c5615d7ab08b40ba9ad
 
 
 function App() {
