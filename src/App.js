@@ -14,19 +14,17 @@ import ViewUser from './lib/Admin/ViewUser';
 import EditUser from './lib/Admin/EditUser';
 import AllBooks from './lib/Admin/AllBooks';
 import AddBooks from './lib/Admin/AddBooks';
-<<<<<<< HEAD
-import Cards from './lib/user/Cards';
+
+
 import Books from './lib/user/Books';
-=======
+
 import EditBooks from './lib/Admin/EditBooks';
-<<<<<<< HEAD
+
 import Cards from './lib/user/Cards';
 import Pending from './lib/Admin/Pending';
 import Available from './lib/Admin/Available';
 import Penality from './lib/Admin/Penality';
-=======
->>>>>>> e35df956936cab4b80648c5615d7ab08b40ba9ad
->>>>>>> 3797a0a070174250daa4a29e172570469778e999
+
 
 
 function App() {
@@ -42,13 +40,13 @@ function App() {
 
         <Route path='/' element={<Login/>}/>
       
-<<<<<<< HEAD
-       <Route path='/user' element={<UserDashboard/>}/>
+
+       <Route path='/user' element={<UserDashboard/>}>
           
        
                     
-=======
-       <Route path='/user' element={<UserDashboard/>}>
+
+       
 
        <Route path='/user/dashboard' element={<Books/>} />
        <Route path='/user/cards' element={<Cards/>} />
@@ -56,8 +54,7 @@ function App() {
        </Route>
        
        
-               
->>>>>>> 3797a0a070174250daa4a29e172570469778e999
+
         <Route path='/admin' element={<Admin/>}>
            <Route path='/admin/dash' element={<Dashboard/>}/>
            <Route path='/admin/add' element={<AddUser/>}/>
