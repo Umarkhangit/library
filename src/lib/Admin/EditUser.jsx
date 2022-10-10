@@ -31,7 +31,7 @@ const EditUser = () => {
         .then(res =>console.log(res.data))
         .catch(err =>console.log(err))
         navigate("/admin/view")
-        toast.success("Edited Successfully")
+        toast.success("Edited Successfully",{autoClose:2000})
         
     }
 
@@ -101,7 +101,8 @@ const EditUser = () => {
         />
         {errors.emppassword && <p style={{ color: "red", fontSize: 17 }}>password required</p>}
         </div>
-        <Button variant="contained" className='mt-2 w-50' type="submit">Add</Button>
+        <Button variant="contained" className='mt-2 mx-3' type="submit">Submit</Button>
+        <Button variant="contained" className='mt-2' onClick={()=>navigate("/admin/view")}>Cancel</Button>
         </form>
         </Card>
         

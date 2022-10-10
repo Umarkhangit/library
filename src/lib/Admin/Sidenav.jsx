@@ -73,6 +73,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 
 const SideNav = () => {
+  const [head,sethead]=useState("")
   //mui
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
@@ -101,7 +102,10 @@ const SideNav = () => {
   // let activeStyle = {
   //   color: "red",
   // };
-
+const navName=(name)=>{
+  sethead(name)
+}
+console.log(head)
  
   return (
     <>
@@ -121,7 +125,7 @@ const SideNav = () => {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" noWrap component="div">
-              Dashboard
+              {head}
             </Typography>
           </Toolbar>
         </AppBar>
@@ -161,7 +165,7 @@ const SideNav = () => {
           <List >
             <ListItem >
               <ListItemButton >
-              <ListItemText primary="Dashboard" />
+              <ListItemText primary="Dashboard" onClick={()=>navName("Dashboard")}/>
               </ListItemButton>
             </ListItem>
                       
@@ -174,13 +178,13 @@ const SideNav = () => {
 
                 <ListItem >
                 <ListItemButton sx={{ pl: 4 }}>
-                 <NavLink to="/admin/add" className="text-decoration-none text-light ">Add User</NavLink>
+                 <NavLink to="/admin/add" className="text-decoration-none text-light " onClick={()=>navName("Add User")}>Add User</NavLink>
                  </ListItemButton>
                  </ListItem>
                 
                <ListItem >
                 <ListItemButton sx={{ pl: 4 }}>
-                    <NavLink to="/admin/view" className="text-decoration-none text-light">View Users</NavLink>
+                    <NavLink to="/admin/view" className="text-decoration-none text-light" onClick={()=>navName("View User")}>View Users</NavLink>
                   </ListItemButton>
                </ListItem>
                 
@@ -197,7 +201,7 @@ const SideNav = () => {
               <List component="div" disablePadding>
                 <ListItem >
                 <ListItemButton sx={{ pl: 4 }}>
-                <NavLink to="/admin/allbooks" className="text-decoration-none text-light">All Books</NavLink>
+                <NavLink to="/admin/allbooks" className="text-decoration-none text-light" onClick={()=>navName("All Books")}>All Books</NavLink>
 
                 </ListItemButton>
                 </ListItem>

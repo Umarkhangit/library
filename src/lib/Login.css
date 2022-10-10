@@ -44,7 +44,7 @@
     color: white;
   }
   .btnn{
-    background-color: black !important;
+    background-color: rgb(115, 74, 182) !important;
     font-weight: 500 !important;
     letter-spacing: .3px;
     height: 50px;
@@ -59,7 +59,7 @@
   }
  
   .left-background{
-    background-color: black;
+    background-color: rgb(182, 74, 173);
     color: white;
     padding: 40px!important;
     padding-bottom: 0 !important;

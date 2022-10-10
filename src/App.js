@@ -5,7 +5,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
-import UserDashboard from './lib/user/UserDashboard';
 import { useEffect } from 'react';
 
 import AddUser from './lib/Admin/AddUser';
@@ -17,6 +16,16 @@ import AddBooks from './lib/Admin/AddBooks';
 import Cards from './lib/user/Cards';
 import Books from './lib/user/Books';
 import EditBooks from './lib/Admin/EditBooks';
+import EditBooks from './lib/Admin/EditBooks';
+import Pending from './lib/Admin/Pending';
+import Available from './lib/Admin/Available';
+import Penality from './lib/Admin/Penality';
+
+import UserDashboard from './lib/user/UserDashboard';
+import Books from './lib/user/Books';
+import Cards from './lib/user/Cards';
+
+
 
 
 function App() {
@@ -32,15 +41,14 @@ function App() {
 
         <Route path='/' element={<Login/>}/>
       
+
        <Route path='/user' element={<UserDashboard/>}>
-
-       <Route path='/user/dashboard' element={<Books/>} />
-       <Route path='/user/cards' element={<Cards/>} />
-
+        <Route path='/user/dashboard' element={<Books/>} />
+        <Route path='/user/cards' element={<Cards/>} />
        </Route>
        
        
-               
+
         <Route path='/admin' element={<Admin/>}>
            <Route path='/admin/dash' element={<Dashboard/>}/>
            <Route path='/admin/add' element={<AddUser/>}/>
@@ -49,6 +57,9 @@ function App() {
            <Route path='/admin/allbooks' element={<AllBooks/>}/>
            <Route path='/admin/addbooks' element={<AddBooks/>}/>
            <Route path='/admin/editbooks' element={<EditBooks/>}/>
+           <Route path='/admin/pending' element={<Pending/>}/>
+           <Route path='/admin/available' element={<Available/>}/>
+           <Route path='/admin/penality' element={<Penality/>}/>
         </Route>
 
         <Route path="/assets" element={"C:\Users\ahmed\OneDrive\Documents\internal_projects\library\public\assets"} />

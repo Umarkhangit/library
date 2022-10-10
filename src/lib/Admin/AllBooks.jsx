@@ -26,7 +26,7 @@ const AllBooks = () => {
         axios.delete(`http://localhost:3001/books/${id}`)
         .then(res =>{
           console.log(res.data)
-          toast.success("deleted successfully")
+          toast.success("deleted successfully",{autoClose:2000})
           setRender(render+1)
         })
         .catch(err =>console.log(err))
