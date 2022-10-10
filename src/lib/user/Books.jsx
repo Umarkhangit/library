@@ -6,6 +6,7 @@ import { useState } from "react";
 import axios from "axios";
 
 
+
 let cardsData = [
   {
     id: 1,
@@ -100,16 +101,18 @@ let cardsData = [
 ];
 
 const Books = () => {
-  const [Post, setPost] = useState(null);
+  
 
-  useEffect(() => {
-    axios
-      .get("https://google-books.p.rapidapi.com/volumes")
-      .then((response) => {
-        setPost(response.data);
-      });
-  }, []);
-  console.log(Post);
+  
+
+  // useEffect(() => {
+  //   axios
+  //     .get("https://google-books.p.rapidapi.com/volumes")
+  //     .then((response) => {
+  //       setPost(response.data);
+  //     });
+  // }, []);
+  // console.log(Post);
 
   const slideLeft = () => {
     var slider = document.getElementById("slider");
@@ -121,8 +124,10 @@ const Books = () => {
     slider.scrollLeft = slider.scrollLeft - 500;
   };
   const navigate = useNavigate();
+
   const postBook = (data) => {
-    navigate("/user/cards");
+
+    navigate("/user/cards", {state: data});
   };
 
   return (
@@ -164,6 +169,8 @@ const Books = () => {
           onClick={slideRight}
         />
       </div>
+
+          
     </>
   );
 };

@@ -14,6 +14,8 @@ import View from './lib/Admin/View';
 import Edit from './lib/Admin/Edit';
 import AllBooks from './lib/Admin/AllBooks';
 import AddBooks from './lib/Admin/AddBooks';
+import Cards from './lib/user/Cards';
+import Books from './lib/user/Books';
 
 
 function App() {
@@ -29,9 +31,14 @@ function App() {
 
         <Route path='/' element={<Login/>}/>
       
-       <Route path='/user' element={<UserDashboard/>}/>  
+       <Route path='/user' element={<UserDashboard/>}>
+
+       <Route path='/user/dashboard' element={<Books/>} />
+       <Route path='/user/cards' element={<Cards/>} />
+
+       </Route>
        
-      
+       
                
         <Route path='/admin' element={<Admin/>}>
            <Route path='/admin/dash' element={<Dashboard/>}/>
@@ -41,6 +48,8 @@ function App() {
            <Route path='/admin/allbooks' element={<AllBooks/>}/>
            <Route path='/admin/addbooks' element={<AddBooks/>}/>
         </Route>
+
+        <Route path="/assets" element={"C:\Users\ahmed\OneDrive\Documents\internal_projects\library\public\assets"} />
 
       </Routes>
 
