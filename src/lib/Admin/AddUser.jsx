@@ -16,7 +16,7 @@ const AddUser = () => {
         .then(res=> console.log(res.data))
         .catch(err=> console.log(err))        
         reset()
-        toast.success("Added Successfully")
+        toast.success("Added Successfully",{autoClose:2000})
     }
 
 
@@ -29,7 +29,8 @@ const AddUser = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
         <h3>Add New User</h3>
         <div>
-        <TextField          
+        <TextField     
+        error     
           id="standard-required"
           label="EmpID"
           variant="outlined"

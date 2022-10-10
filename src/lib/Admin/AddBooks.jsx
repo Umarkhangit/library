@@ -19,28 +19,32 @@ const AddBooks = () => {
         year:"",
         img:""
     })
+    const [img,setimg]=useState()
     const handleChange= (e) =>{
         // console.log(e.target.value)
         setVals({...vals,[e.target.name]:e.target.value})
 
     }
-    // const handleChange2= (e) =>{
-    //     // console.log(e.target.name)
-    //     var img=e.target.files[0]
-    //     setVals({...vals,img:e.target.files[0]})
-    //     console.log(img)
-    // }
-    console.log(vals);
+    const handleChange2= (e) =>{
+        // console.log(e.target.name)
+       setimg(e.target.files[0])
+    }
+    console.log(img);
 
     const navigate=useNavigate()
     const handleSubmit= (e)=>{
+        // const one=new FormData()
+        // one.append("img",img)
+        // console.log(img)
         e.preventDefault()
      axios.post("http://localhost:3001/books",vals)
      .then(res=>console.log(res.data))
      .catch(err=>console.log(err))   
      navigate("/admin/allbooks")
-     toast.success("Book Added successfully")
+     toast.success("Book Added successfully",{autoClose:2000})
     }
+
+    
     // const {register,handleSubmit,formState: { errors },reset} = useForm();
     // const onSubmit=(data) =>{
     //     // console.log(data)
@@ -70,7 +74,7 @@ const AddBooks = () => {
         </div>
         <div className="row">
             <TextField label="Published Year" variant='outlined' className='col-6 mt-3' name='year' onChange={handleChange}/>
-            <input type="file" className='col-6 mt-3' placeholder='hi' name='img' />
+            <input type="file" className='col-6 mt-3' placeholder='hi' name='img' onChange={handleChange2}/>
            
         </div>
         <Button variant="contained" className='mt-2' type="submit" style={{float:"right",marginRight:"45px"}}>Submit</Button>

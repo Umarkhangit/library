@@ -12,7 +12,8 @@ export var loginCondition = false;
 
 function App() {
   const [cred, setCred] = useState([]);
-
+  const [credUser,setCredUser]=useState([]);
+  const [invalid,setInvalid]=useState(false)
   
 
   useEffect(() => {
@@ -20,13 +21,18 @@ function App() {
       .get("http://localhost:3001/admin")
       .then(res => {
         setCred(res.data)
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
 
- 
-  const vali = useSelector((state) => state);
+ useEffect(()=>{
+  axios.get("http://localhost:3001/user")
+  .then(res=> setCredUser(res.data))
+  .catch(err =>console.log(err))
+ },[])
+
+  // const vali = useSelector((state) => state);
   // console.log(vali);
 
   //react-hook-fom
@@ -39,7 +45,7 @@ function App() {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
 
     // const userName = data.email;
     // const userPassword = data.password;
@@ -49,16 +55,23 @@ function App() {
     const checkEmail=cred.find(val =>val.email==data.email)
     const checkPassword=cred.find(val =>val.password == data.password)
 
-    // console.log(checkEmail.email);
+    const checkUserEmail=credUser.find(val =>val.empemail==data.email)
+    const checkUserPassword=credUser.find(val =>val.emppassword==data.password)
+
+    // console.log(checkUserEmail);
 
      if(checkEmail?.email==data.email && checkPassword?.password==data.password){
-      
       navigate("/admin")
-     }else{
-      toast.error("Invalid Credentials")
+     }
+     else if(checkUserEmail?.empemail==data.email && checkUserPassword?.emppassword==data.password){
+      navigate("/user")
+     }
+     else{
+      setInvalid(true)
+      toast.error("Invalid Credentials",{autoClose:2000})
       
      }
-    
+    console.log(invalid)
   };
 
   return (
@@ -81,6 +94,7 @@ function App() {
                   <Form.Control
                     type="text"
                     className="mb-3"
+                    style={{borderColor:invalid?"red":""}}
                     name="email"
                     {...register("email", {
                       required: "email is required",
@@ -102,6 +116,7 @@ function App() {
                   <Form.Control
                     type="password"
                     className="mb-3"
+                    style={{borderColor:invalid?"red":""}}
                     name="password"
                     {...register("password", {
                       required: "password is required",

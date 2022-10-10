@@ -16,7 +16,22 @@
       "password": "Mohammed"
     }
   ],
-  "user": [],
+  "user": [
+    {
+      "empid": "100",
+      "empname": "rauf",
+      "empemail": "rauf@gmail.com",
+      "emppassword": "rahman",
+      "id": 1
+    },
+    {
+      "empid": "102",
+      "empname": "thabrez",
+      "empemail": "thabrez@gmail.com",
+      "emppassword": "ahamed",
+      "id": 2
+    }
+  ],
   "books": [
     {
       "isbn": "200",
@@ -30,13 +45,42 @@
     },
     {
       "isbn": "201",
-      "title": "Harry potter",
-      "author": "ahamed",
-      "genre": "fiction",
-      "desc": "a fictional story",
-      "year": "2000",
+      "title": "ponniyin selvan",
+      "author": "kalki",
+      "genre": "history",
+      "desc": "Chola Dynasty",
+      "year": "1955",
       "img": "",
       "id": 2
+    }
+  ],
+  "borrowed": [
+    {
+      "empid": "104",
+      "empname": "auscar",
+      "books": [
+        {
+          "isbn": "204",
+          "title": "ponniyin selvan",
+          "img": ""
+        }
+      ]
+    },
+    {
+      "empid": "106",
+      "empname": "rafi",
+      "books": [
+        {
+          "isbn": "210",
+          "title": "Python",
+          "img": ""
+        },
+        {
+          "isbn": "250",
+          "title": "101 Quran Stories",
+          "img": ""
+        }
+      ]
     }
   ]
 }

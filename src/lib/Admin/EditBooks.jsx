@@ -46,10 +46,10 @@ const EditBooks = () => {
         .then(res =>console.log(res.data))
         .catch(err => console.log(err))
         navigate("/admin/allbooks")
-        toast.success("Edited Successfully")
+        toast.success("Edited Successfully",{autoClose:2000})
      }
 
-     
+
     //  console.log(prefill)
     // const {register,handleSubmit,formState: { errors }} = useForm({defaultValues:prefill});
     // const onSubmit=(data) =>{

@@ -26,7 +26,7 @@ const ViewUser = () => {
   axios.delete(`http://localhost:3001/user/${id}`)
   .then(res =>{
     console.log(res.data)
-    toast.success("deleted successfully")
+    toast.success("deleted successfully",{autoClose:2000})
   })
   .catch(err =>console.log(err))
   setRender(render+1)

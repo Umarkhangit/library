@@ -5,8 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
-import UserDashboard from './lib/user/UserDashboard';
 import { useEffect } from 'react';
+import UserDashboard from './lib/user/UserDashboard';
 
 import AddUser from './lib/Admin/AddUser';
 import Dashboard from './lib/Admin/Dashboard';
@@ -15,6 +15,10 @@ import EditUser from './lib/Admin/EditUser';
 import AllBooks from './lib/Admin/AllBooks';
 import AddBooks from './lib/Admin/AddBooks';
 import EditBooks from './lib/Admin/EditBooks';
+import Cards from './lib/user/Cards';
+import Pending from './lib/Admin/Pending';
+import Available from './lib/Admin/Available';
+import Penality from './lib/Admin/Penality';
 
 
 function App() {
@@ -30,10 +34,10 @@ function App() {
 
         <Route path='/' element={<Login/>}/>
       
-       <Route path='/user' element={<UserDashboard/>}/>  
+       <Route path='/user' element={<UserDashboard/>}/>
+          
        
-      
-               
+                    
         <Route path='/admin' element={<Admin/>}>
            <Route path='/admin/dash' element={<Dashboard/>}/>
            <Route path='/admin/add' element={<AddUser/>}/>
@@ -42,6 +46,9 @@ function App() {
            <Route path='/admin/allbooks' element={<AllBooks/>}/>
            <Route path='/admin/addbooks' element={<AddBooks/>}/>
            <Route path='/admin/editbooks' element={<EditBooks/>}/>
+           <Route path='/admin/pending' element={<Pending/>}/>
+           <Route path='/admin/available' element={<Available/>}/>
+           <Route path='/admin/penality' element={<Penality/>}/>
         </Route>
 
       </Routes>
