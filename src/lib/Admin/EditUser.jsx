@@ -7,7 +7,7 @@ import axios from 'axios';
 import { toast } from "react-toastify";
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const Edit = () => {
+const EditUser = () => {
 
     const location=useLocation()
     console.log(location.state.id)
@@ -112,4 +112,4 @@ const Edit = () => {
   )
 }
 
-export default Edit
+export default EditUser

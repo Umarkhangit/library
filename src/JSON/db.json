@@ -16,28 +16,27 @@
       "password": "Mohammed"
     }
   ],
-  "user": [
+  "user": [],
+  "books": [
     {
-      "empid": "105",
-      "empname": "riffath",
-      "empemail": "riffath@gmail.com",
-      "emppassword": "123456",
+      "isbn": "200",
+      "title": "wings of fire",
+      "author": "APJ",
+      "genre": "motive",
+      "desc": "a path to success",
+      "year": "2005",
+      "img": "",
       "id": 1
     },
     {
-      "empid": "101",
-      "empname": "shahid",
-      "empemail": "shahid@gmail.com",
-      "emppassword": "shahid1234",
+      "isbn": "201",
+      "title": "Harry potter",
+      "author": "ahamed",
+      "genre": "fiction",
+      "desc": "a fictional story",
+      "year": "2000",
+      "img": "",
       "id": 2
-    },
-    {
-      "empid": "7",
-      "empname": "Mohamed Anas",
-      "empemail": "anas@gmail.com",
-      "emppassword": "anas123",
-      "id": 3
     }
   ]
-  
 }
