@@ -29,8 +29,7 @@ const AddUser = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
         <h3>Add New User</h3>
         <div>
-        <TextField     
-        error     
+        <TextField          
           id="standard-required"
           label="EmpID"
           variant="outlined"
