@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import { useEffect } from 'react';
-import UserDashboard from './lib/user/UserDashboard';
 
 import AddUser from './lib/Admin/AddUser';
 import Dashboard from './lib/Admin/Dashboard';
@@ -14,16 +13,15 @@ import ViewUser from './lib/Admin/ViewUser';
 import EditUser from './lib/Admin/EditUser';
 import AllBooks from './lib/Admin/AllBooks';
 import AddBooks from './lib/Admin/AddBooks';
-
-
-import Books from './lib/user/Books';
-
 import EditBooks from './lib/Admin/EditBooks';
-
-import Cards from './lib/user/Cards';
 import Pending from './lib/Admin/Pending';
 import Available from './lib/Admin/Available';
 import Penality from './lib/Admin/Penality';
+
+import UserDashboard from './lib/user/UserDashboard';
+import Books from './lib/user/Books';
+import Cards from './lib/user/Cards';
+
 
 
 
@@ -42,15 +40,8 @@ function App() {
       
 
        <Route path='/user' element={<UserDashboard/>}>
-          
-       
-                    
-
-       
-
-       <Route path='/user/dashboard' element={<Books/>} />
-       <Route path='/user/cards' element={<Cards/>} />
-
+        <Route path='/user/dashboard' element={<Books/>} />
+        <Route path='/user/cards' element={<Cards/>} />
        </Route>
        
        
