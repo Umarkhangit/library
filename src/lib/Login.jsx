@@ -64,7 +64,7 @@ function App() {
       navigate("/admin")
      }
      else if(checkUserEmail?.empemail==data.email && checkUserPassword?.emppassword==data.password){
-      navigate("/user")
+      navigate("/user/dashboard")
      }
      else{
       setInvalid(true)
