@@ -32,7 +32,7 @@ function App() {
   //   navigate()
   // }, [loginCondition])
   return (
-    <div >
+    <div>
       <ToastContainer/>
       <Routes>
 

@@ -201,26 +201,29 @@ console.log(head)
               <List component="div" disablePadding>
                 <ListItem >
                 <ListItemButton sx={{ pl: 4 }}>
-                <NavLink to="/admin/allbooks" className="text-decoration-none text-light" onClick={()=>navName("All Books")}>All Books</NavLink>
+                  <NavLink to="/admin/allbooks" className="text-decoration-none text-light" onClick={()=>navName("All Books")}>All Books</NavLink>
 
                 </ListItemButton>
                 </ListItem>
 
                 <ListItem >
                 <ListItemButton sx={{ pl: 4 }}>
-                  <ListItemText primary="Pending" />
+                  <NavLink to="/admin/pending" className="text-decoration-none text-light" onClick={()=>navName("Pending")}>Pending</NavLink>
+
                 </ListItemButton>
                 </ListItem>
                 
                 <ListItem >
                 <ListItemButton sx={{ pl: 4 }}>
-                  <ListItemText primary="Availaible" />
+                  <NavLink to="/admin/available" className="text-decoration-none text-light" onClick={()=>navName("Available")}>Available</NavLink>
+
                 </ListItemButton>
                 </ListItem>
                
                <ListItem > 
                <ListItemButton sx={{ pl: 4 }}>
-                  <ListItemText primary="Dues/Penalty" />
+                <NavLink to="/admin/penality" className="text-decoration-none text-light" onClick={()=>navName("Dues/Penality")}>Penality</NavLink>
+
                 </ListItemButton>
                </ListItem>
                 

@@ -77,7 +77,7 @@ function App() {
   return (
     <div className="background">
       <div className="login-box">
-        <div className="container">
+        <div className="container login">
           <div class="row app-des">
             <div class="col left-background ">
               <h2>L.M.S</h2>
