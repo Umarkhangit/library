@@ -6,6 +6,8 @@ import Button from 'react-bootstrap/Button';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 const ViewUser = () => {
 
@@ -14,11 +16,17 @@ const ViewUser = () => {
 
   useEffect(()=>{
     axios.get("http://localhost:3001/user")
-    .then(res=> setDatas(res.data))
+    .then(res=> {
+      setDatas(res.data)
+      
+    })
     .catch(err =>console.log(err))
    
   },[render])
-  console.log(datas);
+  // console.log(datas);
+
+ 
+
 
   //for deleting
  const del=(id)=>{

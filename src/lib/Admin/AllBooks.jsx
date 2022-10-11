@@ -7,6 +7,7 @@ import DataTable from 'react-data-table-component'
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 
@@ -15,12 +16,17 @@ const AllBooks = () => {
     const [datas,setDatas]=useState([])
     const [render,setRender]=useState(0)
 
+    const dispatch=useDispatch()
     useEffect(()=>{
         axios.get("http://localhost:3001/books")
-        .then(res=> setDatas(res.data))
+        .then(res=> {
+        setDatas(res.data)
+        
+        })
         .catch(err=> console.log(err))
     },[render])
 
+   
     const del=(id)=>{
         console.log(id)
         axios.delete(`http://localhost:3001/books/${id}`)
