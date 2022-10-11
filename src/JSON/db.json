@@ -136,17 +136,6 @@
   ],
   "borrowed": [
     {
-<<<<<<< HEAD
-      "empid": "104",
-      "empname": "auscar",
-      "books": [
-        {
-          "isbn": "201",
-          "title": "ponniyin selvan",
-          "img": ""
-        }
-      ]
-=======
       "empid": 106,
       "empname": "rafi",
       "books": {
@@ -161,7 +150,6 @@
         "isPending": true
       },
       "id": 1
->>>>>>> eebc8e1de1a17f8c6716f2aef4d31d1750ebf28e
     },
     {
       "empid": 109,
