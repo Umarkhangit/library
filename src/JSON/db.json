@@ -18,18 +18,18 @@
   ],
   "user": [
     {
-      "empid": "100",
-      "empname": "rauf",
-      "empemail": "rauf@gmail.com",
-      "emppassword": "rahman",
-      "id": 1
-    },
-    {
       "empid": "102",
-      "empname": "thabrez",
+      "empname": "thabrezhjg",
       "empemail": "thabrez@gmail.com",
       "emppassword": "ahamed",
       "id": 2
+    },
+    {
+      "empid": "104",
+      "empname": "Rauf",
+      "empemail": "rauf@gmail.com",
+      "emppassword": "Rauf123",
+      "id": 3
     }
   ],
   "books": [
@@ -136,7 +136,6 @@
   ],
   "borrowed": [
     {
-      
       "empid": 106,
       "empname": "rafi",
       "books": {
