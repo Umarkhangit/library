@@ -39,18 +39,13 @@ function App() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm();
 
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
     // console.log(data);
-
-    // const userName = data.email;
-    // const userPassword = data.password;
-
-    // console.log(userName, userPassword);
 
     const checkEmail=cred.find(val =>val.email==data.email)
     const checkPassword=cred.find(val =>val.password == data.password)
@@ -61,7 +56,7 @@ function App() {
     // console.log(checkUserEmail);
 
      if(checkEmail?.email==data.email && checkPassword?.password==data.password){
-      navigate("/admin")
+      navigate("/admin/dash")
      }
      else if(checkUserEmail?.empemail==data.email && checkUserPassword?.emppassword==data.password){
       navigate("/user/dashboard")

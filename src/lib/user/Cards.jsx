@@ -5,6 +5,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { useLocation } from "react-router-dom";
 import "./Cards.css";
 import "./Hover.css";
+import moment from "moment";
 
 function Cards() {
   const vacation = useLocation();
@@ -113,6 +114,15 @@ function Cards() {
   //   },
   // ];
 
+
+  let currDate = moment();
+
+  let newDate = moment(currDate, "DD-MM-YYYY").add(5, 'days');
+  let nDate = moment(currDate, "DD-MM-YYYY").add(-20, 'days');
+  console.log(nDate.toISOString());
+  let newDate2 = newDate.format('DD-MM-YYYY')// oldDate
+console.log(newDate)
+
   const postBorrow = (isbn) => {
     const borrow = {
       empid: 109,
@@ -120,6 +130,8 @@ function Cards() {
       books: {
         ...isbn,
         isPending: true,
+        takenDate : currDate.toISOString(),
+        expiryDate : newDate.toISOString()
       },
     };
 

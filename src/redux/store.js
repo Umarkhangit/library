@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-import loginSlice from "./loginSlice";
-// import BookReducer from "./reducer";
+import BookReducer from "./Reducer";
 
-export const store=configureStore({reducer:loginSlice})
+export const store=configureStore({reducer:BookReducer})

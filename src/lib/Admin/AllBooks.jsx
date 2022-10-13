@@ -7,8 +7,8 @@ import DataTable from 'react-data-table-component'
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { useDispatch, useSelector } from 'react-redux';
-
+// import { useDispatch, useSelector } from 'react-redux';
+import { Books } from '../../redux/Action';
 
 
 const AllBooks = () => {
@@ -16,23 +16,25 @@ const AllBooks = () => {
     const [datas,setDatas]=useState([])
     const [render,setRender]=useState(0)
 
-    const dispatch=useDispatch()
+    // const dispatch=useDispatch()
     useEffect(()=>{
         axios.get("http://localhost:3001/books")
         .then(res=> {
         setDatas(res.data)
-        
+        // dispatch(Books(res.data))
         })
         .catch(err=> console.log(err))
     },[render])
 
-   
+    // const data=useSelector(state=>state)
+  //  console.log(data);
+
     const del=(id)=>{
-        console.log(id)
+        // console.log(id)
         axios.delete(`http://localhost:3001/books/${id}`)
         .then(res =>{
           console.log(res.data)
-          toast.success("deleted successfully",{autoClose:2000})
+          toast.success("Deleted ",{autoClose:2000})
           setRender(render+1)
         })
         .catch(err =>console.log(err))
@@ -44,10 +46,15 @@ const AllBooks = () => {
         navigate("/admin/editbooks",{state:row})
       
        }
+
     const columns = [
         {
+          name:"Cover",
+          cell:(row) =><img src={row.imgUrl} style={{width:40}} alt="book cover"/>
+        },
+        {
             name: 'Book ISBN',
-            selector: row => row.isbn,
+            selector: row => row.ISBN,
             sortable: true
         },
         {
@@ -57,22 +64,22 @@ const AllBooks = () => {
         },
         {
           name: 'Author',
-          selector: row => row.author,
+          selector: row => row.Author,
           sortable: true
         },
         {
-          name: 'genre',
+          name: 'Genre',
           selector: row => row.genre,
           sortable: true
         },
         {
-            name: 'description',
+            name: 'Description',
             selector: row => row.desc,
             sortable: true
         },
         {
-            name: 'published',
-            selector: row => row.year,
+            name: 'Published',
+            selector: row => row.published,
             sortable: true
         },
         {			
@@ -85,9 +92,9 @@ const AllBooks = () => {
         }
     ];
   return (
-    <div className='container' style={{marginTop:"10%"}}>
+    <div className='container pb-5' style={{marginTop:"7%"}}>
 
-    <Button variant="primary"><NavLink to="/admin/addbooks" className="text-decoration-none text-light "><AddCircleOutlineIcon/> Add Books</NavLink> </Button>
+    <Button variant="primary" className='float-end ' ><NavLink to="/admin/addbooks" className="text-decoration-none text-light "><AddCircleOutlineIcon/> Add Books</NavLink> </Button>
     <br /><br />
     
     <DataTable columns={columns} data={datas} pagination highlightOnHover responsive/>

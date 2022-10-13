@@ -98,14 +98,11 @@ const SideNav = () => {
     setLOpen2(!lopen2);
   };
   
-  //for navlink style
-  // let activeStyle = {
-  //   color: "red",
-  // };
+  
 const navName=(name)=>{
   sethead(name)
 }
-console.log(head)
+
  
   return (
     <>
@@ -164,9 +161,13 @@ console.log(head)
 
           <List >
             <ListItem >
+            
+            <NavLink to="/admin/dash" className="text-decoration-none text-light " onClick={()=>navName("Dashboard")}>
+
               <ListItemButton >
-              <ListItemText primary="Dashboard" onClick={()=>navName("Dashboard")}/>
+                Dashboard
               </ListItemButton>
+              </NavLink>
             </ListItem>
                       
               <ListItemButton onClick={handleClick}>
@@ -177,15 +178,21 @@ console.log(head)
               <List component="div" disablePadding>
 
                 <ListItem >
-                <ListItemButton sx={{ pl: 4 }}>
-                 <NavLink to="/admin/add" className="text-decoration-none text-light " onClick={()=>navName("Add User")}>Add User</NavLink>
-                 </ListItemButton>
+                
+                 <NavLink to="/admin/add" className="text-decoration-none text-light " onClick={()=>navName("Add User")}>
+                 <ListItemButton sx={{ pl: 4 }}>
+                  Add User
+                  </ListItemButton>
+                  </NavLink>
+                 
                  </ListItem>
                 
                <ListItem >
+                    <NavLink to="/admin/view" className="text-decoration-none text-light" onClick={()=>navName("View User")}>
                 <ListItemButton sx={{ pl: 4 }}>
-                    <NavLink to="/admin/view" className="text-decoration-none text-light" onClick={()=>navName("View User")}>View Users</NavLink>
+                      View Users
                   </ListItemButton>
+                      </NavLink>
                </ListItem>
                 
               </List>
@@ -200,31 +207,39 @@ console.log(head)
             <Collapse in={lopen2} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
                 <ListItem >
+                  <NavLink to="/admin/allbooks" className="text-decoration-none text-light" onClick={()=>navName("All Books")}>
                 <ListItemButton sx={{ pl: 4 }}>
-                  <NavLink to="/admin/allbooks" className="text-decoration-none text-light" onClick={()=>navName("All Books")}>All Books</NavLink>
-
+                    All Books
                 </ListItemButton>
+                  </NavLink>
+
                 </ListItem>
 
                 <ListItem >
+                  <NavLink to="/admin/pending" className="text-decoration-none text-light" onClick={()=>navName("Pending")}>
                 <ListItemButton sx={{ pl: 4 }}>
-                  <NavLink to="/admin/pending" className="text-decoration-none text-light" onClick={()=>navName("Pending")}>Pending</NavLink>
-
+                    Pending
                 </ListItemButton>
+                    </NavLink>
+
                 </ListItem>
                 
                 <ListItem >
+                  <NavLink to="/admin/available" className="text-decoration-none text-light" onClick={()=>navName("Available")}>
                 <ListItemButton sx={{ pl: 4 }}>
-                  <NavLink to="/admin/available" className="text-decoration-none text-light" onClick={()=>navName("Available")}>Available</NavLink>
-
+                    Available
                 </ListItemButton>
+                    </NavLink>
+
                 </ListItem>
                
                <ListItem > 
+                <NavLink to="/admin/penality" className="text-decoration-none text-light" onClick={()=>navName("Dues/Penality")}>
                <ListItemButton sx={{ pl: 4 }}>
-                <NavLink to="/admin/penality" className="text-decoration-none text-light" onClick={()=>navName("Dues/Penality")}>Penality</NavLink>
-
+                  Penality
                 </ListItemButton>
+                  </NavLink>
+
                </ListItem>
                 
               </List>

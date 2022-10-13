@@ -4,47 +4,59 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import DataTable from 'react-data-table-component';
 import Table from 'react-bootstrap/Table';
+// import { useSelector } from 'react-redux';
 
 const Available = () => {
-    const [borrowed,setBorrowed]=useState([])
-    const [books,setBooks]=useState([])
    
 
+    const [all,setAll]=useState([])
+    const [pen,setPen]=useState([])
+
     useEffect(() =>{
-        axios.get("http://localhost:3001/borrowed")
-        .then(res =>setBorrowed(res.data))
-        .catch(err =>console.log(err))
-
         axios.get("http://localhost:3001/books")
-        .then(res =>setBooks(res.data))
-        .catch(err =>console.log(err))
-    },[])
-    
-var avail=""
- books.map(book =>{
-    borrowed.map(borr =>{
-        if(book.isbn != borr.books[0].isbn){
-            console.log(book)
-          avail=book
-        }
+        .then(res=> {
+        setAll(res.data)
     })
- })
-   console.log("avail",avail)
+    .catch(err =>console.log(err))
 
-  
+    axios.get("http://localhost:3001/borrowed")
+    .then(res =>{
+        setPen(res.data)
+    })
+    .catch(err => console.log(err))
+},[])
+
+var avail = all.filter(a =>{
+    return !pen.find(p =>{
+        return a.ISBN == p.books.ISBN
+    })
+})    
+
+console.log(avail)
+
+const columns=[
+    {
+        name:"ISBN",
+        selector:row =>row.ISBN,
+        sortable: true
+    },
+    {
+        name:"Title",
+        selector:row =>row.title,
+        sortable: true
+    },
+    {
+        name:"Book Cover",
+        cell:(row) =><img src={row.imgUrl} style={{width:50}} alt="book cover"/>
+    },
+]
   return (
-    <div  style={{marginTop:"10%",marginLeft:"15%"}}>
+    <div className='container pb-5' style={{marginTop:"7%",marginLeft:"22%"}}>
 
     
-    {/* <h1 style={{fontFamily:" calibri",fontWeight:"bold"}}>Pending</h1> */}
-    <Table style={{width:"40%"}}>
-        <thead>
-            <tr>
-                <td>Book ISBN</td>
-                <td>Title</td>
-            </tr>
-        </thead>
-    </Table>
+    
+    <DataTable columns={columns} data={avail} pagination highlightOnHover responsive />
+   
 
   </div>
   )
