@@ -9,8 +9,10 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const EditUser = () => {
 
+  
+
     const location=useLocation()
-    console.log(location.state.id)
+    // console.log(location.state.id)
 
 
     // for prefilling form data
@@ -19,14 +21,14 @@ const EditUser = () => {
             empname:location.state?location.state.empname:"",
             empemail:location.state?location.state.empemail:"",
             emppassword:location.state?location.state.emppassword:""
-        
      }
+     
+    //  console.log(prefill);
 
      const navigate=useNavigate()
-    //  console.log(prefill)
     const {register,handleSubmit,formState: { errors }} = useForm({defaultValues:prefill});
-    const onSubmit=(data) =>{
-        console.log(data)
+    const onSubmit = (data) =>{
+        // console.log(data)
         axios.put(`http://localhost:3001/user/${location.state.id}`,data)
         .then(res =>console.log(res.data))
         .catch(err =>console.log(err))
@@ -36,6 +38,7 @@ const EditUser = () => {
     }
 
 
+   
   return (
     <div className='container d-flex flex-column align-items-center' style={{marginTop:'8%'}}>
         <div className='col-5 text-center'>

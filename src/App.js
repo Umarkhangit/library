@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import { useEffect } from 'react';
 
+
 import AddUser from './lib/Admin/AddUser';
 import Dashboard from './lib/Admin/Dashboard';
 import ViewUser from './lib/Admin/ViewUser';
@@ -41,13 +42,14 @@ function App() {
         <Route path='/' element={<Login/>}/>
       
 
+    {/* user routes */}
        <Route path='/user' element={<UserDashboard/>}>
         <Route path='/user/dashboard' element={<Books/>} />
         <Route path='/user/cards' element={<Cards/>} />
        </Route>
        
        
-
+      {/* admin routes */}
         <Route path='/admin' element={<Admin/>}>
            <Route path='/admin/dash' element={<Dashboard/>}/>
            <Route path='/admin/add' element={<AddUser/>}/>

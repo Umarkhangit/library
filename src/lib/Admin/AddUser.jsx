@@ -11,7 +11,7 @@ const AddUser = () => {
 
     const {register,handleSubmit,formState: { errors },reset} = useForm();
     const onSubmit=(data) =>{
-        // console.log(data)
+        
         axios.post("http://localhost:3001/user",data)
         .then(res=> console.log(res.data))
         .catch(err=> console.log(err))        

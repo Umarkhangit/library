@@ -9,27 +9,29 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const EditBooks = () => {
 
+    const [render,setRender]=useState(false);
+
     const [edited,setEdited]=useState({
-        isbn:"",
+        ISBN:"",
         title:"",
-        author:"",
+        Author:"",
         genre:"",
         desc:"",
-        year:""
+        published:""
     })
     const location=useLocation()
-    console.log(location.state.id)
+    // console.log(location.state.id)
 
 
     // for prefilling form data
     useEffect(()=>{
         const prefill={
-            isbn:location.state?location.state.isbn:"",
+            ISBN:location.state?location.state.ISBN:"",
             title:location.state?location.state.title:"",
-            author:location.state?location.state.author:"",
+            Author:location.state?location.state.Author:"",
             genre:location.state?location.state.genre:"",
             desc:location.state?location.state.desc:"",
-            year:location.state?location.state.year:""
+            published:location.state?location.state.published:""
         
      }
      setEdited(prefill)
@@ -41,12 +43,15 @@ const EditBooks = () => {
     }
 
      const navigate=useNavigate()
+     
      const handleSubmit= (e) =>{
+        
         axios.put(`http://localhost:3001/books/${location.state.id}`,edited)
         .then(res =>console.log(res.data))
         .catch(err => console.log(err))
         navigate("/admin/allbooks")
         toast.success("Edited Successfully",{autoClose:2000})
+        setRender(true);
      }
 
 
@@ -69,19 +74,19 @@ const EditBooks = () => {
     <form style={{marginLeft:"7%"}} onSubmit={handleSubmit}>
         <h3 >Edit Books</h3>
         <div className="row">
-            <TextField  variant='outlined' className='col-4' name='isbn' value={edited.isbn} onChange={handleChange}/>
+            <TextField  variant='outlined' className='col-4' name='ISBN' value={edited.ISBN} onChange={handleChange}/>
             <TextField  variant='outlined' className='col-6' style={{marginLeft:"10px"}} name='title' value={edited.title} onChange={handleChange}/>
         </div>
         <div className="row">
-            <TextField  variant='outlined' className='col-6 mt-3' name='author' value={edited.author} onChange={handleChange}/>
+            <TextField  variant='outlined' className='col-6 mt-3' name='Author' value={edited.Author} onChange={handleChange}/>
             <TextField  variant='outlined' className='col-4 mt-3' style={{marginLeft:"10px"}} name='genre' value={edited.genre} onChange={handleChange}/>
         </div>
         <div className="row">
             <TextField  variant='outlined' className='col-10 mt-3' multiline rows={4} name='desc' value={edited.desc} onChange={handleChange}/>
         </div>
         <div className="row">
-            <TextField  variant='outlined' className='col-6 mt-3' name='year' value={edited.year} onChange={handleChange}/>
-            <input type="file" className='col-6 mt-3' placeholder='hi' name='img' />
+            <TextField  variant='outlined' className='col-6 mt-3' name='published' value={edited.published} onChange={handleChange}/>
+            {/* <input type="file" className='col-6 mt-3' placeholder='hi' name='img' /> */}
            
         </div>
         <Button variant="contained" className='mt-2'  style={{float:"right",marginRight:"45px"}} onClick={() =>navigate("/admin/allbooks")}>Cancel</Button>
