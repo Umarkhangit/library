@@ -27,7 +27,7 @@ const Dashboard = () => {
 
   var available = tBooks.filter(a =>{
     return !pen.find(p =>{
-        return a.ISBN == p.books.ISBN
+        return a.ISBN === p.books.ISBN
     })
 })   
 

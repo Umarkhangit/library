@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import axios from "axios";
-import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
+// import Card from "react-bootstrap/Card";
+// import ListGroup from "react-bootstrap/ListGroup";
 import { useLocation } from "react-router-dom";
 import "./Cards.css";
 // import "./Hover.css";
@@ -164,7 +164,7 @@ function Cards() {
     <div className="body">
       <div className="cover">
         <div className="book">
-          <img id="image" src={vacation.state.imgUrl} />
+          <img id="image" alt="bookcover" src={vacation.state.imgUrl} />
           <div id="page_layout" className="text-center">
             <p className="page_title mt-5">{vacation.state.title}</p>
             <p className="page_author">{vacation.state.Author}</p>

@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import axios from "axios";
 
 export var loginCondition = false;
@@ -47,18 +47,18 @@ function App() {
   const onSubmit = (data) => {
     // console.log(data);
 
-    const checkEmail=cred.find(val =>val.email==data.email)
+    const checkEmail=cred.find(val =>val.email===data.email)
 
-    const checkUserEmail=credUser.find(val =>val.empemail==data.email)
+    const checkUserEmail=credUser.find(val =>val.empemail===data.email)
     
     console.log(checkEmail);
 
-     if(checkEmail?.email==data.email && checkEmail?.password==data.password ){
+     if(checkEmail?.email===data.email && checkEmail?.password===data.password ){
       
       navigate("/admin/dash")
       localStorage.setItem('loginId', JSON.stringify(checkEmail))
      }
-     else if(checkUserEmail?.empemail==data.email && checkUserEmail?.emppassword==data.password){
+     else if(checkUserEmail?.empemail===data.email && checkUserEmail?.emppassword===data.password){
       navigate("/user/dashboard")
       localStorage.setItem('loginId', JSON.stringify(checkUserEmail))
 
