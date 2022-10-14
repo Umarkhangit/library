@@ -12,21 +12,21 @@ import axios from "axios";
 const Books = () => {
   
 
-  
-
-  // useEffect(() => {
-  //   axios
-  //     .get("https://google-books.p.rapidapi.com/volumes")
-  //     .then((response) => {
-  //       setPost(response.data);
-  //     });
-  // }, []);
-  // console.log(Post);
-
   const slideLeft = () => {
     var slider = document.getElementById("slider");
     slider.scrollLeft = slider.scrollLeft + 500;
   };
+
+
+  useEffect(()=>{
+    axios.get("http://localhost:3001/books")
+    .then(res =>setAllbooks(res.data))
+    .catch(err =>console.log(err))
+
+    
+  },[])
+
+ 
 
   const slideRight = () => {
     var slider = document.getElementById("slider");
@@ -40,13 +40,21 @@ const Books = () => {
   };
 
   const [allbooks,setAllbooks]=useState([])
+ 
 
-  useEffect(()=>{
-    axios.get("http://localhost:3001/books")
-    .then(res =>setAllbooks(res.data))
-    .catch(err =>console.log(err))
-  },[])
   console.log(allbooks)
+
+  
+    
+      
+    
+
+
+
+
+
+
+
 
   return (
     <>
@@ -88,8 +96,13 @@ const Books = () => {
         />
       </div>
 
+       
+  
+
+
+ 
           
     </>
   );
-};
+        }
 export default Books;

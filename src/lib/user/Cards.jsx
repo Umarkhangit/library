@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import { useLocation } from "react-router-dom";
 import "./Cards.css";
-import "./Hover.css";
+// import "./Hover.css";
 import moment from "moment";
 
 function Cards() {
@@ -117,11 +117,11 @@ function Cards() {
 
   let currDate = moment();
 
-  let newDate = moment(currDate, "DD-MM-YYYY").add(5, 'days');
-  let nDate = moment(currDate, "DD-MM-YYYY").add(-20, 'days');
-  console.log(nDate.toISOString());
-  let newDate2 = newDate.format('DD-MM-YYYY')// oldDate
-console.log(newDate)
+  let newDate = moment().add(-1, 'days');
+  // let nDate = moment(currDate, "DD-MM-YYYY").add(-20, 'days');
+ 
+  
+
 
   const postBorrow = (isbn) => {
     const borrow = {
@@ -130,8 +130,8 @@ console.log(newDate)
       books: {
         ...isbn,
         isPending: true,
-        takenDate : currDate.toISOString(),
-        expiryDate : newDate.toISOString()
+        takenDate : currDate,
+        expiryDate : newDate
       },
     };
 
@@ -174,10 +174,10 @@ console.log(newDate)
               <p className="page_year mt-5">{vacation.state.published}</p>
             </div>
             
-            <div className="btn1 btn" onClick={() => postBorrow(vacation.state)}>
-<span>Borrow</span>
+            <div  onClick={() => postBorrow(vacation.state)}>
+            <button type="button" class="btn btn-primary">Borrow</button>
 
-<i className="ico"/>
+
 
 </div>
           </div>

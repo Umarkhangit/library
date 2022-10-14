@@ -7,7 +7,7 @@ import moment from 'moment/moment';
 
 const Pending = () => {
 
-    const [penalty, setPenalty] = useState(false)
+    // const [penalty, setPenalty] = useState(null)
     const [borrow,setBorrowed]=useState([])
     // const dispatch=useDispatch();
     useEffect(()=>{
@@ -26,27 +26,29 @@ const Pending = () => {
     })
     //PenaltyFunc
 
-    // const callFunc = (d, index) => {
-    // //   setBorrowed({...borrow,isPenalty:penalty})
-    // var putState = {
-    //     ...d,
-    //     books : {...d.books, isPenalty : penalty}
-    // }
+    let penalty = null;
+
+    const callFunc = (d, index) => {
+    //   setBorrowed({...borrow,isPenalty:penalty})
+             var putState = {
+                            ...d,
+                            books : {...d.books, isPenalty : penalty}
+                            }
    
-    //     axios.put(`http://localhost:3001/borrowed/${d.id}`, putState).then((res) => console.log(res))
-    // }
+        axios.put(`http://localhost:3001/borrowed/${d.id}`, putState).then((res) => console.log(res.data))
+    }
 
     // let dateRanges = [{empid:109,id:2,expiryDate:'2022-10-12T14:05:25.534Z'}];
 
     const runPenalty =() => 
     {
     borrow.map((d, index) => {
-        let convertDate = moment(d.books.expiryDate).format('DD-MM-YYYY')
-        let cDate = moment(convertDate);
+        // let convertDate = moment(d.books.expiryDate).format('DD-MM-YYYY')
+        // let cDate = moment(convertDate);
         // console.log(cDate)
       
-        let currDate = moment().format('DD-MM-YYYY');
-        let currDate2 = moment(currDate)
+        // let currDate = moment().format('DD-MM-YYYY');
+        let currDate2 = moment()
 
         // let convertDate = "12-11-2022";
 
@@ -57,12 +59,35 @@ const Pending = () => {
         // var printISO = moment().toISOString()
         // console.log(takenDate)
 
-        if(currDate2 >= cDate) {
-            console.log(true)
-        } else {
-            console.log(false);
-        }
+        // let newDate = moment().add(5, 'days');
+        // console.log(newDate)
 
+        // console.log(currDate)
+        // console.log(d.books.expiryDate)
+
+
+       
+        // console.log("check", moment(currDate2).isBefore(d.books.expiryDate))
+
+        if(moment(currDate2).isAfter(d.books.expiryDate)) {
+            penalty = true
+            
+            // console.log("trueeeee1")
+            callFunc(d, index)
+            // console.log('penalty',penalty)
+            // return console.log("trueeeee2")
+        } else {
+            penalty = false
+            callFunc(d, index)
+            // console.log("falseeee1");
+            // console.log('penalty',penalty)
+
+            // return console.log("falseeee2")
+            
+
+            
+        }
+       
         // if(currDate > convertDate) {
         //     setPenalty(true)
         //     callFunc(d, index)
