@@ -48,20 +48,23 @@ function App() {
     // console.log(data);
 
     const checkEmail=cred.find(val =>val.email==data.email)
-    const checkPassword=cred.find(val =>val.password == data.password)
 
     const checkUserEmail=credUser.find(val =>val.empemail==data.email)
-    const checkUserPassword=credUser.find(val =>val.emppassword==data.password)
+    
+    console.log(checkEmail);
 
-    // console.log(checkUserEmail);
-
-     if(checkEmail?.email==data.email && checkPassword?.password==data.password){
+     if(checkEmail?.email==data.email && checkEmail?.password==data.password ){
+      
       navigate("/admin/dash")
+      localStorage.setItem('loginId', JSON.stringify(checkEmail))
      }
-     else if(checkUserEmail?.empemail==data.email && checkUserPassword?.emppassword==data.password){
+     else if(checkUserEmail?.empemail==data.email && checkUserEmail?.emppassword==data.password){
       navigate("/user/dashboard")
+      localStorage.setItem('loginId', JSON.stringify(checkUserEmail))
+
      }
      else{
+      
       setInvalid(true)
       toast.error("Invalid Credentials",{autoClose:2000})
       

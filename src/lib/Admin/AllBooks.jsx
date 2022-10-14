@@ -50,7 +50,7 @@ const AllBooks = () => {
     const columns = [
         {
           name:"Cover",
-          cell:(row) =><img src={row.imgUrl} style={{width:40}} alt="book cover"/>
+          cell:(row) =><img src={row.imgUrl} style={{width:50}} alt="book cover"/>
         },
         {
             name: 'Book ISBN',

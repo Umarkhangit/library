@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 const AddBooks = () => {
 
+    const [img,setImg]=useState()
     const [vals,setVals]=useState({
         ISBN:"",
         title:"",
@@ -17,7 +18,8 @@ const AddBooks = () => {
         genre:"",
         desc:"",
         published:"",
-        imgUrl:"https://source.unsplash.com/random",
+        // imgUrl:"https://source.unsplash.com/random",
+       
 
     })
     
@@ -27,18 +29,35 @@ const AddBooks = () => {
         
     }
     
-    // const [img,setimg]=useState()
-    // const handleChange2= (e) =>{
+    
+    const handleChange2= (e) =>{
+       let img=e.target.files[0]
+       let reader=new FileReader()
+       console.log(reader);
        
-    //    setimg(e.target.files[0])
-    // }
-    // console.log(img);
+       reader.addEventListener("load",()=>{
+        // console.log(reader.result);
+        setImg(reader.result)
+       })
+       reader.readAsDataURL(img)
+
+    }
+   console.log(img)
 
     const navigate=useNavigate()
     const handleSubmit= (e)=>{
        
         e.preventDefault()
-     axios.post("http://localhost:3001/books",vals)
+        let input={
+            ISBN:vals.ISBN,
+            title:vals.title,
+            Author:vals.Author,
+            genre:vals.genre,
+            desc:vals.desc,
+            published:vals.published,
+            imgUrl:img
+        }
+     axios.post("http://localhost:3001/books",input)
      .then(res=>console.log(res.data))
      .catch(err=>console.log(err))   
      navigate("/admin/allbooks")
@@ -78,10 +97,12 @@ const AddBooks = () => {
 
         <div className="row">
             <TextField label="Published Year" variant='outlined' className='col-6 mt-3' name='published' onChange={handleChange}/>
-            <input type="file" className='col-6 mt-3' placeholder='hi' name='imgUrl' onChange={handleChange}/>           
+            <input type="file" className='col-6 mt-3' placeholder='hi' name='imgUrl' onChange={handleChange2}/>           
         </div>
         
         <Button variant="contained" className='mt-2' type="submit" style={{float:"right",marginRight:"45px"}}>Submit</Button>
+
+        {/* <img src={img} alt="" srcset="" /> */}
 
     </form>
    </div>
