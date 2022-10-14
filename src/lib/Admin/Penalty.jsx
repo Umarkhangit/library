@@ -1,7 +1,6 @@
 import axios from 'axios';
-import React from 'react'
-import { useEffect } from 'react';
-import { useState } from 'react'
+import React,{useState,useEffect} from 'react'
+
 import DataTable from 'react-data-table-component';
 
 const Penalty = () => {
@@ -9,8 +8,9 @@ const Penalty = () => {
   // const [penalty, setPenalty] = useState(null);
 
   const [borrow,setBorrowed]=useState([])
-  const [penaltyData, setPenaltyData] = useState([]);
+//   const [penaltyData, setPenaltyData] = useState([]);
     // const dispatch=useDispatch();
+
     useEffect(()=>{
         axios.get("http://localhost:3001/borrowed")
         .then(res =>{
