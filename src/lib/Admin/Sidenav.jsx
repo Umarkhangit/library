@@ -234,9 +234,9 @@ const navName=(name)=>{
                 </ListItem>
                
                <ListItem > 
-                <NavLink to="/admin/penality" className="text-decoration-none text-light" onClick={()=>navName("Dues/Penality")}>
+                <NavLink to="/admin/penalty" className="text-decoration-none text-light" onClick={()=>navName("Dues/Penalty")}>
                <ListItemButton sx={{ pl: 4 }}>
-                  Penality
+                  Penalty
                 </ListItemButton>
                   </NavLink>
 

@@ -17,7 +17,7 @@ import AddBooks from './lib/Admin/AddBooks';
 import EditBooks from './lib/Admin/EditBooks';
 import Pending from './lib/Admin/Pending';
 import Available from './lib/Admin/Available';
-import Penality from './lib/Admin/Penality';
+import Penalty from './lib/Admin/Penalty';
 
 import UserDashboard from './lib/user/UserDashboard';
 import Cards from './lib/user/Cards';
@@ -60,7 +60,7 @@ function App() {
            <Route path='/admin/editbooks' element={<EditBooks/>}/>
            <Route path='/admin/pending' element={<Pending/>}/>
            <Route path='/admin/available' element={<Available/>}/>
-           <Route path='/admin/penality' element={<Penality/>}/>
+           <Route path='/admin/penalty' element={<Penalty/>}/>
         </Route>
 
         <Route path="/assets" element={"C:\Users\ahmed\OneDrive\Documents\internal_projects\library\public\assets"} />

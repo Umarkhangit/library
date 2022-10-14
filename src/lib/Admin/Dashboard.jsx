@@ -7,8 +7,8 @@ const Dashboard = () => {
   const [tUser,setTUser]=useState([]);
   const [tBooks,setTBooks]=useState([]);
   const [pen,setPen]=useState([]);
-  const [avail,setAvail]=useState([]);
-  const [penalty,setPenalty]=useState([]);
+  // const [avail,setAvail]=useState([]);
+  // const [penalty,setPenalty]=useState([]);
 
   useEffect(() =>{
     axios.get("http://localhost:3001/user")
@@ -30,19 +30,29 @@ const Dashboard = () => {
         return a.ISBN == p.books.ISBN
     })
 })   
-  console.log(available.length);
+
+//Penalty Filter
+
+var ava = pen.filter(a =>{
+     
+  return a.books.isPenalty === true
+
+})    
+
+
+  // console.log(available.length);
   return (
     <>
       <div className="container" style={{ marginTop: "10%" }}>
 
-        <div className="cards">
+        <div className="cards fs-3">
 
           <Card style={{ width: "18rem", border: "1px solid black",height:"8rem" }}>
             <Card.Body>
               <Card.Title><b>Total Users</b></Card.Title>
 
               <Card.Text style={{color:"black"}}>
-                <h3>{tUser.length}</h3>               
+                {tUser.length}              
               </Card.Text>
             </Card.Body>
           </Card>
@@ -52,19 +62,19 @@ const Dashboard = () => {
               <Card.Title><b>Total Books</b></Card.Title>
 
               <Card.Text style={{color:"black"}}>
-                <h3>{tBooks.length}</h3>              
+                {tBooks.length}             
               </Card.Text>
             </Card.Body>
           </Card>
         </div>
 
-        <div className="cards mt-4">
+        <div className="cards mt-4 fs-3">
           <Card style={{ width: "18rem", border: "1px solid black",height:"8rem" }}>
             <Card.Body>
               <Card.Title><b>Pending</b></Card.Title>
 
               <Card.Text style={{color:"black"}}>
-                <h3>{pen.length}</h3>               
+              {pen.length}            
               </Card.Text>
             </Card.Body>
           </Card>
@@ -74,7 +84,7 @@ const Dashboard = () => {
               <Card.Title><b>Available</b></Card.Title>
 
               <Card.Text style={{color:"black"}}>
-                <h3>{available.length}</h3>                
+                {available.length}                
               </Card.Text>
             </Card.Body>
           </Card>
@@ -84,7 +94,7 @@ const Dashboard = () => {
               <Card.Title><b>Penalty</b></Card.Title>
 
               <Card.Text style={{color:"black"}}>
-                Nil
+               {ava.length} 
               </Card.Text>
             </Card.Body>
           </Card>
