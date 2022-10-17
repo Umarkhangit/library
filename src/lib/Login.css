@@ -86,7 +86,7 @@
 .cards{
   display: flex;
   justify-content:space-around;
-  cursor: pointer;
+ 
 }
   @media only screen and (max-width: 425px) {
   form{

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React,{useState,useEffect} from "react";
 import Card from "react-bootstrap/Card";
+import { NavLink } from "react-router-dom";
 
 const Dashboard = () => {
 
@@ -47,7 +48,8 @@ var ava = pen.filter(a =>{
 
         <div className="cards fs-3">
 
-          <Card style={{ width: "18rem", border: "1px solid black",height:"8rem" }}>
+        <NavLink to="/admin/view" className="text-decoration-none">
+          <Card style={{ width: "18rem", border: "1px solid black",height:"8rem",cursor:"pointer" }}>
             <Card.Body>
               <Card.Title><b>Total Users</b></Card.Title>
 
@@ -56,48 +58,60 @@ var ava = pen.filter(a =>{
               </Card.Text>
             </Card.Body>
           </Card>
+        </NavLink>
+          
+          <NavLink to="/admin/allbooks" className="text-decoration-none">
+            <Card style={{ width: "18rem", border: "1px solid black",cursor:"pointer"  }}>
+              <Card.Body>
+                <Card.Title><b>Total Books</b></Card.Title>
 
-          <Card style={{ width: "18rem", border: "1px solid black" }}>
-            <Card.Body>
-              <Card.Title><b>Total Books</b></Card.Title>
-
-              <Card.Text style={{color:"black"}}>
-                {tBooks.length}             
-              </Card.Text>
-            </Card.Body>
-          </Card>
+                <Card.Text style={{color:"black"}}>
+                  {tBooks.length}             
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </NavLink>
+          
         </div>
 
         <div className="cards mt-4 fs-3">
-          <Card style={{ width: "18rem", border: "1px solid black",height:"8rem" }}>
-            <Card.Body>
-              <Card.Title><b>Pending</b></Card.Title>
 
-              <Card.Text style={{color:"black"}}>
-              {pen.length}            
-              </Card.Text>
-            </Card.Body>
-          </Card>
+          <NavLink to="/admin/pending" className="text-decoration-none">
+            <Card style={{ width: "18rem", border: "1px solid black",height:"8rem",cursor:"pointer"  }}>
+              <Card.Body>
+                <Card.Title><b>Pending</b></Card.Title>
 
-          <Card style={{ width: "18rem", border: "1px solid black" }}>
-            <Card.Body>
-              <Card.Title><b>Available</b></Card.Title>
+                <Card.Text style={{color:"black"}}>
+                {pen.length}            
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </NavLink>
+          
+          <NavLink to="/admin/available" className="text-decoration-none">
+            <Card style={{ width: "18rem", border: "1px solid black",cursor:"pointer"  }}>
+              <Card.Body>
+                <Card.Title><b>Available</b></Card.Title>
 
-              <Card.Text style={{color:"black"}}>
-                {available.length}                
-              </Card.Text>
-            </Card.Body>
-          </Card>
+                <Card.Text style={{color:"black"}}>
+                  {available.length}                
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </NavLink>
+          
+          <NavLink to="/admin/penalty" className="text-decoration-none">
+            <Card style={{ width: "18rem", border: "1px solid black",cursor:"pointer"  }}>
+              <Card.Body>
+                <Card.Title><b>Penalty</b></Card.Title>
 
-          <Card style={{ width: "18rem", border: "1px solid black" }}>
-            <Card.Body>
-              <Card.Title><b>Penalty</b></Card.Title>
-
-              <Card.Text style={{color:"black"}}>
-               {ava.length} 
-              </Card.Text>
-            </Card.Body>
-          </Card>
+                <Card.Text style={{color:"black"}}>
+                {ava.length} 
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </NavLink>
+          
         </div>
 
       </div>
