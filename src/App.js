@@ -22,6 +22,7 @@ import Penalty from './lib/Admin/Penalty';
 import UserDashboard from './lib/user/UserDashboard';
 import Cards from './lib/user/Cards';
 import Books from './lib/user/Books';
+import Account from './lib/user/Account';
 
 
 
@@ -46,6 +47,7 @@ function App() {
        <Route path='/user' element={<UserDashboard/>}>
         <Route path='/user/dashboard' element={<Books/>} />
         <Route path='/user/cards' element={<Cards/>} />
+        <Route path='/user/Account' element={<Account/>} />
        </Route>
        
        

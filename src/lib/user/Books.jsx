@@ -58,7 +58,7 @@ const Books = () => {
 
   return (
     <>
-      <div className="text-center pb-2">
+      <div className="text-center pb-2 mt-5">
         <h2>BOOKS</h2>
       </div>
       <div id="main-slider-container" className="container">
