@@ -53,14 +53,19 @@ function App() {
     
     console.log(checkEmail);
 
+    let passJson = {
+      isLogged : true,
+      empid : checkUserEmail.empid
+    }
+
      if(checkEmail?.email===data.email && checkEmail?.password===data.password ){
       
       navigate("/admin/dash")
-      localStorage.setItem('loginId', JSON.stringify(checkEmail))
+      localStorage.setItem('isLogged', true )
      }
      else if(checkUserEmail?.empemail===data.email && checkUserEmail?.emppassword===data.password){
       navigate("/user/dashboard")
-      localStorage.setItem('loginId', JSON.stringify(checkUserEmail))
+      localStorage.setItem('loginId', JSON.stringify(passJson))
 
      }
      else{

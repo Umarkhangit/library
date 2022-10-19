@@ -7,8 +7,12 @@ import Navbar from 'react-bootstrap/Navbar';
 import { NavLink } from 'react-router-dom';
 
 function NavScrollExample() {
+
+  const logOut = () => {
+    localStorage.removeItem('loginId');
+  }
   return (
-    <Navbar variant='dark' bg='dark' className='px-5 mb-5' expand="lg">
+    <Navbar variant='dark' bg='dark' className='px-5' expand="lg">
       <Container fluid style={{fontFamily: "Inter Tight"}}>
         <Navbar.Brand href="#" >L.M.S</Navbar.Brand>
        
@@ -19,8 +23,8 @@ function NavScrollExample() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <NavLink className="text-decoration-none text-light mx-3" >My Books</NavLink>
-            <NavLink to="/" className="text-decoration-none text-light">Log Out</NavLink>
+            <NavLink className="text-decoration-none text-light mx-3" >Library</NavLink>
+            
             {/* <NavDropdown title="Link" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action4">
@@ -34,6 +38,10 @@ function NavScrollExample() {
             {/* <Nav.Link href="#" disabled>
               Link
             </Nav.Link> */}
+          </Nav>
+          <Nav>
+          <NavLink to="/user/account" className="text-decoration-none text-light mx-3">Account</NavLink>
+          <NavLink to="/" onClick={logOut} className="text-decoration-none text-light">Log Out</NavLink>
           </Nav>
           {/* <Form className="d-flex">
             <Form.Control
