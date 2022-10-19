@@ -6,7 +6,7 @@ import {  Outlet } from "react-router-dom";
 
 const Admin = () => {
   return (
-    <div>
+    <div style={{display:'flex'}}>
 
       <SideNav/>
       <Outlet/>

@@ -20,8 +20,10 @@ import Collapse from "@mui/material/Collapse";
 import "../Login.css";
 import { NavLink } from "react-router-dom";
 import "../Login.css";
-
-
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import Badge from '@mui/material/Badge';
 
 const drawerWidth = 200;
 
@@ -103,7 +105,39 @@ const navName=(name)=>{
   sethead(name)
 }
 
- 
+// for notification mui
+const [anchorEl, setAnchorEl] = React.useState(null);
+const isMenuOpen = Boolean(anchorEl);
+
+const handleProfileMenuOpen = (event) => {
+  setAnchorEl(event.currentTarget);
+};
+const handleMenuClose = () => {
+  setAnchorEl(null);
+  // handleMobileMenuClose();
+};
+const menuId = 'primary-search-account-menu';
+  const renderMenu = (
+    <Menu
+      anchorEl={anchorEl}
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      id={menuId}
+      keepMounted
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      open={isMenuOpen}
+      onClose={handleMenuClose}
+      // sx={{width:"1000px"}}
+    >
+      <MenuItem onClick={handleMenuClose}>Empty</MenuItem>
+    </Menu>
+  );
+
   return (
     <>
       <Box sx={{ display: "flex" }}>
@@ -112,6 +146,7 @@ const navName=(name)=>{
     {/* Top Navbar Section */}
         <AppBar position="fixed" open={open}>
           <Toolbar>
+
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -124,8 +159,30 @@ const navName=(name)=>{
             <Typography variant="h6" noWrap component="div">
               {head}
             </Typography>
+
+            <Box sx={{ flexGrow: 1 }} />
+            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+
+            <IconButton
+              size="large"
+              aria-label="show 17 new notifications"
+              color="inherit"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              onClick={handleProfileMenuOpen}
+            >
+              <Badge badgeContent={17} color="error">
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
+
+            </Box>
+  
+
           </Toolbar>
         </AppBar>
+        {renderMenu}
+
 
       {/* Side nav bar */}
         <Drawer

@@ -61,7 +61,7 @@ const Penalty = () => {
 ]
   
   return (
-    <div className='container pb-5' style={{marginTop:"7%",marginLeft:"21%"}}>
+    <div className='container pb-5' style={{marginTop:"7%",marginLeft:"10%"}}>
 
     
      
