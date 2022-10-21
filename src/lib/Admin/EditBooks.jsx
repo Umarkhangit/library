@@ -9,7 +9,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const EditBooks = () => {
 
-    const [render,setRender]=useState(false);
+
     const [img,setImg]=useState()
 
     const [edited,setEdited]=useState({
@@ -20,9 +20,11 @@ const EditBooks = () => {
         desc:"",
         published:""
     })
+
+    const {register,handleSubmit,formState: { errors }} = useForm();
+
     const location=useLocation()
     // console.log(location.state.id)
-
 
     // for prefilling form data
     useEffect(()=>{
@@ -32,9 +34,7 @@ const EditBooks = () => {
             Author:location.state?location.state.Author:"",
             genre:location.state?location.state.genre:"",
             desc:location.state?location.state.desc:"",
-            published:location.state?location.state.published:"",
-            
-        
+            published:location.state?location.state.published:"",        
      }
      setEdited(prefill)
     },[location])
@@ -44,6 +44,7 @@ const EditBooks = () => {
         console.log(edited);
     }
 
+    // for img input
     const handleChange2= (e) =>{
         let img=e.target.files[0]
         let reader=new FileReader()
@@ -57,9 +58,10 @@ const EditBooks = () => {
  
      }
     console.log(img)
+
      const navigate=useNavigate()
      
-     const onSubmit= (e) =>{
+     const onSubmit= () =>{
 
         let fEdit={
             ISBN:edited.ISBN,
@@ -76,21 +78,11 @@ const EditBooks = () => {
         .catch(err => console.log(err))
         navigate("/admin/allbooks")
         toast.success("Edited Successfully",{autoClose:2000})
-        setRender(true);
      }
 
 
     //  console.log(prefill)
-    const {register,handleSubmit,formState: { errors }} = useForm();
-    // const onSubmit=(data) =>{
-    //     console.log(data)
-    //     axios.put(`http://localhost:3001/books/${location.state.id}`,data)
-    //     .then(res =>console.log(res.data))
-    //     .catch(err =>console.log(err))
-    //     navigate("/admin/view")
-    //     toast.success("Edited Successfully")
-        
-    // }
+   
 
 
   return (

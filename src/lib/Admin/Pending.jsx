@@ -24,6 +24,7 @@ const Pending = () => {
     useEffect(()=>{
         runPenalty()
     })
+
     //PenaltyFunc
 
     let penalty = null;
@@ -38,34 +39,15 @@ const Pending = () => {
         axios.put(`http://localhost:3001/borrowed/${d.id}`, putState).then((res) => console.log(res.data))
     }
 
-    // let dateRanges = [{empid:109,id:2,expiryDate:'2022-10-12T14:05:25.534Z'}];
 
     const runPenalty =() => 
     {
     borrow.map((d, index) => {
-        // let convertDate = moment(d.books.expiryDate).format('DD-MM-YYYY')
-        // let cDate = moment(convertDate);
-        // console.log(cDate)
-      
-        // let currDate = moment().format('DD-MM-YYYY');
+       
         let currDate2 = moment()
 
-        // let convertDate = "12-11-2022";
 
         // console.log(currDate2);
-
-        // var takenDate = moment('31-01-2020', "DD-MM-YYYY");
-        // var expiryDate = moment('28-02-2022', "DD-MM-YYYY")
-        // var printISO = moment().toISOString()
-        // console.log(takenDate)
-
-        // let newDate = moment().add(5, 'days');
-        // console.log(newDate)
-
-        // console.log(currDate)
-        // console.log(d.books.expiryDate)
-
-
        
         // console.log("check", moment(currDate2).isBefore(d.books.expiryDate))
 
@@ -84,46 +66,14 @@ const Pending = () => {
 
             // return console.log("falseeee2")
             
-
             
         }
-       
-        // if(currDate > convertDate) {
-        //     setPenalty(true)
-        //     callFunc(d, index)
-        //     console.log("first")
-            
-        // } else {
-        //     setPenalty(false)
-        //     callFunc(d, index)
-
-        //     console.log("second")
-
-        // }
+               
     
     })
 }
 
 
-
-// console.log(runPenalty())
-//     let date = moment('2022-10-12T14:05:25.534Z')
-//     let formate = date.format('DD-MM-YYYY')
-
-//     let newDate = moment(formate, "DD-MM-YYYY").add(35, 'days');
-//     let oldDate = newDate.format('DD-MM-YYYY')// oldDate
-
-//     let compare1 = moment().format('DD-MM-YYYY') //cuurentDate
-
-//     if(compare1 > oldDate) {
-//          console.log("first")
-//     } else{
-//          console.log("second");
-//     }
-
-//     console.log('a');
-    
-// console.log(oldDate)
 
     const columns=[
         {
@@ -132,7 +82,7 @@ const Pending = () => {
             sortable: true
         },
         {
-            name:"EmpName",
+            name:"Name",
             selector:row =>row.empname,
             sortable: true
         },
@@ -152,10 +102,8 @@ const Pending = () => {
         },
     ]
   return (
-    <div className='container pb-5' style={{marginTop:"7%",marginLeft:"21%"}}>
+    <div className='container pb-5' style={{marginTop:"7%",marginLeft:"10%"}}>
 
-    
-     
     <DataTable columns={columns} data={borrow} pagination highlightOnHover responsive/>
 
     </div>

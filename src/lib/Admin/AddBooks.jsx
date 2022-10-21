@@ -19,16 +19,17 @@ const AddBooks = () => {
         published:"",
         // imgUrl:"https://source.unsplash.com/random",
        
-
     })
     
+    const {register,handleSubmit,formState: { errors },reset} = useForm();
+
     const handleChange= (e) =>{
         console.log(e.target.value)
         setVals({...vals,[e.target.name]:e.target.value})
         
     }
     
-    
+    // for img input
     const handleChange2= (e) =>{
        let img=e.target.files[0]
        let reader=new FileReader()
@@ -46,9 +47,8 @@ const AddBooks = () => {
    
 
     const navigate=useNavigate()
-    const onSubmit= (e)=>{
+    const onSubmit= ()=>{
        
-        // e.preventDefault()
         let fVal={
             ISBN:vals.ISBN,
             title:vals.title,
@@ -69,16 +69,7 @@ const AddBooks = () => {
     }
 
     
-    const {register,handleSubmit,formState: { errors },reset} = useForm();
-    // const onSubmit=(data) =>{
-    //     // console.log(data)
-    //     axios.post("http://localhost:3001/books",data)
-    //     .then(res=> console.log(res.data))
-    //     .catch(err=> console.log(err))        
-    //     // reset()
-    //     toast.success("Added Successfully")
-    // }
-
+   
 
   return (
    <div className="container" style={{marginTop:'8%'}}>
@@ -97,25 +88,35 @@ const AddBooks = () => {
         </div>
 
         <div className="row">
-            <TextField label="Author" variant='outlined' className='col-6 mt-3' name='Author' {...register("Author",{required:true,onChange:handleChange})}/>
+            <TextField label="Author" variant='outlined' className='col-6 mt-3' name='Author' 
+            {...register("Author",{required:true,onChange:handleChange})}/>
+
             {errors.Author && <p style={{ color: "red", fontSize: 17 }}>field required</p> }
 
-            <TextField label="Genre" variant='outlined' className='col-4 mt-3' style={{marginLeft:"10px"}} name='genre'{...register("genre",{required:true,onChange:handleChange})}/>
+            <TextField label="Genre" variant='outlined' className='col-4 mt-3' style={{marginLeft:"10px"}} name='genre'
+            {...register("genre",{required:true,onChange:handleChange})}/>
+
             {errors.genre && <p style={{ color: "red", fontSize: 17 }}>field required</p> }
 
         </div>
 
         <div className="row">
-            <TextField label="Description" variant='outlined' className='col-10 mt-3' multiline rows={4} name='desc' {...register("desc",{required:true,onChange:handleChange})}/>
+            <TextField label="Description" variant='outlined' className='col-10 mt-3' multiline rows={4} name='desc' 
+            {...register("desc",{required:true,onChange:handleChange})}/>
+
             {errors.desc && <p style={{ color: "red", fontSize: 17 }}>field required</p> }
 
         </div>
 
         <div className="row">
-            <TextField label="Published Year" variant='outlined' className='col-6 mt-3' name='published' {...register("published",{required:true,onChange:handleChange})}/>
+            <TextField label="Published Year" variant='outlined' className='col-6 mt-3' name='published'
+             {...register("published",{required:true,onChange:handleChange})}/>
+
             {errors.published && <p style={{ color: "red", fontSize: 17 }}>field required</p> }
 
-            <input type="file" className='col-6 mt-3' placeholder='hi' name='imgUrl' {...register("imgUrl",{required:true,onChange:handleChange2})}/>        
+            <input type="file" className='col-6 mt-3' placeholder='hi' name='imgUrl'
+             {...register("imgUrl",{required:true,onChange:handleChange2})}/>     
+                
             {errors.imgUrl && <p style={{ color: "red", fontSize: 17 }}>field required</p> }
    
         </div>

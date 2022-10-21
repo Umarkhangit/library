@@ -23,6 +23,7 @@ import UserDashboard from './lib/user/UserDashboard';
 import Cards from './lib/user/Cards';
 import Books from './lib/user/Books';
 import Account from './lib/user/Account';
+import Account2 from './lib/user/Account2';
 
 
 
@@ -48,6 +49,7 @@ function App() {
         <Route path='/user/dashboard' element={<Books/>} />
         <Route path='/user/cards' element={<Cards/>} />
         <Route path='/user/Account' element={<Account/>} />
+        <Route path='/user/account2' element={<Account2/>}/>
        </Route>
        
        

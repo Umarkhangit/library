@@ -36,12 +36,12 @@ console.log(avail)
 
 const columns=[
     {
-        name:"ISBN",
+        name:"Book ISBN",
         selector:row =>row.ISBN,
         sortable: true
     },
     {
-        name:"Title",
+        name:"Book Title",
         selector:row =>row.title,
         sortable: true
     },
@@ -51,10 +51,8 @@ const columns=[
     },
 ]
   return (
-    <div className='container pb-5' style={{marginTop:"7%",marginLeft:"22%"}}>
-
-    
-    
+    <div className='container pb-5' style={{marginTop:"7%",marginLeft:"10%"}}>
+   
     <DataTable columns={columns} data={avail} pagination highlightOnHover responsive />
    
 

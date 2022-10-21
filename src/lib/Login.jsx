@@ -55,7 +55,7 @@ function App() {
 
     let passJson = {
       isLogged : true,
-      empid : checkUserEmail.empid
+      empid : checkUserEmail?.empid
     }
 
      if(checkEmail?.email===data.email && checkEmail?.password===data.password ){

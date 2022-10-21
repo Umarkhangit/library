@@ -26,6 +26,7 @@ const Dashboard = () => {
 
   },[])
 
+  // Available filter
   var available = tBooks.filter(a =>{
     return !pen.find(p =>{
         return a.ISBN === p.books.ISBN
@@ -40,15 +41,9 @@ var ava = pen.filter(a =>{
 
 })    
 
-const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+
   // console.log(available.length);
+
   return (
     <>
       <div className="" style={{ marginTop: "10%", width:'100vw' }}>

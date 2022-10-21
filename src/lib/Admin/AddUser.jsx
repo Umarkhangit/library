@@ -21,19 +21,20 @@ const AddUser = () => {
 
 
   return (
-    <div className='container d-flex flex-column align-items-center' style={{marginTop:'8%'}}>
+    <div className='container d-flex flex-column align-items-center' style={{marginTop:'6%'}}>
         <div className='col-5 text-center'>
 
         
-        <Card sx={{ p: 5,border:"1px solid black" }} style={{boxShadow: "5px 5px 10px #dedede"}}>
+        <Card sx={{ p: 3,border:"1px solid black" }} style={{boxShadow: "5px 5px 10px #dedede"}}>
         <form onSubmit={handleSubmit(onSubmit)}>
         <h3>Add New User</h3>
+
         <div>
         <TextField          
           id="standard-required"
           label="EmpID"
           variant="outlined"
-          className='mt-4 col-10'
+          className='mt-4 col-10 pb-2'
           name='empid'
           {...register("empid",{required:true})}
         />
@@ -43,21 +44,21 @@ const AddUser = () => {
         <div>
         <TextField         
           id="standard-required"
-          label="EmpName"
+          label="Name"
           variant="outlined"
-          className='mt-4 col-10'
+          className='mt-4 col-10 pb-2 '
           name='empname'
           {...register("empname",{required:true})}
         />
-        {errors.empname && <p style={{ color: "red", fontSize: 17 }}>name required</p>}
+        {errors.empname && <p style={{ color: "red", fontSize: 17 }}>name is required</p>}
         </div>
 
         <div>
         <TextField          
           id="standard-required"
-          label="EmpEmail"
+          label="Email"
           variant="outlined"
-          className='mt-4 col-10'
+          className='mt-4 col-10 pb-2'
           name='empemail'
           {...register("empemail", {
             required: "email is required",
@@ -67,23 +68,31 @@ const AddUser = () => {
             },
           })}
         />
-        {errors.empemail && (
-                    <p style={{ color: "red", fontSize: 17 }}>
-                      {errors.empemail.message}
-                    </p>
-                  )}
+        {errors.empemail && ( <p style={{ color: "red", fontSize: 17 }}> {errors.empemail.message}</p> )}
         </div>
 
         <div>
         <TextField
           id="standard-required"
-          label="EmpPassword"
+          label="Password"
           variant="outlined"
-          className='mt-4 col-10 pb-2'
+          className='mt-4 col-10 pb-2 '
           name='emppassword'
           {...register("emppassword",{required:true})}
         />
-        {errors.emppassword && <p style={{ color: "red", fontSize: 17 }}>password required</p>}
+        {errors.emppassword && <p style={{ color: "red", fontSize: 17 }}>password is required</p>}
+        </div>
+
+        <div>
+        <TextField
+          id="standard-required"
+          label="Desig"
+          variant="outlined"
+          className='mt-4 col-10 pb-2'
+          name='empdesig'
+          {...register("empdesig",{required:true})}
+        />
+        {errors.empdesig && <p style={{ color: "red", fontSize: 17 }}>designation is required</p>}
         </div>
         <Button variant="contained" className='mt-2 w-50' type="submit">Add</Button>
         </form>

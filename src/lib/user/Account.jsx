@@ -35,10 +35,14 @@ const Account = () => {
             
         })
         .catch(err => console.log(err))
-
         newEmp()
+       
         
     },[])
+
+    console.log(borrow)
+
+  
 
      useEffect(()=>{
         axios.get("http://localhost:3001/user")
@@ -48,14 +52,13 @@ const Account = () => {
         })
         .catch(err => console.log(err))
 
-    
         
     },[])
 
     let localId = JSON.parse(localStorage.getItem('loginId'));
 
     let empid = localId.empid;
-    console.log(localId.empid)
+    // console.log(localId.empid)
 
     const newEmp = () =>  setFilteredEmp(borrow.filter((d) => {
         
@@ -64,6 +67,7 @@ const Account = () => {
     
     )
     
+    console.log(filteredEmp);
 
     const curUser=userDetails.find(u =>{
         return empid == Number(u.empid)
@@ -81,7 +85,7 @@ const Account = () => {
     
 
           
-    
+    console.log(penaltyBooks);
 
 
 

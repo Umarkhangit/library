@@ -18,24 +18,35 @@
   ],
   "user": [
     {
-      "empid": "1008",
-      "empname": "thabrez",
-      "empemail": "thabrez123@gmail.com",
-      "emppassword": "ahamed123",
+      "empid": "1001",
+      "empname": "Thabrez ",
+      "empemail": "thabrez@gmail.com",
+      "emppassword": "thabrez123",
+      "empdesig": "Wordpres",
       "id": 1
     },
     {
-      "empid": "1009",
-      "empname": "umar",
+      "empid": "1002",
+      "empname": "Umar",
       "empemail": "umar@gmail.com",
-      "emppassword": "khan",
+      "emppassword": "umar123",
+      "empdesig": "React",
       "id": 2
     },
     {
-      "empid": "104",
-      "empname": "khalid",
-      "empemail": "khalid@gmail.com",
-      "emppassword": "uzair123",
+      "empid": "1003",
+      "empname": "Rauf",
+      "empemail": "rauf@gmail.com",
+      "emppassword": "rauf123",
+      "empdesig": "React Native",
+      "id": 3
+    },
+    {
+      "empid": "1004",
+      "empname": "Margoob",
+      "empemail": "margoob@gmail.com",
+      "emppassword": "margoob123",
+      "empdesig": "React",
       "id": 4
     }
   ],
@@ -153,84 +164,27 @@
   ],
   "borrowed": [
     {
-      "empid": 1009,
-      "empname": "umar",
+      "empid": "1001",
+      "empname": "Thabrez ",
       "books": {
         "id": 2,
         "title": "400 Days",
         "Author": "Chetan Bhagat",
         "desc": "Alia wouldn't stop looking, though. She wanted to know if I could help her",
         "imgUrl": "/assets/400days.jpg",
-        "genre": "Thriller",
+        "genre": "Thriller, love",
         "published": 2021,
         "ISBN": 9781542094085,
         "isPending": true,
-        "takenDate": "2022-10-13T15:00:36.578Z",
-        "expiryDate": "2022-10-18T15:00:36.579Z",
-        "isPenalty": false
+        "takenDate": "2022-10-20T06:49:37.651Z",
+        "expiryDate": "2022-10-19T06:49:37.651Z",
+        "isPenalty": true
       },
       "id": 1
     },
     {
-      "empid": 1008,
-      "empname": "thabrez",
-      "books": {
-        "id": 3,
-        "title": "Will you still love me?",
-        "Author": "Ravinder Singh",
-        "desc": "There is more to love than just loving...It is also a promise Lavanya Gogoi is from the scenic hills of Shillong while Rajveer Saini belongs to the shahi city of Patiala.",
-        "imgUrl": "/assets/love.jpg",
-        "genre": "Romance",
-        "published": 2018,
-        "ISBN": 9789387625457,
-        "isPending": true,
-        "takenDate": "2022-10-13T15:06:40.510Z",
-        "expiryDate": "2022-10-08T15:06:40.510Z",
-        "isPenalty": true
-      },
-      "id": 2
-    },
-    {
-      "empid": 1009,
-      "empname": "umar",
-      "books": {
-        "id": 4,
-        "title": "The Second World War",
-        "Author": "Antony Beever",
-        "desc": "A magisterial, single-volume history of the greatest conflict the world has ever known by our foremost military historian.",
-        "imgUrl": "/assets/warlove.jpg",
-        "genre": "War",
-        "published": 2021,
-        "ISBN": 9780297860709,
-        "isPending": true,
-        "takenDate": "2022-10-13T15:07:11.828Z",
-        "expiryDate": "2022-10-05T15:07:11.828Z",
-        "isPenalty": true
-      },
-      "id": 3
-    },
-    {
-      "empid": 1007,
-      "empname": "Faiz",
-      "books": {
-        "id": 6,
-        "title": "Hidden",
-        "Author": "Catherine McKenzie",
-        "desc": "After Jeff Manning suddenly dies, two women who loved him—his wife, Claire, and his co-worker, Tish, are both sent reeling and must figure out how to cope in this new novel from the author of Forgotten.",
-        "imgUrl": "/assets/hidden.jpg",
-        "genre": "Thriller",
-        "published": 2014,
-        "ISBN": 9780544264456,
-        "isPending": true,
-        "takenDate": "2022-10-13T15:28:40.257Z",
-        "expiryDate": "2022-10-14T15:28:40.258Z",
-        "isPenalty": true
-      },
-      "id": 4
-    },
-    {
-      "empid": 1007,
-      "empname": "faiz",
+      "empid": "1001",
+      "empname": "Thabrez ",
       "books": {
         "id": 8,
         "title": "Road to React",
@@ -241,15 +195,34 @@
         "published": 2014,
         "ISBN": 9780544264977,
         "isPending": true,
-        "takenDate": "2022-10-13T15:58:59.933Z",
-        "expiryDate": "2022-10-12T15:58:59.933Z",
+        "takenDate": "2022-10-20T06:50:18.646Z",
+        "expiryDate": "2022-10-19T06:50:18.646Z",
         "isPenalty": true
       },
-      "id": 5
+      "id": 2
     },
     {
-      "empid": 1009,
-      "empname": "umar",
+      "empid": "1001",
+      "empname": "Thabrez ",
+      "books": {
+        "id": 9,
+        "title": "Alice in Wonderland",
+        "Author": "Lewis Carroll",
+        "desc": "One normal summer day, Alice is sitting on the riverbank when a big, white, talking rabbit runs past. He pops into a big rabbit hole, and Alice follows him down, down, down into a strange and magical land.",
+        "imgUrl": "/assets/alice.jpg",
+        "genre": "Fiction",
+        "published": 2002,
+        "ISBN": 9780544264978,
+        "isPending": true,
+        "takenDate": "2022-10-20T06:51:13.877Z",
+        "expiryDate": "2022-10-19T06:51:13.877Z",
+        "isPenalty": true
+      },
+      "id": 3
+    },
+    {
+      "empid": "1003",
+      "empname": "Rauf",
       "books": {
         "id": 1,
         "title": "Harry Potter",
@@ -260,11 +233,30 @@
         "published": 2017,
         "ISBN": 9780751565362,
         "isPending": true,
-        "takenDate": "2022-10-14T12:26:09.774Z",
-        "expiryDate": "2022-10-13T12:26:09.774Z",
+        "takenDate": "2022-10-20T06:53:27.746Z",
+        "expiryDate": "2022-10-19T06:53:27.746Z",
         "isPenalty": true
       },
-      "id": 6
+      "id": 4
+    },
+    {
+      "empid": "1003",
+      "empname": "Rauf",
+      "books": {
+        "id": 2,
+        "title": "400 Days",
+        "Author": "Chetan Bhagat",
+        "desc": "Alia wouldn't stop looking, though. She wanted to know if I could help her",
+        "imgUrl": "/assets/400days.jpg",
+        "genre": "Thriller, love",
+        "published": 2021,
+        "ISBN": 9781542094085,
+        "isPending": true,
+        "takenDate": "2022-10-20T06:53:32.078Z",
+        "expiryDate": "2022-10-19T06:53:32.078Z",
+        "isPenalty": true
+      },
+      "id": 5
     }
   ]
 }

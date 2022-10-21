@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 // import Card from "react-bootstrap/Card";
 // import ListGroup from "react-bootstrap/ListGroup";
@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 import "./Cards.css";
 // import "./Hover.css";
 import moment from "moment";
+import { toast } from "react-toastify";
 
 function Cards() {
   const vacation = useLocation();
@@ -120,13 +121,25 @@ function Cards() {
   let newDate = moment().add(-1, 'days');
   // let nDate = moment(currDate, "DD-MM-YYYY").add(-20, 'days');
  
-  
+  const [user,setUser]=useState([])
+  // local storage
+  let localId = JSON.parse(localStorage.getItem('loginId'));
 
+  let empid = localId.empid;
+
+  useEffect(()=>{
+    axios.get("http://localhost:3001/user")
+    .then(res =>{
+      let filtered = res.data.find(val =>val.empid == empid)
+      setUser(filtered)
+    })
+  },[])
+console.log(user)
 
   const postBorrow = (isbn) => {
     const borrow = {
-      empid: 109,
-      empname: "umar",
+      empid: user.empid,
+      empname: user.empname,
       books: {
         ...isbn,
         isPending: true,
@@ -138,6 +151,7 @@ function Cards() {
     console.log(borrow);
 
     axios.post("http://localhost:3001/borrowed",borrow).then((res) => console.log(res)).catch((err) => console.log(err))
+    toast.success("Borrowed")
   };
 
   return (

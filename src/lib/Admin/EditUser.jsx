@@ -9,8 +9,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const EditUser = () => {
 
-  
-
     const location=useLocation()
     // console.log(location.state.id)
 
@@ -20,7 +18,8 @@ const EditUser = () => {
             empid:location.state?location.state.empid:"",
             empname:location.state?location.state.empname:"",
             empemail:location.state?location.state.empemail:"",
-            emppassword:location.state?location.state.emppassword:""
+            emppassword:location.state?location.state.emppassword:"",
+            empdesig:location.state?location.state.empdesig:""
      }
      
     //  console.log(prefill);
@@ -37,8 +36,7 @@ const EditUser = () => {
         
     }
 
-
-   
+  
   return (
     <div className='container d-flex flex-column align-items-center' style={{marginTop:'8%'}}>
         <div className='col-5 text-center'>
@@ -103,6 +101,18 @@ const EditUser = () => {
           {...register("emppassword",{required:true})}
         />
         {errors.emppassword && <p style={{ color: "red", fontSize: 17 }}>password required</p>}
+        </div>
+
+        <div>
+        <TextField
+          id="standard-required"
+          label="EmpDesig"
+          variant="outlined"
+          className='mt-4 col-10 pb-2'
+          name='empdesig'
+          {...register("empdesig",{required:true})}
+        />
+        {errors.empdesig && <p style={{ color: "red", fontSize: 17 }}>designation is required</p>}
         </div>
         <Button variant="contained" className='mt-2 mx-3' type="submit">Submit</Button>
         <Button variant="contained" className='mt-2' onClick={()=>navigate("/admin/view")}>Cancel</Button>
