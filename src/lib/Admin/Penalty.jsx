@@ -26,7 +26,7 @@ const Penalty = () => {
           return (a.books.isPenalty === true)
             
             
-      
+     
   })    
 
   
@@ -40,7 +40,7 @@ const Penalty = () => {
         sortable: true
     },
     {
-        name:"EmpName",
+        name:"Name",
         selector:row =>row.empname,
         sortable: true
     },
@@ -61,10 +61,8 @@ const Penalty = () => {
 ]
   
   return (
-    <div className='container pb-5' style={{marginTop:"7%",marginLeft:"21%"}}>
-
+    <div className='container pb-5' style={{marginTop:"7%",marginLeft:"10%"}}>
     
-     
     <DataTable columns={columns} data={penaltyBooks} pagination highlightOnHover responsive/>
 
     </div>

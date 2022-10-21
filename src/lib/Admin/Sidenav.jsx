@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -20,29 +20,15 @@ import Collapse from "@mui/material/Collapse";
 import "../Login.css";
 import { NavLink } from "react-router-dom";
 import "../Login.css";
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import Badge from '@mui/material/Badge';
+import axios from "axios";
+import Avatar from '@mui/material/Avatar';
 
-
-
+// mui 
 const drawerWidth = 200;
-
-// const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
-//   ({ theme, open }) => ({
-//     flexGrow: 1,
-//     padding: theme.spacing(3),
-//     transition: theme.transitions.create("margin", {
-//       easing: theme.transitions.easing.sharp,
-//       duration: theme.transitions.duration.leavingScreen,
-//     }),
-//     marginLeft: `-${drawerWidth}px`,
-//     ...(open && {
-//       transition: theme.transitions.create("margin", {
-//         easing: theme.transitions.easing.easeOut,
-//         duration: theme.transitions.duration.enteringScreen,
-//       }),
-//       marginLeft: 0,
-//     }),
-//   })
-// );
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -73,6 +59,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 
 const SideNav = () => {
+
   const [head,sethead]=useState("")
   //mui
   const theme = useTheme();
@@ -103,7 +90,95 @@ const navName=(name)=>{
   sethead(name)
 }
 
+// for notification mui
+const [anchorEl, setAnchorEl] = React.useState(null);
+const isMenuOpen = Boolean(anchorEl);
+
+const handleProfileMenuOpen = (event) => {
+  setAnchorEl(event.currentTarget);
+};
+const handleMenuClose = () => {
+  setAnchorEl(null);
+  // handleMobileMenuClose();
+};
+
+const [borrowed,setBorrowed] = useState([])
+useEffect(()=>{
+  axios.get("http://localhost:3001/borrowed")
+  .then(res =>setBorrowed(res.data))
+  .catch(err =>console.log(err))
+},[])
+
+var penalty = borrowed.filter(b =>{
+  return b.books.isPenalty == true
+})
+console.log(penalty)
+
+const menuId = 'primary-search-account-menu';
+  const renderMenu = (
+    <Menu
+      anchorEl={anchorEl}
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      id={menuId}
+      keepMounted
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      open={isMenuOpen}
+      onClose={handleMenuClose}
+    >
+      {
+        borrowed.length?(
+          <div style={{width:"auto",padding:"10px"}}>
+            <table>
+              <thead>
+                <tr>
+                  <td>#</td>
+                  <th>Emp ID</th>
+                  <th>Emp Name</th>
+                  <th>Book</th>
+                </tr>
+              </thead>
+              <tbody>
+              {
+                borrowed.map(val =>{
+                  return(
+                    <>
+                    <tr>
+                      <td>
+                      <Avatar
+                        sx={{ bgcolor: "orange" }}
+                        alt={val.empname}
+                        src="/broken-image.jpg"
+                      />
+                      </td>
+                      <td><MenuItem>{val.empid}</MenuItem></td>
+                      <td><MenuItem><b>{val.empname}</b> &nbsp;{val.books.isPenalty == true? "has fallen penalty":"has borrowed the book"}</MenuItem></td>                      
+                      <td><MenuItem>{val.books.title}</MenuItem></td>
+                    
+                    </tr>
+                    
+                    </>
+                  )
+                })
+              }
+              </tbody>
+
+            </table>
+          </div>
+        ):(
+          <div>empty</div>
+        )
+      }
+    </Menu>
+  );
+
  
+
   return (
     <>
       <Box sx={{ display: "flex" }}>
@@ -112,6 +187,7 @@ const navName=(name)=>{
     {/* Top Navbar Section */}
         <AppBar position="fixed" open={open}>
           <Toolbar>
+
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -124,8 +200,31 @@ const navName=(name)=>{
             <Typography variant="h6" noWrap component="div">
               {head}
             </Typography>
+
+            <Box sx={{ flexGrow: 1 }} />
+            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+        
+      {/* notification icon*/}
+            <IconButton
+              size="large"
+              aria-label="show 17 new notifications"
+              color="inherit"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              onClick={handleProfileMenuOpen}
+            >
+              <Badge badgeContent={borrowed.length} color="error">
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
+
+            </Box>
+  
+
           </Toolbar>
         </AppBar>
+        {renderMenu}
+
 
       {/* Side nav bar */}
         <Drawer

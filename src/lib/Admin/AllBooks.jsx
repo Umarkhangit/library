@@ -7,20 +7,20 @@ import DataTable from 'react-data-table-component'
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import EditIcon from '@mui/icons-material/Edit';
 // import { useDispatch, useSelector } from 'react-redux';
-
 
 
 const AllBooks = () => {
 
-    const [datas,setDatas]=useState([])
+    const [books,setBooks]=useState([])
     const [render,setRender]=useState(0)
 
     // const dispatch=useDispatch()
     useEffect(()=>{
         axios.get("http://localhost:3001/books")
         .then(res=> {
-        setDatas(res.data)
+          setBooks(res.data)
         // dispatch(Books(res.data))
         })
         .catch(err=> console.log(err))
@@ -29,6 +29,7 @@ const AllBooks = () => {
     // const data=useSelector(state=>state)
   //  console.log(data);
 
+  // for deleting
     const del=(id)=>{
         // console.log(id)
         axios.delete(`http://localhost:3001/books/${id}`)
@@ -83,21 +84,22 @@ const AllBooks = () => {
             sortable: true
         },
         {			
-          cell: (row) => <Button variant="outline-primary" onClick={()=>edit(row)}>Edit</Button>,
+          cell: (row) => <Button variant="outline-primary" onClick={()=>edit(row)}><EditIcon/></Button>,
           button: true,
         },
         {			
-          cell: (row) => <Button variant="outline-danger" onClick={()=>del(row.id)}>Delete<DeleteForeverIcon/> </Button>,
+          cell: (row) => <Button variant="outline-danger" onClick={()=>del(row.id)}><DeleteForeverIcon/> </Button>,
           button: true,
         }
     ];
+
   return (
-    <div className='container pb-5' style={{marginTop:"7%"}}>
+    <div className='container pb-5' style={{marginTop:"7%",marginLeft:"7%"}}>
 
     <Button variant="primary" className='float-end ' ><NavLink to="/admin/addbooks" className="text-decoration-none text-light "><AddCircleOutlineIcon/> Add Books</NavLink> </Button>
     <br /><br />
     
-    <DataTable columns={columns} data={datas} pagination highlightOnHover responsive/>
+    <DataTable columns={columns} data={books} pagination highlightOnHover responsive/>
 
     </div>
   )

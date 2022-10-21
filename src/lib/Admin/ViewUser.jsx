@@ -4,6 +4,7 @@ import DataTable from 'react-data-table-component'
 import "../Login.css";
 import Button from 'react-bootstrap/Button';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import EditIcon from '@mui/icons-material/Edit';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,19 +12,19 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const ViewUser = () => {
 
-  const [datas,setDatas]=useState([])
+  const [users,setUsers]=useState([])
   const [render,setRender]=useState(0)
 
   useEffect(()=>{
     axios.get("http://localhost:3001/user")
     .then(res=> {
-      setDatas(res.data)
+      setUsers(res.data)
       
     })
     .catch(err =>console.log(err))
    
   },[render])
-  // console.log(datas);
+  // console.log(users);
 
  
 
@@ -54,26 +55,31 @@ const ViewUser = () => {
         sortable: true
     },
     {
-        name: 'Emp Name',
+        name: 'Name',
         selector: row => row.empname,
         sortable: true
     },
     {
-      name: 'Emp Email',
+      name: 'Email',
       selector: row => row.empemail,
       sortable: true
     },
     {
-      name: 'Emp Password',
+      name: 'Password',
       selector: row => row.emppassword,
       sortable: true
     },
+    {
+      name: 'Designation',
+      selector: row => row.empdesig,
+      sortable: true
+    },
     {			
-      cell: (row) => <Button variant="outline-primary" onClick={()=>edit(row)}>Edit</Button>,
+      cell: (row) => <Button variant="outline-primary" onClick={()=>edit(row)}><EditIcon/></Button>,
       button: true,
     },
     {			
-      cell: (row) => <Button variant="outline-danger" onClick={()=>del(row.id)}>Delete<DeleteForeverIcon/> </Button>,
+      cell: (row) => <Button variant="outline-danger" onClick={()=>del(row.id)}><DeleteForeverIcon/> </Button>,
       button: true,
     }
 ];
@@ -82,10 +88,10 @@ const ViewUser = () => {
 
 
   return (
-    <div className='container' style={{marginTop:"10%",fontSize:"20px"}}  >
+    <div className='container pb-5' style={{marginTop:"10%",fontSize:"20px"}}  >
 
     <h2 className='text-center mb-4'>Users</h2>
-      <DataTable columns={columns} data={datas} pagination highlightOnHover responsive/>
+      <DataTable columns={columns} data={users} pagination highlightOnHover responsive/>
     
     </div>
   )

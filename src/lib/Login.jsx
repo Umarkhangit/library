@@ -55,7 +55,7 @@ function App() {
 
     let passJson = {
       isLogged : true,
-      empid : checkUserEmail.empid
+      empid : checkUserEmail?.empid
     }
 
      if(checkEmail?.email===data.email && checkEmail?.password===data.password ){
@@ -70,7 +70,7 @@ function App() {
      }
      else{
       
-      setInvalid(true)
+      // setInvalid(true)
       toast.error("Invalid Credentials",{autoClose:2000})
       
      }
