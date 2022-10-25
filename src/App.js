@@ -1,11 +1,11 @@
-import Login, { loginCondition } from './lib/Login';
+import Login from './lib/Login';
 import Admin from './lib/Admin/Admin';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 
 import AddUser from './lib/Admin/AddUser';
@@ -23,7 +23,7 @@ import UserDashboard from './lib/user/UserDashboard';
 import Cards from './lib/user/Cards';
 import Books from './lib/user/Books';
 import Account from './lib/user/Account';
-import Account2 from './lib/user/Account2';
+
 
 
 
@@ -49,7 +49,6 @@ function App() {
         <Route path='/user/dashboard' element={<Books/>} />
         <Route path='/user/cards' element={<Cards/>} />
         <Route path='/user/Account' element={<Account/>} />
-        <Route path='/user/account2' element={<Account2/>}/>
        </Route>
        
        

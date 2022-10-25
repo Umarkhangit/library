@@ -114,6 +114,10 @@ var penalty = borrowed.filter(b =>{
 })
 console.log(penalty)
 
+const message = (val) =>{
+console.log(val);
+}
+
 const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -133,7 +137,7 @@ const menuId = 'primary-search-account-menu';
     >
       {
         borrowed.length?(
-          <div style={{width:"auto",padding:"10px"}}>
+          <div style={{width:"auto",padding:"10px",maxHeight:"250px"}}>
             <table>
               <thead>
                 <tr>
@@ -148,7 +152,7 @@ const menuId = 'primary-search-account-menu';
                 borrowed.map(val =>{
                   return(
                     <>
-                    <tr>
+                    <tr onClick={()=>message(val)}>
                       <td>
                       <Avatar
                         sx={{ bgcolor: "orange" }}

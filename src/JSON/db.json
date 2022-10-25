@@ -59,7 +59,8 @@
       "imgUrl": "/assets/harry.jpg",
       "genre": "Mythology",
       "published": 2017,
-      "ISBN": 9780751565362
+      "ISBN": 9780751565362,
+      "isTrending": false
     },
     {
       "id": 2,
@@ -149,7 +150,8 @@
       "imgUrl": "/assets/js.png",
       "genre": "Programming",
       "published": 2014,
-      "ISBN": 9780544264979
+      "ISBN": 9780544264979,
+      "isTrending": true
     },
     {
       "ISBN": "97807515653",
@@ -257,6 +259,135 @@
         "isPenalty": true
       },
       "id": 5
+    },
+    {
+      "empid": "1002",
+      "empname": "Umar",
+      "books": {
+        "id": 6,
+        "title": "Hidden",
+        "Author": "Catherine McKenzie",
+        "desc": "After Jeff Manning suddenly dies, two women who loved him—his wife, Claire, and his co-worker, Tish, are both sent reeling and must figure out how to cope in this new novel from the author of Forgotten.",
+        "imgUrl": "/assets/hidden.jpg",
+        "genre": "Thriller",
+        "published": 2014,
+        "ISBN": 9780544264456,
+        "isPending": true,
+        "takenDate": "2022-10-25T12:35:33.568Z",
+        "expiryDate": "2022-10-26T12:35:33.568Z",
+        "isPenalty": false
+      },
+      "id": 6
+    },
+    {
+      "empid": "1002",
+      "empname": "Umar",
+      "books": {
+        "id": 10,
+        "title": "Javascript & Jquery",
+        "Author": "Jon Duckett",
+        "desc": "A visual and accessible guide to JavaScript and jQuery in a built-to-last hardcover edition In JavaScript & jQuery renowned author Jon Duckett discards the traditional programming book template and approaches writing code in a more relevant, less intimidating way.",
+        "imgUrl": "/assets/js.png",
+        "genre": "Programming",
+        "published": 2014,
+        "ISBN": 9780544264979,
+        "isTrending": true,
+        "isPending": true,
+        "takenDate": "2022-10-25T16:46:56.153Z",
+        "expiryDate": "2022-10-24T16:46:56.153Z",
+        "isPenalty": true
+      },
+      "id": 7
+    },
+    {
+      "empid": "1003",
+      "empname": "Rauf",
+      "books": {
+        "id": 8,
+        "title": "Road to React",
+        "Author": "Robin Weirch",
+        "desc": "In 'The Road to React' you will learn about all the fundamentals of React.js with Hooks while building a full-blown React application step by step. While you create the React application, every chapter will introduce you to a new React key feature.",
+        "imgUrl": "/assets/react.png",
+        "genre": "Programming",
+        "published": 2014,
+        "ISBN": 9780544264977,
+        "isPending": true,
+        "takenDate": "2022-10-25T18:39:27.406Z",
+        "expiryDate": "2022-10-24T18:39:27.406Z"
+      },
+      "id": 8
+    },
+    {
+      "empid": "1004",
+      "empname": "Margoob",
+      "books": {
+        "id": 3,
+        "title": "Will you still love me?",
+        "Author": "Ravinder Singh",
+        "desc": "There is more to love than just loving...It is also a promise Lavanya Gogoi is from the scenic hills of Shillong while Rajveer Saini belongs to the shahi city of Patiala.",
+        "imgUrl": "/assets/love.jpg",
+        "genre": "Romance",
+        "published": 2018,
+        "ISBN": 9789387625457,
+        "isPending": true,
+        "takenDate": "2022-10-25T18:42:06.094Z",
+        "expiryDate": "2022-10-24T18:42:06.094Z"
+      },
+      "id": 9
+    },
+    {
+      "empid": "1004",
+      "empname": "Margoob",
+      "books": {
+        "id": 4,
+        "title": "The Second World War",
+        "Author": "Antony Beever",
+        "desc": "A magisterial, single-volume history of the greatest conflict the world has ever known by our foremost military historian.",
+        "imgUrl": "/assets/warlove.jpg",
+        "genre": "War",
+        "published": 2021,
+        "ISBN": 9780297860709,
+        "isPending": true,
+        "takenDate": "2022-10-25T18:43:48.036Z",
+        "expiryDate": "2022-10-24T18:43:48.036Z"
+      },
+      "id": 10
+    },
+    {
+      "empid": "1004",
+      "empname": "Margoob",
+      "books": {
+        "id": 2,
+        "title": "400 Days",
+        "Author": "Chetan Bhagat",
+        "desc": "Alia wouldn't stop looking, though. She wanted to know if I could help her",
+        "imgUrl": "/assets/400days.jpg",
+        "genre": "Thriller, love",
+        "published": 2021,
+        "ISBN": 9781542094085,
+        "isPending": true,
+        "takenDate": "2022-10-25T18:48:08.454Z",
+        "expiryDate": "2022-10-24T18:48:08.454Z"
+      },
+      "id": 11
+    },
+    {
+      "empid": "1001",
+      "empname": "Thabrez ",
+      "books": {
+        "id": 3,
+        "title": "Will you still love me?",
+        "Author": "Ravinder Singh",
+        "desc": "There is more to love than just loving...It is also a promise Lavanya Gogoi is from the scenic hills of Shillong while Rajveer Saini belongs to the shahi city of Patiala.",
+        "imgUrl": "/assets/love.jpg",
+        "genre": "Romance",
+        "published": 2018,
+        "ISBN": 9789387625457,
+        "isPending": true,
+        "takenDate": "2022-10-25T18:49:48.679Z",
+        "expiryDate": "2022-10-24T18:49:48.679Z"
+      },
+      "id": 12
     }
   ]
 }

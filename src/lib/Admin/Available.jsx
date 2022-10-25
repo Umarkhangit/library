@@ -3,7 +3,6 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import DataTable from 'react-data-table-component';
-import Table from 'react-bootstrap/Table';
 // import { useSelector } from 'react-redux';
 
 const Available = () => {
