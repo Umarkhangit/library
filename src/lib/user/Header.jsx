@@ -1,6 +1,6 @@
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
+// import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 // import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -23,7 +23,7 @@ function NavScrollExample() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <NavLink className="text-decoration-none text-light mx-3" >Library</NavLink>
+            <NavLink to="/user/feed" className="text-decoration-none text-light mx-3" >Library</NavLink>
             
             {/* <NavDropdown title="Link" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
@@ -40,6 +40,7 @@ function NavScrollExample() {
             </Nav.Link> */}
           </Nav>
           <Nav>
+          <NavLink to="/user/mybooks" className="text-decoration-none text-light mx-3">My Books</NavLink>
           <NavLink to="/user/account" className="text-decoration-none text-light mx-3">Account</NavLink>
           <NavLink to="/" onClick={logOut} className="text-decoration-none text-light">Log Out</NavLink>
           </Nav>

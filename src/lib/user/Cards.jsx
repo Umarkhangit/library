@@ -118,7 +118,7 @@ function Cards() {
 
   let currDate = moment();
 
-  let newDate = moment().add(-1, 'days');
+  let newDate = moment().add(1, 'days');
   // let nDate = moment(currDate, "DD-MM-YYYY").add(-20, 'days');
  
   const [user,setUser]=useState([])
@@ -175,7 +175,7 @@ console.log(user)
     //   </Card.Body>
     // </Card>
     <>
-    <div className="body">
+    <div className="body mt-5">
       <div className="cover">
         <div className="book">
           <img id="image" alt="bookcover" src={vacation.state.imgUrl} />

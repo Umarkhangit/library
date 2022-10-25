@@ -18,7 +18,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 import "../Login.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "../Login.css";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -61,6 +61,9 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 const SideNav = () => {
 
   const [head,sethead]=useState("")
+
+  const navigate = useNavigate();
+
   //mui
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
@@ -73,7 +76,12 @@ const SideNav = () => {
     setOpen(false);
   };
 
- 
+ //Logout Feature 
+ const logOut = () => {
+  localStorage.removeItem('isLogged');
+  navigate("/")
+}
+
   const [lopen, setLOpen] = React.useState(true);
 
   const handleClick = () => {
@@ -101,6 +109,9 @@ const handleMenuClose = () => {
   setAnchorEl(null);
   // handleMobileMenuClose();
 };
+
+  
+
 
 const [borrowed,setBorrowed] = useState([])
 useEffect(()=>{
@@ -217,8 +228,10 @@ const menuId = 'primary-search-account-menu';
                 <NotificationsIcon />
               </Badge>
             </IconButton>
-
             </Box>
+            <Typography sx={{cursor: "pointer"}} onClick={logOut} variant="h6" noWrap component="div">
+              Logout
+            </Typography>
   
 
           </Toolbar>

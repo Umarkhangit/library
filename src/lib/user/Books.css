@@ -1,7 +1,4 @@
-#main-slider-container{
-    width: 82.3%;
-    height: 350px;
-}
+
 
 
 
@@ -19,6 +16,8 @@
   padding: 1rem;
   overflow-x: auto;
   position: relative;
+  width: 100%;
+  justify-content: center;
 
     
 }
@@ -31,8 +30,19 @@
     position: relative;
     display: flex;
     align-items: center;
+    width: 100%;
+    
+   
 }
 
+
+#main-slider-container1 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 80%;
+    
+}
 
 .slider-card-title, .slider-card-description{
     margin: 5px 0px 5px 10px;
