@@ -37,8 +37,11 @@
   .background{
     /* background: linear-gradient(to right, #7274ff, #d670f2); */
     /* background: linear-gradient(90deg, rgba(9,9,121,1) 7%, rgba(93,35,182,1) 38%, rgba(111,47,129,1) 100%); */
+    background-image: url(C:\Users\ahmed\OneDrive\Documents\internal_projects\library\src\libr.jpg);
+    background-size: cover;
     width: 100vw;
     height: 100vh;
+
   }
   button.mt-3.mb-3.px-auto.text-center {
     font-weight: 500;
@@ -50,7 +53,8 @@
     color: white;
   }
   .btnn{
-    background-color: rgb(115, 74, 182) !important;
+    background-image: linear-gradient(160deg, #8ceabb 0%, #378f7b 100%) !important;
+    color: #fff;
     font-weight: 500 !important;
     letter-spacing: .3px;
     height: 50px;
@@ -65,7 +69,10 @@
   }
  
   .left-background{
-    background: linear-gradient(90deg, rgba(9,9,121,1) 7%, rgba(93,35,182,1) 38%, rgba(111,47,129,1) 100%);
+    /* background: linear-gradient(90deg, rgba(9,9,121,1) 7%, rgba(93,35,182,1) 38%, rgba(111,47,129,1) 100%);
+     */
+     background-color: rgba(255,255,255,0.13);
+     backdrop-filter: blur(10px);
     color: white;
     padding: 40px!important;
     padding-bottom: 0 !important;

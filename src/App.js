@@ -21,9 +21,14 @@ import Penalty from './lib/Admin/Penalty';
 
 import UserDashboard from './lib/user/UserDashboard';
 import Cards from './lib/user/Cards';
-import Books from './lib/user/Books';
+// import Books from './lib/user/Books';
 import Account from './lib/user/Account';
+import Feed from './lib/user/Dashboard';
+// import Account2 from './lib/user/Account2';
 
+import Mybooks from './lib/user/Mybooks';
+import ProtectedRoute from './components/ProtectedRoute';
+import ProtectedRoutes from './ProtectedRoutes';
 
 
 
@@ -45,14 +50,24 @@ function App() {
       
 
     {/* user routes */}
-       <Route path='/user' element={<UserDashboard/>}>
-        <Route path='/user/dashboard' element={<Books/>} />
+      <Route element={<ProtectedRoute/>}>
+               <Route path='/user' element={<UserDashboard/>}>
+        {/* <ProtectedRoute exact path='/user/dashboard' element={<Books/>} /> */}
+        {/* <Route path='/user/dashboard' element={<Books/>} /> */}
         <Route path='/user/cards' element={<Cards/>} />
         <Route path='/user/Account' element={<Account/>} />
+        <Route path='/user/mybooks' element={<Mybooks/>} />
+        {/* <Route path='/user/account2' element={<Account2/>}/> */}
+
+        <Route path='/user/feed' element={<Feed/>} />
        </Route>
+       </Route>
+
+      
        
        
       {/* admin routes */}
+      <Route element={<ProtectedRoutes/>}>
         <Route path='/admin' element={<Admin/>}>
            <Route path='/admin/dash' element={<Dashboard/>}/>
            <Route path='/admin/add' element={<AddUser/>}/>
@@ -65,8 +80,9 @@ function App() {
            <Route path='/admin/available' element={<Available/>}/>
            <Route path='/admin/penalty' element={<Penalty/>}/>
         </Route>
+        </Route>
 
-        <Route path="/assets" element={"C:\Users\ahmed\OneDrive\Documents\internal_projects\library\public\assets"} />
+        {/* <Route path="/assets" element={"C:\Users\ahmed\OneDrive\Documents\internal_projects\library\public\assets"} /> */}
 
       </Routes>
 

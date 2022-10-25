@@ -64,7 +64,7 @@ function App() {
       localStorage.setItem('isLogged', true )
      }
      else if(checkUserEmail?.empemail===data.email && checkUserEmail?.emppassword===data.password){
-      navigate("/user/dashboard")
+      navigate("/user/feed")
       localStorage.setItem('loginId', JSON.stringify(passJson))
 
      }
@@ -74,7 +74,7 @@ function App() {
       toast.error("Invalid Credentials",{autoClose:2000})
       
      }
-    console.log(invalid)
+    // console.log(invalid)
   };
 
   return (
@@ -87,16 +87,16 @@ function App() {
               <p>By Ideassion Technology Solutions</p>
             </div>
 
-            <div class="col login-form">
+            <div class="col login-form ">
               <form onSubmit={handleSubmit(onSubmit)}>
                 <h2 className="font-weight-bold mb-4">Login</h2>
-                <Form.Group>
+                <Form.Group >
                   <Form.Label className="font-weight-bold mb-2">
                     Email
                   </Form.Label>
                   <Form.Control
                     type="text"
-                    className="mb-3"
+                    className="mb-3 "
                     style={{borderColor:invalid?"red":""}}
                     name="email"
                     {...register("email", {
