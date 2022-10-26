@@ -21,7 +21,7 @@ const AddBooks = () => {
        
     })
     
-    const {register,handleSubmit,formState: { errors },reset} = useForm();
+    const {register,handleSubmit,formState: { errors }} = useForm();
 
     const handleChange= (e) =>{
         console.log(e.target.value)

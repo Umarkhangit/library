@@ -59,7 +59,8 @@
       "imgUrl": "/assets/harry.jpg",
       "genre": "Mythology",
       "published": 2017,
-      "ISBN": 9780751565362
+      "ISBN": 9780751565362,
+      "isTrending": false
     },
     {
       "id": 2,
@@ -149,7 +150,8 @@
       "imgUrl": "/assets/js.png",
       "genre": "Programming",
       "published": 2014,
-      "ISBN": 9780544264979
+      "ISBN": 9780544264979,
+      "isTrending": true
     },
     {
       "ISBN": "97807515653",

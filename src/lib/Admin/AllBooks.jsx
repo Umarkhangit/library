@@ -9,12 +9,13 @@ import { useNavigate } from 'react-router-dom';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
 // import { useDispatch, useSelector } from 'react-redux';
-
+import Checkbox from '@mui/material/Checkbox';
 
 const AllBooks = () => {
 
     const [books,setBooks]=useState([])
     const [render,setRender]=useState(0)
+  const [trending,setTrending]=useState(true)
 
     // const dispatch=useDispatch()
     useEffect(()=>{
@@ -48,6 +49,17 @@ const AllBooks = () => {
       
        }
 
+       const check = (row) =>{
+        // console.log(row);
+        setTrending(!trending)
+        var addB={
+          ...row,isTrending:trending
+        }
+        axios.put(`http://localhost:3001/books/${row.id}`,addB)
+        .then(res =>console.log(res.data)).catch(err =>console.log(err))
+        // console.log(addB);
+       }
+
     const columns = [
         {
           name:"Cover",
@@ -56,7 +68,7 @@ const AllBooks = () => {
         {
             name: 'Book ISBN',
             selector: row => row.ISBN,
-            sortable: true
+            sortable: true,
         },
         {
             name: 'Title',
@@ -83,6 +95,10 @@ const AllBooks = () => {
             selector: row => row.published,
             sortable: true
         },
+        {
+          name: 'Trending',
+          cell :(row) =>  <Checkbox onClick={()=> check(row)}/>
+         },
         {			
           cell: (row) => <Button variant="outline-primary" onClick={()=>edit(row)}><EditIcon/></Button>,
           button: true,
@@ -93,13 +109,21 @@ const AllBooks = () => {
         }
     ];
 
+    const customStyles={
+      rows: {
+        style: {
+            // minHeight: '75px',
+            minWidth:"70px" // override the row height
+        },
+    }
+  }
   return (
     <div className='container pb-5' style={{marginTop:"7%",marginLeft:"7%"}}>
 
     <Button variant="primary" className='float-end ' ><NavLink to="/admin/addbooks" className="text-decoration-none text-light "><AddCircleOutlineIcon/> Add Books</NavLink> </Button>
     <br /><br />
     
-    <DataTable columns={columns} data={books} pagination highlightOnHover responsive/>
+    <DataTable columns={columns} data={books} pagination highlightOnHover responsive customStyles={customStyles} />
 
     </div>
   )
