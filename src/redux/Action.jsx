@@ -1,13 +1,7 @@
-export const Books=(data) =>{
+export const AllBooks = (data) =>{
+    console.log(data);
     return{
-        type:"showBooks",
-        data:data
-    }
-}
-
-export const pending=(data) =>{
-    return{
-        type:"showPending",
+        type:"allBooks",
         data:data
     }
 }

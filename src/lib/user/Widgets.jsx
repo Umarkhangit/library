@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Button, Card, CardImg, Image } from 'react-bootstrap'
+import {  Card, CardImg, Image } from 'react-bootstrap'
+
+// import './ButtonDemo.css';
 
 const Widgets = () => {
 
@@ -48,7 +50,8 @@ const Widgets = () => {
   return (
     <>
     <div className='d-flex flex-column align-items-center' style={{marginTop : "120px"}}>
-    <p className='text-dark ' style={{fontSize: "24px",fontWeight:"400", backgroundColor:"Yellow"}}>Recently Added</p>
+    <p className='text-white px-2' style={{fontSize: "20px",fontWeight:"400",borderRadius:"30px",backgroundColor:"#4682B4"}}>Recently Added</p>
+
       <div className='mt-3' >
 
         { recent?.map((tb) => {

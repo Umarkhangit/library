@@ -1,11 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Dashboard.css";
 import Books from './Books';
 import SidebarFeed from './SidebarFeed';
 import Widgets from './Widgets';
+import { useDispatch } from "react-redux";
+import { AllBooks } from "../../redux/Action";
+import axios from "axios";
+
+
 
 
 function Feed() {
+// const [render,setRender]=useState[0]
+
+  // for redux
+  // const dispatch=useDispatch()
+  // useEffect(()=>{
+  //   axios.get("http://localhost:3001/books")
+  //   .then(res =>{
+  //     // setRender(res.data.length)
+  //     // dispatch(AllBooks(res.data))
+  //   }) 
+  //   .catch(err =>console.log(err))
+    
+  // })
+
 
 
   return (
@@ -18,7 +37,9 @@ function Feed() {
    </div>
 
    <div id="main__center">
-    <Books/>
+    
+    <Books
+    />
 
 
    </div>

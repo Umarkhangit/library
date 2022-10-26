@@ -27,7 +27,7 @@ const SidebarFeed = () => {
   return (
     <>
     <div className='d-flex flex-column align-items-center' style={{marginTop : "120px"}}>
-    <p className='text-dark ' style={{fontSize: "24px",fontWeight:"400", backgroundColor:"Yellow"}}>Trending</p>
+    <p className='text-white px-2' style={{fontSize: "20px",fontWeight:"400",borderRadius:"30px",backgroundColor:"#4682B4"}}>Trending books</p>
       <div className='mt-3' >
 
         {trendingBooks?.map((tb) => {

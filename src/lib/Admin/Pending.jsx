@@ -8,12 +8,12 @@ import moment from 'moment/moment';
 const Pending = () => {
 
     // const [penalty, setPenalty] = useState(null)
-    const [borrow,setBorrowed]=useState([])
+    const [borrow,setBorrow]=useState([])
     // const dispatch=useDispatch();
     useEffect(()=>{
         axios.get("http://localhost:3001/borrowed")
         .then(res =>{
-            setBorrowed(res.data)
+            setBorrow(res.data)
             // dispatch(pending(res.data))
         })
         .catch(err => console.log(err))
@@ -21,57 +21,57 @@ const Pending = () => {
     },[])
 
 
-    useEffect(()=>{
-        runPenalty()
-    })
+//     useEffect(()=>{
+//         runPenalty()
+//     })
 
-    //PenaltyFunc
+//     //PenaltyFunc
 
-    let penalty = null;
+//     let penalty = null;
 
-    const callFunc = (d, index) => {
-    //   setBorrowed({...borrow,isPenalty:penalty})
-             var putState = {
-                            ...d,
-                            books : {...d.books, isPenalty : penalty}
-                            }
+//     const callFunc = (d, index) => {
+//     //   setBorrowed({...borrow,isPenalty:penalty})
+//              var putState = {
+//                             ...d,
+//                             books : {...d.books, isPenalty : penalty}
+//                             }
    
-        axios.put(`http://localhost:3001/borrowed/${d.id}`, putState).then((res) => console.log(res.data))
-    }
+//         axios.put(`http://localhost:3001/borrowed/${d.id}`, putState).then((res) => console.log(res.data))
+//     }
 
 
-    const runPenalty =() => 
-    {
-    borrow.map((d, index) => {
+//     const runPenalty =() => 
+//     {
+//     borrow.map((d, index) => {
        
-        let currDate2 = moment()
+//         let currDate2 = moment()
 
 
-        // console.log(currDate2);
+//         // console.log(currDate2);
        
-        // console.log("check", moment(currDate2).isBefore(d.books.expiryDate))
+//         // console.log("check", moment(currDate2).isBefore(d.books.expiryDate))
 
-        if(moment(currDate2).isAfter(d.books.expiryDate)) {
-            penalty = true
+//         if(moment(currDate2).isAfter(d.books.expiryDate)) {
+//             penalty = true
             
-            // console.log("trueeeee1")
-            callFunc(d, index)
-            // console.log('penalty',penalty)
-            // return console.log("trueeeee2")
-        } else {
-            penalty = false
-            callFunc(d, index)
-            // console.log("falseeee1");
-            // console.log('penalty',penalty)
+//             // console.log("trueeeee1")
+//             callFunc(d, index)
+//             // console.log('penalty',penalty)
+//             // return console.log("trueeeee2")
+//         } else {
+//             penalty = false
+//             callFunc(d, index)
+//             // console.log("falseeee1");
+//             // console.log('penalty',penalty)
 
-            // return console.log("falseeee2")
+//             // return console.log("falseeee2")
             
             
-        }
+//         }
                
     
-    })
-}
+//     })
+// }
 
 
 

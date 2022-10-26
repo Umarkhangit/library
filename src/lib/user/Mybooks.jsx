@@ -6,11 +6,11 @@ import { Badge } from 'react-bootstrap'
 
 
 const Mybooks = () => {
-
+    
     const [borrow,setBorrowed]=useState([])
     const [filteredEmp, setFilteredEmp] = useState([])
-    // const [userDetails, setUserDetails] = useState([])
-    // let rend = false;
+   
+  
     // const dispatch=useDispatch();
     const [render, setRender] = useState(borrow.length);
     
@@ -68,10 +68,7 @@ const Mybooks = () => {
 
 
 
-    var penaltyBooks = filteredEmp.filter((a) =>{
-     
-        return (a.books.isPenalty == true)
-    })    
+       
 
 
     const Return = (f) => {
@@ -85,6 +82,78 @@ const Mybooks = () => {
 
     }
     
+
+
+
+    // const [borrow,setBorrow]=useState([])
+    // // const dispatch=useDispatch();
+    // useEffect(()=>{
+    //     axios.get("http://localhost:3009/borrowed")
+    //     .then(res =>{
+    //         setBorrow(res.data)
+    //         // dispatch(pending(res.data))
+    //     })
+    //     .catch(err => console.log(err))
+    //     // runPenalty()
+    // },[])
+
+    // useEffect(()=>{
+    //   runPenalty() 
+    // })
+    
+    // //PenaltyFunc
+    
+    // let penalty = null;
+    
+    // const callFunc = (d, index) => {
+    // //   setBorrowed({...borrow,isPenalty:penalty})
+    //        var putState = {
+    //                       ...d,
+    //                       books : {...d.books, isPenalty : penalty}
+    //                       }
+    
+    //   axios.put(`http://localhost:3001/borrowed/${d.id}`, putState).then((res) => console.log(res.data))
+    // }
+    
+    
+    // const runPenalty =() => 
+    // {
+    // borrow.map((d, index) => {
+     
+    //   let currDate2 = moment()
+    
+    
+    //   // console.log(currDate2);
+     
+    //   // console.log("check", moment(currDate2).isBefore(d.books.expiryDate))
+    
+    //   if(moment(currDate2).isAfter(d.books.expiryDate)) {
+    //     penalty =true
+          
+    //       // console.log("trueeeee1")
+    //       callFunc(d, index)
+    //       // console.log('penalty',penalty)
+    //       // return console.log("trueeeee2")
+    //   } else {
+    //     penalty =false
+    //       callFunc(d, index)
+    //       // console.log("falseeee1");
+    //       // console.log('penalty',penalty)
+    
+    //       // return console.log("falseeee2")
+          
+          
+    //   }
+             
+    
+    // })
+    // }
+
+    // for penalty books
+    var penaltyBooks = filteredEmp?.filter((a) =>{
+     
+      return (a.books.isPenalty == true)
+  })
 
   return (
     <>
