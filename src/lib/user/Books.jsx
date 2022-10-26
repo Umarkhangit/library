@@ -1,10 +1,17 @@
 import React, { useEffect } from "react";
 import "./Books.css";
-import { MdChevronLeft, MdChevronRight } from "react-icons/md";
+// import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { Badge, Button } from "react-bootstrap";
+
+import {Swiper, SwiperSlide} from 'swiper/react';
+import {FreeMode} from "swiper";
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import { Navigation } from "swiper";
+import "swiper/css/navigation";
 
 
 
@@ -15,10 +22,10 @@ const Books = () => {
   const [allbooks,setAllbooks]=useState([]);
   const [Gen, setGenre] = useState("Romance")
 
-  const slideLeft = () => {
-    var slider = document.getElementById("slider");
-    slider.scrollLeft = slider.scrollLeft + 500;
-  };
+  // const slideLeft = () => {
+  //   var slider = document.getElementById("slider");
+  //   slider.scrollLeft = slider.scrollLeft + 500;
+  // };
 
 
   useEffect(()=>{
@@ -37,12 +44,12 @@ const Books = () => {
   }
   )    
 
-console.log(penaltyBooks)
+// console.log(penaltyBooks)
 
-  const slideRight = () => {
-    var slider = document.getElementById("slider");
-    slider.scrollLeft = slider.scrollLeft - 500;
-  };
+  // const slideRight = () => {
+  //   var slider = document.getElementById("slider");
+  //   slider.scrollLeft = slider.scrollLeft - 500;
+  // };
   const navigate = useNavigate();
 
   const postBook = (data) => {
@@ -75,15 +82,54 @@ console.log(penaltyBooks)
       <div className="text-center pb-2 mt-5">
         <h2>All Books</h2>
       </div>
-      <div id="main-slider-container" >
-        <MdChevronLeft
-          size={40}
-          className="slider-icon left"
-          onClick={slideLeft}
-        />
-        <div id="slider">
+
+      
+             
+  
+      <Swiper
+            freeMode = {true}
+            grabCursor = {true}
+            modules = {[FreeMode, Navigation]}
+            className="mySwiper"
+            slidesPerView = {4}
+            spacesBetween = {10}
+            navigation={true}
+            breakpoints = {{
+              0: {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+              },
+              480: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 15,
+                },
+                1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 15,
+               },
+               1280: {
+                slidesPerView: 4,
+                spaceBetween: 10,
+                   },
+
+
+            }}
+            
+            
+            >
+                 
+
+
           {allbooks?.map((slide, index) => {
             return (
+              
+              <SwiperSlide>
+             
+              
               <div
                 className="slider-card text-center"
                 key={index}
@@ -98,15 +144,18 @@ console.log(penaltyBooks)
                 <p  className="slider-card-title text-black">{slide.title}</p>
               
               </div>
+
+
+                        </SwiperSlide>
+              
+         
+
             );
           })}
-        </div>
-        <MdChevronRight
-          size={40}
-          className="slider-icon right"
-          onClick={slideRight}
-        />
-      </div>
+                      </Swiper>
+
+        
+          
 
       <div className="text-center pb-2 mt-5">
         <h2>Genre</h2>
@@ -130,15 +179,50 @@ console.log(penaltyBooks)
       </div>
       
       
-      <div id="main-slider-container" >
-        <MdChevronLeft
-          size={40}
-          className="slider-icon left"
-          onClick={slideLeft}
-        />
-        <div id="slider">
-          {penaltyBooks.map((slide, index) => {
+      <Swiper
+            freeMode = {true}
+            grabCursor = {true}
+            modules = {[FreeMode, Navigation]}
+            className="mySwiper"
+            slidesPerView = {4}
+            spacesBetween = {10}
+            navigation={true}
+            breakpoints = {{
+              0: {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+              },
+              480: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 15,
+                },
+                1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 15,
+               },
+               1280: {
+                slidesPerView: 4,
+                spaceBetween: 10,
+                   },
+
+
+            }}
+            
+            
+            >
+                 
+
+
+          {penaltyBooks?.map((slide, index) => {
             return (
+              
+              <SwiperSlide>
+             
+              
               <div
                 className="slider-card text-center"
                 key={index}
@@ -151,19 +235,18 @@ console.log(penaltyBooks)
                   }}
                 ></div>
                 <p  className="slider-card-title text-black">{slide.title}</p>
-                {/* <p  className="slider-card-description ">
-                  {slide.desc}
-                </p> */}
+              
               </div>
+
+
+                        </SwiperSlide>
+              
+         
+
             );
           })}
-        </div>
-        <MdChevronRight
-          size={40}
-          className="slider-icon right"
-          onClick={slideRight}
-        />
-      </div>
+                      </Swiper>
+      
  
           
     </>

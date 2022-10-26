@@ -185,7 +185,11 @@ const Account = () => {
               </MDBCol>
             </MDBRow>
           </MDBContainer>
+                    
+
         
+                    
+                
         </div>
       );
     }
