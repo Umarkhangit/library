@@ -14,7 +14,7 @@
     display: flex;
   border-radius: 6px;
   padding: 1rem;
-  overflow-x: auto;
+  overflow-x: scroll;
   position: relative;
   width: 100%;
   justify-content: center;
@@ -28,7 +28,7 @@
 
 #main-slider-container {
     position: relative;
-    display: flex;
+    display: flex; 
     align-items: center;
     width: 100%;
     
@@ -36,13 +36,7 @@
 }
 
 
-#main-slider-container1 {
-    position: relative;
-    display: flex;
-    align-items: center;
-    max-width: 80%;
-    
-}
+
 
 .slider-card-title, .slider-card-description{
     margin: 5px 0px 5px 10px;
@@ -107,6 +101,7 @@
     overflow: hidden;
     transition: all 250ms ease-in-out; */
 
+
     flex: 1 0 250px;
     box-shadow: 6px 10px 25px -5px rgba(176,176,176,0.62);
   background: #fff;
@@ -117,5 +112,6 @@
   border-radius: 10px;
   cursor: pointer;
   transition: all 250ms ease-in-out;
+
     
 }

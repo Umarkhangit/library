@@ -2,7 +2,9 @@ import axios from 'axios'
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardText, MDBCol, MDBRow } from 'mdb-react-ui-kit'
 import moment from 'moment'
 import React, { useEffect, useState } from 'react'
-import { Badge } from 'react-bootstrap'
+import { Badge, Button } from 'react-bootstrap'
+
+import "./Mybooks.css";
 
 
 const Mybooks = () => {
@@ -13,6 +15,8 @@ const Mybooks = () => {
   
     // const dispatch=useDispatch();
     const [render, setRender] = useState(borrow.length);
+
+   
     
     
     useEffect(()=>{
@@ -64,12 +68,16 @@ const Mybooks = () => {
     // })
 
     // console.log(curUser)
+  
 
 
 
+    // var divideBooks = filteredEmp.filter((a) =>{
+     
+    //     return a.books.isPenalty == checkBooks
+    // })    
 
-       
-
+   
 
     const Return = (f) => {
 
@@ -81,7 +89,7 @@ const Mybooks = () => {
          
 
     }
-    
+    // let valBookss = "books";
 
 
 
@@ -159,76 +167,46 @@ const Mybooks = () => {
     <>
 <div className='container mt-5'>
     
-<MDBRow>
-                  <MDBCol md="6">
-                    <MDBCard className="mb-4 mb-md-0">
-                      <MDBCardBody >
-                      <MDBCardText className="mb-4 text-dark text-center"><span className="text-primary font-italic me-1">Reading</span> </MDBCardText>
 
-                        <div className='d-flex justify-content-between align-items-center'>
 
-                        <MDBCardText className="mb-4 text-dark  "><span className="text-primary  font-italic m-2">Book</span></MDBCardText>
-                        <MDBCardText className="mb-4 text-dark"><span className="text-primary  font-italic m-2">Expiry</span></MDBCardText>
-                        <MDBCardText className="mb-4 text-dark"><span className="text-primary  font-italic m-2"> Action</span></MDBCardText>
+
+
+                    {filteredEmp.map((f) =>  {
+                      return (
+                        <div className='my-5'>
+<div className="wrapper-books">
                         
-                        </div>
-                        
-                        
-                        
-                        {filteredEmp.map((f) => {
-                            return (
+                        <div className="outer-books">
+		<div className="content-books animated fadeInLeft">
+    {f.books.isPenalty ?  <span className="bg-red animated fadeInDown fs-6 mb-2"> Penalty</span> :  <span className="bg-books animated fadeInDown fs-6 mb-2"> Reading</span>  }  
+			<h1 className='h1-books'>{f.books.title}</h1>
+      <p className='p-books'>Expiry : {" "}{moment(f?.books.expiryDate).format("DD-MM-YYYY")}</p>
+			<p className='p-books'>{f.books.desc}</p>
+			
+			<div className="button-books">
+				<Button onClick={()=> Return(f)}> Return</Button>
+			</div>
+			
+		</div>
+		<img src={f.books.imgUrl} width="300px" className=" img-books animated fadeInRight"/>
+	</div>
+</div>
 
-                                
-                                <div key={f.id} className='d-flex justify-content-between align-items-center '>
-
-                        
-                        <MDBCardText className="mb-1 text-dark col-2" style={{ fontSize: '.77rem' }}>{f?.books.title}</MDBCardText>
-                        <MDBCardText className="mb-1 text-dark" style={{ fontSize: '.77rem' }}>{moment(f?.books.expiryDate).format("DD-MM-YYYY")}</MDBCardText>
-                        <MDBBtn className='text-center mb-2' onClick={()=> Return(f)}>Return</MDBBtn>
-
-                        </div>
-                                    )
-                        
-                            
-                        })}  
-    
-                       </MDBCardBody>
-                    </MDBCard>
-                  </MDBCol>
-
-
-                  <MDBCol md="6">
-                    <MDBCard className="mb-4 mb-md-0">
-                      <MDBCardBody >
-                      <MDBCardText  className="mb-4 text-dark text-center"><span className="text-primary font-italic me-1">Penalty</span> </MDBCardText>
-
-                        {/* <div className='d-flex justify-content-between align-items-center'>
-
-                        <MDBCardText className="mb-4 text-dark  "><span className="text-primary  font-italic m-2">Book</span></MDBCardText>
-                        <MDBCardText className="mb-4 text-dark"><span className="text-primary  font-italic m-2">Expiry</span></MDBCardText>
-                        </div> */}
-                        <div className='d-flex=column justify-content-between align-items-center '>
-
-                        {penaltyBooks.map((f) => {
-                            return <MDBCardText className="mb-1 text-dark text-wrap" style={{ fontSize: '.89rem' }}> <Badge pill className='p-2 text-wrap' >{f?.books.title}</Badge></MDBCardText>
-                        })}
-                        
-                        
-                        {/* <MDBCardText className="mb-1 text-dark" style={{ fontSize: '.77rem' }}>23-02-2025</MDBCardText> */}
-
-                        </div>
-    
-                       </MDBCardBody>
-                    </MDBCard>
-                  </MDBCol>
-
-                  </MDBRow>
-
-
-                  <div>
-                    
                   </div>
+                      )
+                    })}
+	
+
     
+
+                
+
+
+
+
+
+
+
 </div>
     </>
   )

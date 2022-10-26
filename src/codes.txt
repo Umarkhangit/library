@@ -161,3 +161,73 @@
   //     ISBN: 9780544264977,
   //   },
   // ];
+
+
+
+//CODE FOR MY books
+
+
+{/* <MDBRow>
+                  <MDBCol md="6">
+                    <MDBCard className="mb-4 mb-md-0">
+                      <MDBCardBody >
+                      <MDBCardText className="mb-4 text-dark text-center"><span className="text-primary font-italic me-1">Reading</span> </MDBCardText>
+
+                        <div className='d-flex justify-content-between align-items-center'>
+
+                        <MDBCardText className="mb-4 text-dark  "><span className="text-primary  font-italic m-2">Book</span></MDBCardText>
+                        <MDBCardText className="mb-4 text-dark"><span className="text-primary  font-italic m-2">Expiry</span></MDBCardText>
+                        <MDBCardText className="mb-4 text-dark"><span className="text-primary  font-italic m-2"> Action</span></MDBCardText>
+                        
+                        </div>
+                        
+                        
+                        
+                        {filteredEmp.map((f) => {
+                            return (
+
+                                
+                                <div key={f.id} className='d-flex justify-content-between align-items-center '>
+
+                        
+                        <MDBCardText className="mb-1 text-dark col-2" style={{ fontSize: '.77rem' }}>{f?.books.title}</MDBCardText>
+                        <MDBCardText className="mb-1 text-dark" style={{ fontSize: '.77rem' }}>{moment(f?.books.expiryDate).format("DD-MM-YYYY")}</MDBCardText>
+                        <MDBBtn className='text-center mb-2' onClick={()=> Return(f)}>Return</MDBBtn>
+
+                        </div>
+                                    )
+                        
+                            
+                        })}  
+    
+                       </MDBCardBody>
+                    </MDBCard>
+                  </MDBCol>
+
+
+                  <MDBCol md="6">
+                    <MDBCard className="mb-4 mb-md-0">
+                      <MDBCardBody >
+                      <MDBCardText  className="mb-4 text-dark text-center"><span className="text-primary font-italic me-1">Penalty</span> </MDBCardText>
+
+                        {/* <div className='d-flex justify-content-between align-items-center'>
+
+                        <MDBCardText className="mb-4 text-dark  "><span className="text-primary  font-italic m-2">Book</span></MDBCardText>
+                        <MDBCardText className="mb-4 text-dark"><span className="text-primary  font-italic m-2">Expiry</span></MDBCardText>
+                        </div> */}
+                        {/* <div className='d-flex=column justify-content-between align-items-center '>
+
+                        {penaltyBooks.map((f) => {
+                            return <MDBCardText className="mb-1 text-dark text-wrap" style={{ fontSize: '.89rem' }}> <Badge pill className='p-2 text-wrap' >{f?.books.title}</Badge></MDBCardText>
+                        })}
+                        
+                        
+                        {/* <MDBCardText className="mb-1 text-dark" style={{ fontSize: '.77rem' }}>23-02-2025</MDBCardText> */}
+
+                        {/* </div>
+    
+                       </MDBCardBody>
+                    </MDBCard>
+                  </MDBCol>
+
+                  </MDBRow> */} 
