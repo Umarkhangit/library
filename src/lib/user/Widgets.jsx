@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import {  Card, CardImg, Image } from 'react-bootstrap'
+import { Image } from 'react-bootstrap'
 
 // import './ButtonDemo.css';
 

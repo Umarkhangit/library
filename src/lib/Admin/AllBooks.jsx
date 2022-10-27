@@ -49,36 +49,16 @@ const AllBooks = () => {
       
        }
 
-       // For Trending Books Checkbox
-
-      //  const [yes, setNo] = useState(true);
-
-       const check = (rw) =>{
-        
-      //  let addB
-        
-      //   if(rw.isTrending){
-      //         return (
-      //          addB = {...rw,isTrending: !rw.isTrending}
-      //         )
-            
-
-      //     }
-          
-        
-        
-      //   console.log(addB)
-
-
-
-
-
-      //   axios.put(`http://localhost:3001/books/${rw.id}`,addB)
-      //   .then(res =>{
-      //     console.log(res.data)
-      //     })  .catch(err =>console.log(err))
-      //   console.log(addB);
       
+       const check = (row) =>{
+        // console.log(row);
+        setTrending(!trending)
+        var addB={
+          ...row,isTrending:trending
+        }
+        axios.put(`http://localhost:3001/books/${row.id}`,addB)
+        .then(res =>console.log(res.data)).catch(err =>console.log(err))
+        // console.log(addB);
        }
 
     const columns = [
