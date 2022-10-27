@@ -303,7 +303,7 @@ const Books = () => {
                  
 
 
-          {penaltyBooks?.map((slide, index) => {
+          {genreBooks?.map((slide, index) => {
             return (
               
               <SwiperSlide>
