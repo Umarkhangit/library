@@ -31,7 +31,7 @@ function Cards() {
 
   let currDate = moment();
 
-  let newDate = moment().add(-1, "days");
+  let newDate = moment().add(5, "days");
   // let nDate = moment(currDate, "DD-MM-YYYY").add(-20, 'days');
 
   const [user, setUser] = useState([]);
@@ -49,7 +49,7 @@ function Cards() {
   }, []);
   // console.log(user)
 
-  
+
   // useEffect(()=>{
   //   runPenalty()
   // })

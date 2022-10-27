@@ -7,6 +7,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+
 // import { useDispatch, useSelector } from 'react-redux';
 
 
@@ -47,6 +48,9 @@ const ViewUser = () => {
   navigate("/admin/edit",{state:row})
 
  }
+
+
+ 
   // react table data comp
   const columns = [
     {
@@ -90,9 +94,10 @@ const ViewUser = () => {
   return (
     <div className='container pb-5' style={{marginTop:"10%",fontSize:"20px"}}  >
 
-    <h2 className='text-center mb-4'>Users</h2>
+    <h1 className='text-center mb-4'>Users</h1>
       <DataTable columns={columns} data={users} pagination highlightOnHover responsive/>
     
+ 
     </div>
   )
 }

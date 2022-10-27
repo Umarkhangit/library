@@ -227,6 +227,7 @@ const menuId = 'primary-search-account-menu';
               aria-controls={menuId}
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
+              className="mx-2"
             >
               <Badge badgeContent={borrowed.length} color="error">
                 <NotificationsIcon />

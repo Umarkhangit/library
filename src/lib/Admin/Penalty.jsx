@@ -63,6 +63,7 @@ const Penalty = () => {
   return (
     <div className='container pb-5' style={{marginTop:"7%",marginLeft:"10%"}}>
     
+    <h1 className='text-center mb-4'>Penalty</h1>
     <DataTable columns={columns} data={penaltyBooks} pagination highlightOnHover responsive/>
 
     </div>

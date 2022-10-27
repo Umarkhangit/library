@@ -104,6 +104,8 @@ const Pending = () => {
   return (
     <div className='container pb-5' style={{marginTop:"7%",marginLeft:"10%"}}>
 
+        <h1 className='text-center mb-4'>Pending</h1>
+
     <DataTable columns={columns} data={borrow} pagination highlightOnHover responsive/>
 
     </div>

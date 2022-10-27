@@ -30,7 +30,7 @@ function Feed() {
   return (
    <>
 
-   <div id="main__flex">
+   <div id="main__flex" style={{backgroundColor:"#eee"}}>
    <div id="main__left">
     <SidebarFeed/>
 

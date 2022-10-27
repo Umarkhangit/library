@@ -52,6 +52,8 @@ const columns=[
   return (
     <div className='container pb-5' style={{marginTop:"7%",marginLeft:"10%"}}>
    
+   <h1 className='text-center mb-4'>Available</h1>
+
     <DataTable columns={columns} data={avail} pagination highlightOnHover responsive />
    
 

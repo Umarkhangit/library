@@ -56,7 +56,9 @@ const AddBooks = () => {
             genre:vals.genre,
             desc:vals.desc,
             published:vals.published,
-            imgUrl:img
+            imgUrl:img,
+            isTrending: false
+            
         }
        
             axios.post("http://localhost:3001/books",fVal)
@@ -74,9 +76,10 @@ const AddBooks = () => {
   return (
    <div className="container" style={{marginTop:'8%'}}>
     
-    <form style={{marginLeft:"7%"}} onSubmit={handleSubmit(onSubmit)}>
-        <h3 >Add Books</h3>
-        <div className="row">
+    <form style={{marginLeft:"5%"}} onSubmit={handleSubmit(onSubmit)}>
+        <h3 className='text-center '>Add Books</h3>
+       
+        <div className="row mt-4">
             <TextField label="Book ISBN" variant='outlined' className='col-4' name='ISBN'  
             {...register("ISBN",{required:true,onChange:handleChange})}/>
 
@@ -122,7 +125,6 @@ const AddBooks = () => {
         </div>
         
         <Button variant="contained" className='mt-2' type="submit" style={{float:"right",marginRight:"45px"}}>Submit</Button>
-
         {/* <img src={img} alt="" srcset="" /> */}
 
     </form>
