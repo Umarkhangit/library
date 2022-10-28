@@ -68,7 +68,7 @@ const AddUser = () => {
             },
           })}
         />
-        {errors.empemail && ( <p style={{ color: "red", fontSize: 17 }}> {errors.empemail.message}</p> )}
+        {errors.empemail && ( <p style={{ color: "red", fontSize: 15 }}> {errors.empemail.message}</p> )}
         </div>
 
         <div>

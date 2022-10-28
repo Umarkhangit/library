@@ -15,7 +15,7 @@ const AllBooks = () => {
 
     const [books,setBooks]=useState([])
     const [render,setRender]=useState(0)
-  const [trending,setTrending]=useState(false)
+  const [trending,setTrending]=useState(true)
 
     // const dispatch=useDispatch()
     useEffect(()=>{

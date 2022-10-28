@@ -59,8 +59,7 @@
       "imgUrl": "/assets/harry.jpg",
       "genre": "Mythology",
       "published": 2017,
-      "ISBN": 9780751565362,
-      "isTrending": false
+      "ISBN": 9780751565362
     },
     {
       "id": 2,
@@ -94,7 +93,7 @@
     },
     {
       "id": 5,
-      "title": "Ponniyin Selvi 4",
+      "title": "Ponniyin Selvan 4",
       "Author": "Kalki",
       "desc": "It's the calm before the storm.  Will all three succeed in their quests? Will Arulmozhi Varmar recover from his ague? Will Aniruddhar's schemes and stratagems save the royal family? Will Azhwarkkadiyaan's efforts bear fruit? And lastly ... will Chozha Nadu be free of the tangled web of conspiracies?",
       "imgUrl": "/assets/ps4.jpg",
@@ -237,7 +236,7 @@
         "isPending": true,
         "takenDate": "2022-10-25T19:13:51.708Z",
         "expiryDate": "2022-10-26T19:13:51.709Z",
-        "isPenalty": false
+        "isPenalty": true
       },
       "id": 8
     },
@@ -412,6 +411,44 @@
         "isPenalty": true
       },
       "id": 20
+    },
+    {
+      "empid": "1002",
+      "empname": "Umar",
+      "books": {
+        "id": 5,
+        "title": "Ponniyin Selvan 4",
+        "Author": "Kalki",
+        "desc": "It's the calm before the storm.  Will all three succeed in their quests? Will Arulmozhi Varmar recover from his ague? Will Aniruddhar's schemes and stratagems save the royal family? Will Azhwarkkadiyaan's efforts bear fruit? And lastly ... will Chozha Nadu be free of the tangled web of conspiracies?",
+        "imgUrl": "/assets/ps4.jpg",
+        "genre": "History",
+        "published": 2021,
+        "ISBN": 9788194973416,
+        "isPending": true,
+        "takenDate": "2022-10-28T09:25:11.157Z",
+        "expiryDate": "2022-11-02T09:25:11.157Z",
+        "isPenalty": false
+      },
+      "id": 21
+    },
+    {
+      "empid": "1002",
+      "empname": "Umar",
+      "books": {
+        "id": 2,
+        "title": "400 Days",
+        "Author": "Chetan Bhagat",
+        "desc": "Alia wouldn't stop looking, though. She wanted to know if I could help her",
+        "imgUrl": "/assets/400days.jpg",
+        "genre": "Thriller",
+        "published": 2021,
+        "ISBN": 9781542094085,
+        "isPending": true,
+        "takenDate": "2022-10-28T09:25:30.616Z",
+        "expiryDate": "2022-11-02T09:25:30.616Z",
+        "isPenalty": false
+      },
+      "id": 22
     }
   ]
 }

@@ -175,7 +175,7 @@ const Mybooks = () => {
                 
           
             {
-              reading ?(
+              reading ==true?(
                 <>
                  {readingBooks?.map((f) => {
                 return (
@@ -216,7 +216,7 @@ const Mybooks = () => {
               );
             })}
                 </>
-              ):("")
+              ):(<h3 className="text-center mt-5">No Books Borrowed</h3> )
             }
            
 
