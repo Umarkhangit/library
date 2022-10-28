@@ -251,11 +251,13 @@ const Mybooks = () => {
                           <Button onClick={() => Return(f)}> Return</Button>
                         </div>
                       </div>
+                      <div>
                       <img
                         src={f.books.imgUrl}
                         width="300px"
                         className=" img-books animated fadeInRight"
                       />
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -237,7 +237,7 @@
         "isPending": true,
         "takenDate": "2022-10-25T19:13:51.708Z",
         "expiryDate": "2022-10-26T19:13:51.709Z",
-        "isPenalty": false
+        "isPenalty": true
       },
       "id": 8
     },
@@ -412,6 +412,41 @@
         "isPenalty": true
       },
       "id": 20
+    }
+  ],
+  "requests": [
+    {
+      "empId": 1001,
+      "requestBook": "Mame Mame",
+      "id": 1
+    },
+    {
+      "empId": 1001,
+      "requestBook": "Neenum Naanum",
+      "id": 2
+    },
+    {
+      "requestBook": "Eppo Varen",
+      "id": 3
+    },
+    {
+      "requestBook": "Wsssppp",
+      "id": 4
+    },
+    {
+      "empId": 1001,
+      "requestBook": "ssssp",
+      "id": 5
+    },
+    {
+      "empId": 1001,
+      "requestBook": "nexTTT",
+      "id": 6
+    },
+    {
+      "empId": 1001,
+      "requestBook": "Postify",
+      "id": 7
     }
   ]
 }
