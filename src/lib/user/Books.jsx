@@ -15,6 +15,7 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import { Navigation } from "swiper";
 import "swiper/css/navigation";
+import RequestBook from "./RequestBook";
 
 
 
@@ -332,6 +333,11 @@ const Books = () => {
             );
           })}
                       </Swiper>
+
+                      <div>
+                        <RequestBook/>
+                      
+                      </div>
       
  
           
