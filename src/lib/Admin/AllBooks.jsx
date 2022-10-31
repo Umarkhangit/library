@@ -10,6 +10,10 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
 // import { useDispatch, useSelector } from 'react-redux';
 import Checkbox from '@mui/material/Checkbox';
+import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
+import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
+import "primereact/resources/primereact.min.css"; //core css
+import "primeicons/primeicons.css";
 
 const AllBooks = () => {
 
@@ -33,14 +37,39 @@ const AllBooks = () => {
   // for deleting
     const del=(id)=>{
         // console.log(id)
-        axios.delete(`http://localhost:3001/books/${id}`)
-        .then(res =>{
-          console.log(res.data)
-          toast.success("Deleted ",{autoClose:2000})
-          setRender(render+1)
-        })
-        .catch(err =>console.log(err))
+       
        }
+
+       
+//For Confirm Dialog Box
+       const [visible, setVisible] = useState(false);
+  // const accept = () => {
+  //   // postBorrow(vacation.state);
+  // };
+
+  const reject = () => {
+    setVisible(!visible);
+  };
+
+  const confirm1 = (id) => {
+    confirmDialog({
+      message: "Are you sure you want to proceed?",
+      header: "Confirmation",
+      icon: "pi pi-exclamation-triangle",
+      accept: () => delFunc(id),
+      reject,
+    });
+  };
+
+  const delFunc = (id) => {
+    axios.delete(`http://localhost:3001/books/${id}`)
+    .then(res =>{
+      console.log(res.data)
+      toast.success("Deleted ",{autoClose:2000})
+      setRender(render+1)
+    })
+    .catch(err =>console.log(err))
+   }
       
        //for editing
        const navigate=useNavigate()
@@ -105,7 +134,7 @@ const AllBooks = () => {
           button: true,
         },
         {			
-          cell: (row) => <Button variant="outline-danger" onClick={()=>del(row.id)}><DeleteForeverIcon/> </Button>,
+          cell: (row) => <Button variant="outline-danger" onClick={()=>confirm1(row.id)}><DeleteForeverIcon/> </Button>,
           button: true,
         }
     ];
@@ -126,6 +155,8 @@ const AllBooks = () => {
     <br /><br />
     
     <DataTable columns={columns} data={books} pagination highlightOnHover responsive customStyles={customStyles} />
+
+    <ConfirmDialog/>
 
     </div>
   )
