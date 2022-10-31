@@ -5,6 +5,10 @@ import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { toast } from "react-toastify";
 import { useLocation, useNavigate } from 'react-router-dom';
+import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
+import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
+import "primereact/resources/primereact.min.css"; //core css
+import "primeicons/primeicons.css";
 
 const EditBooks = () => {
 
@@ -58,6 +62,21 @@ const EditBooks = () => {
      }
     console.log(img)
 
+// for confirm dialog box
+ const [visible, setVisible] = useState(false);
+ 
+const accept = (fEdit) =>{
+    axios.put(`http://localhost:3001/books/${location.state.id}`,fEdit)
+    .then(res =>console.log(res.data))
+    .catch(err => console.log(err))
+    navigate("/admin/allbooks")
+    toast.success("Edited Successfully",{autoClose:2000})
+}
+
+const reject = () => {
+  setVisible(!visible);
+};
+
      const navigate=useNavigate()
      
      const onSubmit= () =>{
@@ -72,17 +91,23 @@ const EditBooks = () => {
             imgUrl:img
         }
         
-        axios.put(`http://localhost:3001/books/${location.state.id}`,fEdit)
-        .then(res =>console.log(res.data))
-        .catch(err => console.log(err))
-        navigate("/admin/allbooks")
-        toast.success("Edited Successfully",{autoClose:2000})
+        confirmDialog({
+            message: "Are you sure you want to proceed?",
+            header: "Confirmation",
+            icon: "pi pi-exclamation-triangle",
+            accept:() =>accept(fEdit),
+            reject,
+          });
+        // axios.put(`http://localhost:3001/books/${location.state.id}`,fEdit)
+        // .then(res =>console.log(res.data))
+        // .catch(err => console.log(err))
+        // navigate("/admin/allbooks")
+        // toast.success("Edited Successfully",{autoClose:2000})
      }
 
 
     //  console.log(prefill)
    
-
 
   return (
     <div className="container" style={{marginTop:'8%'}}>
@@ -130,6 +155,9 @@ const EditBooks = () => {
         <Button variant="contained" className='mt-2' type="submit" style={{float:"right",marginRight:"45px"}} >Submit</Button>
 
     </form>
+
+    {/* confirm dialog */}
+  <ConfirmDialog />
    </div>
   )
 }

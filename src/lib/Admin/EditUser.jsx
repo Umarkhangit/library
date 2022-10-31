@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
@@ -6,6 +6,10 @@ import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { toast } from "react-toastify";
 import { useLocation, useNavigate } from 'react-router-dom';
+import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
+import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
+import "primereact/resources/primereact.min.css"; //core css
+import "primeicons/primeicons.css";
 
 const EditUser = () => {
 
@@ -24,15 +28,42 @@ const EditUser = () => {
      
     //  console.log(prefill);
 
-     const navigate=useNavigate()
-    const {register,handleSubmit,formState: { errors }} = useForm({defaultValues:prefill});
-    const onSubmit = (data) =>{
-        // console.log(data)
+// for confirm dialog box
+const [visible, setVisible] = useState(false);
+ 
+const accept = (data) =>{
         axios.put(`http://localhost:3001/user/${location.state.id}`,data)
         .then(res =>console.log(res.data))
         .catch(err =>console.log(err))
         navigate("/admin/view")
         toast.success("Edited Successfully",{autoClose:2000})
+ 
+}
+
+const reject = () => {
+  setVisible(!visible);
+};
+
+
+
+     const navigate=useNavigate()
+    const {register,handleSubmit,formState: { errors }} = useForm({defaultValues:prefill});
+   
+    const onSubmit = (data) =>{
+     
+      confirmDialog({
+        message: "Are you sure you want to proceed?",
+        header: "Confirmation",
+        icon: "pi pi-exclamation-triangle",
+        accept:() =>accept(data),
+        reject,
+      });
+        // console.log(data)
+        // axios.put(`http://localhost:3001/user/${location.state.id}`,data)
+        // .then(res =>console.log(res.data))
+        // .catch(err =>console.log(err))
+        // navigate("/admin/view")
+        // toast.success("Edited Successfully",{autoClose:2000})
         
     }
 
@@ -114,13 +145,14 @@ const EditUser = () => {
         />
         {errors.empdesig && <p style={{ color: "red", fontSize: 17 }}>designation is required</p>}
         </div>
-        <Button variant="contained" className='mt-2 mx-3' type="submit">Submit</Button>
+        <Button variant="contained" className='mt-2 mx-3' type='submit' >Submit</Button>
         <Button variant="contained" className='mt-2' onClick={()=>navigate("/admin/view")}>Cancel</Button>
         </form>
         </Card>
         
         </div>
-
+{/* confirm dialog */}
+  <ConfirmDialog />
         
     </div>
   )

@@ -50,7 +50,7 @@ function Feed() {
     {/* search filter */}
     <FilteredBooks/>
 
-   <Widgets/>
+   <Widgets />
 
    </div>
    

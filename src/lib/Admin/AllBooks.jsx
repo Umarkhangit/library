@@ -19,7 +19,7 @@ const AllBooks = () => {
 
     const [books,setBooks]=useState([])
     const [render,setRender]=useState(0)
-  const [trending,setTrending]=useState(true)
+  // const [trending,setTrending]=useState(true)
 
     // const dispatch=useDispatch()
     useEffect(()=>{
@@ -77,18 +77,40 @@ const AllBooks = () => {
         navigate("/admin/editbooks",{state:row})
       
        }
+       let trending = null;
 
-      
+      // for trending
        const check = (row) =>{
         // console.log(row);
-        setTrending(!trending)
+        row.isTrending? trending = false:trending = true;
+        console.log(trending,"trend after calling func");
         var addB={
           ...row,isTrending:trending
         }
+        console.log(addB);
         axios.put(`http://localhost:3001/books/${row.id}`,addB)
         .then(res =>console.log(res.data)).catch(err =>console.log(err))
-        // console.log(addB);
+        setRender(render+1)
        }
+
+
+  // for confirm dialog box
+  const [visible, setVisible] = useState(false);
+ 
+  const reject = () => {
+    setVisible(!visible);
+  };
+
+  const confirm1 = (id) => {
+    confirmDialog({
+      message: 'Do you want to delete this record?',
+      header: 'Delete Confirmation',
+      icon: 'pi pi-info-circle',
+      acceptClassName: 'p-button-danger',
+      accept :() =>del(id),
+      reject,
+    });
+  };
 
     const columns = [
         {
@@ -127,7 +149,7 @@ const AllBooks = () => {
         },
         {
           name: 'Trending',
-          cell :(row) =>  <Checkbox onClick={()=> check(row)}/>
+          cell :(row) => row.isTrending?<Checkbox onClick={()=> check(row)} defaultChecked/>:  <Checkbox onClick={()=> check(row)} />
          },
         {			
           cell: (row) => <Button variant="outline-primary" onClick={()=>edit(row)}><EditIcon/></Button>,
@@ -156,8 +178,8 @@ const AllBooks = () => {
     
     <DataTable columns={columns} data={books} pagination highlightOnHover responsive customStyles={customStyles} />
 
-    <ConfirmDialog/>
-
+  {/* confirm dialog */}
+  <ConfirmDialog />
     </div>
   )
 }
