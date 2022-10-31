@@ -7,6 +7,10 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
+import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
+import "primereact/resources/primereact.min.css"; //core css
+import "primeicons/primeicons.css";
 
 // import { useDispatch, useSelector } from 'react-redux';
 
@@ -49,7 +53,24 @@ const ViewUser = () => {
 
  }
 
+// for confirm dialog box
 
+const [visible, setVisible] = useState(false);
+ 
+const reject = () => {
+  setVisible(!visible);
+};
+
+const confirm1 = (id) => {
+  confirmDialog({
+    message: 'Do you want to delete this record?',
+    header: 'Delete Confirmation',
+    icon: 'pi pi-info-circle',
+    acceptClassName: 'p-button-danger',
+    accept :() =>del(id),
+    reject,
+  });
+};
  
   // react table data comp
   const columns = [
@@ -83,7 +104,7 @@ const ViewUser = () => {
       button: true,
     },
     {			
-      cell: (row) => <Button variant="outline-danger" onClick={()=>del(row.id)}><DeleteForeverIcon/> </Button>,
+      cell: (row) => <Button variant="outline-danger" onClick={()=>confirm1(row.id)}><DeleteForeverIcon/> </Button>,
       button: true,
     }
 ];
@@ -97,7 +118,8 @@ const ViewUser = () => {
     <h1 className='text-center mb-4'>Users</h1>
       <DataTable columns={columns} data={users} pagination highlightOnHover responsive/>
     
- 
+  {/* confirm dialog */}
+  <ConfirmDialog />
     </div>
   )
 }

@@ -14,20 +14,20 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItemButton from "@mui/material/ListItemButton";
 // import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItem from '@mui/material/ListItem';
+import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 import "../Login.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import "../Login.css";
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import Badge from '@mui/material/Badge';
+import Menu from "@mui/material/Menu";
+// import MenuItem from '@mui/material/MenuItem';
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import Badge from "@mui/material/Badge";
 import axios from "axios";
-import Avatar from '@mui/material/Avatar';
+import Avatar from "@mui/material/Avatar";
 
-// mui 
+// mui
 const drawerWidth = 200;
 
 const AppBar = styled(MuiAppBar, {
@@ -56,11 +56,8 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-
-
 const SideNav = () => {
-
-  const [head,sethead]=useState("")
+  const [head, sethead] = useState("");
 
   const navigate = useNavigate();
 
@@ -76,11 +73,11 @@ const SideNav = () => {
     setOpen(false);
   };
 
- //Logout Feature 
- const logOut = () => {
-  localStorage.removeItem('isLogged');
-  navigate("/")
-}
+  //Logout Feature
+  const logOut = () => {
+    localStorage.removeItem("isLogged");
+    navigate("/");
+  };
 
   const [lopen, setLOpen] = React.useState(true);
 
@@ -92,117 +89,112 @@ const SideNav = () => {
   const handleClick2 = () => {
     setLOpen2(!lopen2);
   };
-  
-  
-const navName=(name)=>{
-  sethead(name)
-}
 
-// for notification mui
-const [anchorEl, setAnchorEl] = React.useState(null);
-const isMenuOpen = Boolean(anchorEl);
+  const navName = (name) => {
+    sethead(name);
+  };
 
-const handleProfileMenuOpen = (event) => {
-  setAnchorEl(event.currentTarget);
-};
-const handleMenuClose = () => {
-  setAnchorEl(null);
-  // handleMobileMenuClose();
-};
+  // for notification mui
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const isMenuOpen = Boolean(anchorEl);
 
-  
+  const handleProfileMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+    // handleMobileMenuClose();
+  };
 
+  const [borrowed, setBorrowed] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/borrowed")
+      .then((res) => setBorrowed(res.data))
+      .catch((err) => console.log(err));
+  }, []);
 
-const [borrowed,setBorrowed] = useState([])
-useEffect(()=>{
-  axios.get("http://localhost:3001/borrowed")
-  .then(res =>setBorrowed(res.data))
-  .catch(err =>console.log(err))
-},[])
+  var penalty = borrowed.filter((b) => {
+    return b.books.isPenalty == true;
+  });
+  console.log(penalty);
 
-var penalty = borrowed.filter(b =>{
-  return b.books.isPenalty == true
-})
-console.log(penalty)
+  const message = (val) => {
+    console.log(val);
+  };
 
-const message = (val) =>{
-console.log(val);
-}
-
-const menuId = 'primary-search-account-menu';
+  const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
       anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
+        vertical: "top",
+        horizontal: "right",
       }}
       id={menuId}
       keepMounted
       transformOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
+        vertical: "top",
+        horizontal: "right",
       }}
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      {
-        borrowed.length?(
-          <div style={{width:"auto",padding:"10px",maxHeight:"250px"}}>
-            <table>
-              <thead>
-                <tr>
-                  <td>#</td>
-                  <th>Emp ID</th>
-                  <th>Emp Name</th>
-                  <th>Book</th>
-                </tr>
-              </thead>
-              <tbody>
-              {
-                borrowed.map(val =>{
-                  return(
-                    <>
-                    <tr onClick={()=>message(val)}>
+      {borrowed.length ? (
+        <div
+          style={{ width: "auto", padding: "10px", maxHeight: "250px" }}
+          className="table-responsive-md"
+        >
+          <table className="table table-sm table-borderless">
+            <thead>
+              <tr>
+                <td>#</td>
+                <th>Emp ID</th>
+                <th>Emp Name</th>
+                <th>Book</th>
+              </tr>
+            </thead>
+            <tbody>
+              {borrowed.map((val) => {
+                return (
+                  <>
+                    <tr onClick={() => message(val)}>
                       <td>
-                      <Avatar
-                        sx={{ bgcolor: "orange" }}
-                        alt={val.empname}
-                        src="/broken-image.jpg"
-                      />
+                        <Avatar
+                          sx={{ bgcolor: "orange", width: 30, height: 30 }}
+                          alt={val.empname}
+                          src="/broken-image.jpg"
+                        />
                       </td>
-                      <td><MenuItem>{val.empid}</MenuItem></td>
-                      <td><MenuItem><b>{val.empname}</b> &nbsp;{val.books.isPenalty == true? "has fallen penalty":"has borrowed the book"}</MenuItem></td>                      
-                      <td><MenuItem>{val.books.title}</MenuItem></td>
-                    
+                      <td>{val.empid}</td>
+                      <td>
+                        <b>{val.empname}</b> &nbsp;
+                        {val.books.isPenalty == true
+                          ? "has fallen penalty"
+                          : "has borrowed the book"}
+                      </td>
+                      <td>{val.books.title}</td>
                     </tr>
-                    
-                    </>
-                  )
-                })
-              }
-              </tbody>
-
-            </table>
-          </div>
-        ):(
-          <div>empty</div>
-        )
-      }
+                  </>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <div>empty</div>
+      )}
     </Menu>
   );
-
- 
 
   return (
     <>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
 
-    {/* Top Navbar Section */}
+        {/* Top Navbar Section */}
         <AppBar position="fixed" open={open}>
           <Toolbar>
-
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -217,34 +209,37 @@ const menuId = 'primary-search-account-menu';
             </Typography>
 
             <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-        
-      {/* notification icon*/}
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              className="mx-2"
-            >
-              <Badge badgeContent={borrowed.length} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+            <Box sx={{ display: { xs: "none", md: "flex" } }}>
+              
+              {/* notification icon*/}
+              <IconButton
+                size="large"
+                aria-label="show 17 new notifications"
+                color="inherit"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                className="mx-2"
+              >
+                <Badge badgeContent={borrowed.length} color="error">
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>
             </Box>
-            <Typography sx={{cursor: "pointer"}} onClick={logOut} variant="h6" noWrap component="div">
+            <Typography
+              sx={{ cursor: "pointer" }}
+              onClick={logOut}
+              variant="h6"
+              noWrap
+              component="div"
+            >
               Logout
             </Typography>
-  
-
           </Toolbar>
         </AppBar>
         {renderMenu}
 
-
-      {/* Side nav bar */}
+        {/* Side nav bar */}
         <Drawer
           sx={{
             width: drawerWidth,
@@ -253,118 +248,119 @@ const menuId = 'primary-search-account-menu';
               width: drawerWidth,
               boxSizing: "border-box",
             },
-            
           }}
           variant="persistent"
           anchor="left"
           open={open}
           PaperProps={{
             sx: {
-              backgroundColor: "#3c4b64",color:"white"
-            }
+              backgroundColor: "#3c4b64",
+              color: "white",
+            },
           }}
         >
           <DrawerHeader>
             <h3 style={{ marginRight: 25 }}>L.M.S</h3>
             <IconButton onClick={handleDrawerClose}>
               {theme.direction === "ltr" ? (
-                <ChevronLeftIcon sx={{color:"white"}}/>
+                <ChevronLeftIcon sx={{ color: "white" }} />
               ) : (
-                <ChevronRightIcon sx={{color:"white"}}/>
+                <ChevronRightIcon sx={{ color: "white" }} />
               )}
             </IconButton>
           </DrawerHeader>
           <Divider />
 
-          <List >
-            <ListItem >
-            
-            <NavLink to="/admin/dash" className="text-decoration-none text-light " onClick={()=>navName("Dashboard")}>
-
-              <ListItemButton >
-                Dashboard
-              </ListItemButton>
+          <List>
+            <ListItem>
+              <NavLink
+                to="/admin/dash"
+                className="text-decoration-none text-light "
+                onClick={() => navName("Dashboard")}
+              >
+                <ListItemButton>Dashboard</ListItemButton>
               </NavLink>
             </ListItem>
-                      
-              <ListItemButton onClick={handleClick}>
-                <ListItemText primary="Employee" />
-              </ListItemButton>
-           
+
+            <ListItemButton onClick={handleClick}>
+              <ListItemText primary="Employee" />
+            </ListItemButton>
+
             <Collapse in={lopen} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
-
-                <ListItem >
-                
-                 <NavLink to="/admin/add" className="text-decoration-none text-light " onClick={()=>navName("Add User")}>
-                 <ListItemButton sx={{ pl: 4 }}>
-                  Add User
-                  </ListItemButton>
+                <ListItem>
+                  <NavLink
+                    to="/admin/add"
+                    className="text-decoration-none text-light "
+                    onClick={() => navName("Add User")}
+                  >
+                    <ListItemButton sx={{ pl: 4 }}>Add User</ListItemButton>
                   </NavLink>
-                 
-                 </ListItem>
-                
-               <ListItem >
-                    <NavLink to="/admin/view" className="text-decoration-none text-light" onClick={()=>navName("View User")}>
-                <ListItemButton sx={{ pl: 4 }}>
-                      View Users
-                  </ListItemButton>
-                      </NavLink>
-               </ListItem>
-                
+                </ListItem>
+
+                <ListItem>
+                  <NavLink
+                    to="/admin/view"
+                    className="text-decoration-none text-light"
+                    onClick={() => navName("View User")}
+                  >
+                    <ListItemButton sx={{ pl: 4 }}>View Users</ListItemButton>
+                  </NavLink>
+                </ListItem>
               </List>
             </Collapse>
 
-          <ListItem>
-          <ListItemButton onClick={handleClick2}>
-              <ListItemText primary="Library" />
-            </ListItemButton>
-          </ListItem>
-           
+            <ListItem>
+              <ListItemButton onClick={handleClick2}>
+                <ListItemText primary="Library" />
+              </ListItemButton>
+            </ListItem>
+
             <Collapse in={lopen2} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
-                <ListItem >
-                  <NavLink to="/admin/allbooks" className="text-decoration-none text-light" onClick={()=>navName("All Books")}>
-                <ListItemButton sx={{ pl: 4 }}>
-                    All Books
-                </ListItemButton>
+                <ListItem>
+                  <NavLink
+                    to="/admin/allbooks"
+                    className="text-decoration-none text-light"
+                    onClick={() => navName("All Books")}
+                  >
+                    <ListItemButton sx={{ pl: 4 }}>All Books</ListItemButton>
                   </NavLink>
-
                 </ListItem>
 
-                <ListItem >
-                  <NavLink to="/admin/pending" className="text-decoration-none text-light" onClick={()=>navName("Pending")}>
-                <ListItemButton sx={{ pl: 4 }}>
-                    Pending
-                </ListItemButton>
-                    </NavLink>
-
-                </ListItem>
-                
-                <ListItem >
-                  <NavLink to="/admin/available" className="text-decoration-none text-light" onClick={()=>navName("Available")}>
-                <ListItemButton sx={{ pl: 4 }}>
-                    Available
-                </ListItemButton>
-                    </NavLink>
-
-                </ListItem>
-               
-               <ListItem > 
-                <NavLink to="/admin/penalty" className="text-decoration-none text-light" onClick={()=>navName("Dues/Penalty")}>
-               <ListItemButton sx={{ pl: 4 }}>
-                  Penalty
-                </ListItemButton>
+                <ListItem>
+                  <NavLink
+                    to="/admin/pending"
+                    className="text-decoration-none text-light"
+                    onClick={() => navName("Pending")}
+                  >
+                    <ListItemButton sx={{ pl: 4 }}>Pending</ListItemButton>
                   </NavLink>
+                </ListItem>
 
-               </ListItem>
-                
+                <ListItem>
+                  <NavLink
+                    to="/admin/available"
+                    className="text-decoration-none text-light"
+                    onClick={() => navName("Available")}
+                  >
+                    <ListItemButton sx={{ pl: 4 }}>Available</ListItemButton>
+                  </NavLink>
+                </ListItem>
+
+                <ListItem>
+                  <NavLink
+                    to="/admin/penalty"
+                    className="text-decoration-none text-light"
+                    onClick={() => navName("Dues/Penalty")}
+                  >
+                    <ListItemButton sx={{ pl: 4 }}>Penalty</ListItemButton>
+                  </NavLink>
+                </ListItem>
               </List>
             </Collapse>
           </List>
-
         </Drawer>
-
       </Box>
     </>
   );

@@ -10,12 +10,16 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
 // import { useDispatch, useSelector } from 'react-redux';
 import Checkbox from '@mui/material/Checkbox';
+import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
+import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
+import "primereact/resources/primereact.min.css"; //core css
+import "primeicons/primeicons.css";
 
 const AllBooks = () => {
 
     const [books,setBooks]=useState([])
     const [render,setRender]=useState(0)
-  const [trending,setTrending]=useState(true)
+  // const [trending,setTrending]=useState(true)
 
     // const dispatch=useDispatch()
     useEffect(()=>{
@@ -48,18 +52,40 @@ const AllBooks = () => {
         navigate("/admin/editbooks",{state:row})
       
        }
+       let trending = null;
 
-      
+      // for trending
        const check = (row) =>{
         // console.log(row);
-        setTrending(!trending)
+        row.isTrending? trending = false:trending = true;
+        console.log(trending,"trend after calling func");
         var addB={
           ...row,isTrending:trending
         }
+        console.log(addB);
         axios.put(`http://localhost:3001/books/${row.id}`,addB)
         .then(res =>console.log(res.data)).catch(err =>console.log(err))
-        // console.log(addB);
+        setRender(render+1)
        }
+
+
+  // for confirm dialog box
+  const [visible, setVisible] = useState(false);
+ 
+  const reject = () => {
+    setVisible(!visible);
+  };
+
+  const confirm1 = (id) => {
+    confirmDialog({
+      message: 'Do you want to delete this record?',
+      header: 'Delete Confirmation',
+      icon: 'pi pi-info-circle',
+      acceptClassName: 'p-button-danger',
+      accept :() =>del(id),
+      reject,
+    });
+  };
 
     const columns = [
         {
@@ -98,14 +124,14 @@ const AllBooks = () => {
         },
         {
           name: 'Trending',
-          cell :(row) =>  <Checkbox onClick={()=> check(row)}/>
+          cell :(row) => row.isTrending?<Checkbox onClick={()=> check(row)} defaultChecked/>:  <Checkbox onClick={()=> check(row)} />
          },
         {			
           cell: (row) => <Button variant="outline-primary" onClick={()=>edit(row)}><EditIcon/></Button>,
           button: true,
         },
         {			
-          cell: (row) => <Button variant="outline-danger" onClick={()=>del(row.id)}><DeleteForeverIcon/> </Button>,
+          cell: (row) => <Button variant="outline-danger" onClick={()=>confirm1(row.id)}><DeleteForeverIcon/> </Button>,
           button: true,
         }
     ];
@@ -127,6 +153,8 @@ const AllBooks = () => {
     
     <DataTable columns={columns} data={books} pagination highlightOnHover responsive customStyles={customStyles} />
 
+  {/* confirm dialog */}
+  <ConfirmDialog />
     </div>
   )
 }
