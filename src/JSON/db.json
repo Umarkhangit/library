@@ -155,82 +155,6 @@
   ],
   "borrowed": [
     {
-      "empid": "1001",
-      "empname": "Thabrez ",
-      "books": {
-        "id": 6,
-        "title": "Hidden",
-        "Author": "Catherine McKenzie",
-        "desc": "After Jeff Manning suddenly dies, two women who loved him—his wife, Claire, and his co-worker, Tish, are both sent reeling and must figure out how to cope in this new novel from the author of Forgotten.",
-        "imgUrl": "/assets/hidden.jpg",
-        "genre": "Thriller",
-        "published": 2014,
-        "ISBN": 9780544264456,
-        "isPending": true,
-        "takenDate": "2022-10-25T12:57:27.703Z",
-        "expiryDate": "2022-10-24T12:57:27.703Z",
-        "isPenalty": true
-      },
-      "id": 6
-    },
-    {
-      "empid": "1001",
-      "empname": "Thabrez ",
-      "books": {
-        "id": 5,
-        "title": "Ponniyin Selvi 4",
-        "Author": "Kalki",
-        "desc": "It's the calm before the storm.  Will all three succeed in their quests? Will Arulmozhi Varmar recover from his ague? Will Aniruddhar's schemes and stratagems save the royal family? Will Azhwarkkadiyaan's efforts bear fruit? And lastly ... will Chozha Nadu be free of the tangled web of conspiracies?",
-        "imgUrl": "/assets/ps4.jpg",
-        "genre": "History",
-        "published": 2021,
-        "ISBN": 9788194973416,
-        "isPending": true,
-        "takenDate": "2022-10-25T12:59:41.463Z",
-        "expiryDate": "2022-10-24T12:59:41.463Z",
-        "isPenalty": true
-      },
-      "id": 7
-    },
-    {
-      "empid": "1001",
-      "empname": "Thabrez ",
-      "books": {
-        "id": 7,
-        "title": "Peter Pan",
-        "Author": "Catherine McKenzie",
-        "desc": "All children grow up. All except one.” That special child is Peter Pan, and since making his debut on the stage in 1904, this eternal youth has carried boys and girls off to magical, marvelous Neverland.",
-        "imgUrl": "/assets/peterpan.jpg",
-        "genre": "Fiction",
-        "published": 2009,
-        "ISBN": 97805442622437,
-        "isPending": true,
-        "takenDate": "2022-10-25T19:13:51.708Z",
-        "expiryDate": "2022-10-26T19:13:51.709Z",
-        "isPenalty": true
-      },
-      "id": 8
-    },
-    {
-      "empid": "1001",
-      "empname": "Thabrez ",
-      "books": {
-        "id": 3,
-        "title": "Will you still love me?",
-        "Author": "Ravinder Singh",
-        "desc": "There is more to love than just loving...It is also a promise Lavanya Gogoi is from the scenic hills of Shillong while Rajveer Saini belongs to the shahi city of Patiala.",
-        "imgUrl": "/assets/love.jpg",
-        "genre": "Romance",
-        "published": 2018,
-        "ISBN": 9789387625457,
-        "isPending": true,
-        "takenDate": "2022-10-25T19:15:10.059Z",
-        "expiryDate": "2022-10-24T19:15:10.059Z",
-        "isPenalty": true
-      },
-      "id": 9
-    },
-    {
       "empid": "1003",
       "empname": "Rauf",
       "books": {
@@ -465,6 +389,11 @@
       "empId": 1004,
       "requestBook": "vision 2020",
       "id": 9
+    },
+    {
+      "empId": 1001,
+      "requestBook": "Muzaafar",
+      "id": 10
     }
   ]
 }

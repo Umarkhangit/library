@@ -35,15 +35,12 @@ const AllBooks = () => {
   //  console.log(data);
 
   // for deleting
-    const del=(id)=>{
-        // console.log(id)
-       
-       }
+    
 
        
 
 
-  const delFunc = (id) => {
+  const del = (id) => {
     axios.delete(`http://localhost:3001/books/${id}`)
     .then(res =>{
       console.log(res.data)

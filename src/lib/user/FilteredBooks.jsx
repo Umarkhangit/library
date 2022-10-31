@@ -27,7 +27,7 @@ const FilteredBooks = () => {
     getOptionLabel: (option) => option.title,
   };
 
-  const handle = (e, newValue) => {
+  const handle = (newValue) => {
     // setVal(newValue)
     console.log(newValue.title);
     setSearched(newValue.title);
