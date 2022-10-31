@@ -41,25 +41,7 @@ const AllBooks = () => {
        }
 
        
-//For Confirm Dialog Box
-       const [visible, setVisible] = useState(false);
-  // const accept = () => {
-  //   // postBorrow(vacation.state);
-  // };
 
-  const reject = () => {
-    setVisible(!visible);
-  };
-
-  const confirm1 = (id) => {
-    confirmDialog({
-      message: "Are you sure you want to proceed?",
-      header: "Confirmation",
-      icon: "pi pi-exclamation-triangle",
-      accept: () => delFunc(id),
-      reject,
-    });
-  };
 
   const delFunc = (id) => {
     axios.delete(`http://localhost:3001/books/${id}`)
