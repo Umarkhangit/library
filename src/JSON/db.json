@@ -322,7 +322,7 @@
         "isPending": true,
         "takenDate": "2022-10-28T09:25:11.157Z",
         "expiryDate": "2022-11-02T09:25:11.157Z",
-        "isPenalty": false
+        "isPenalty": true
       },
       "id": 21
     },
@@ -341,9 +341,69 @@
         "isPending": true,
         "takenDate": "2022-10-28T09:25:30.616Z",
         "expiryDate": "2022-11-02T09:25:30.616Z",
-        "isPenalty": false
+        "isPenalty": true
       },
       "id": 22
+    },
+    {
+      "empid": "1001",
+      "empname": "Thabrezz",
+      "books": {
+        "id": 3,
+        "title": "Will you still love me?",
+        "Author": "Ravinder Singh",
+        "desc": "There is more to love than just loving...It is also a promise Lavanya Gogoi is from the scenic hills of Shillong while Rajveer Saini belongs to the shahi city of Patiala.",
+        "imgUrl": "/assets/love.jpg",
+        "genre": "Romance",
+        "published": 2018,
+        "ISBN": 9789387625457,
+        "isTrending": false,
+        "isPending": true,
+        "takenDate": "2022-11-03T11:52:03.274Z",
+        "expiryDate": "2022-11-08T11:52:03.274Z",
+        "isPenalty": false
+      },
+      "id": 24
+    },
+    {
+      "empid": "1001",
+      "empname": "Thabrezz",
+      "books": {
+        "id": 1,
+        "title": "Harry Potter",
+        "Author": "J.K Rowling",
+        "desc": "It's been nineteen years since Harry Potter by a brave new generation that's only just arrived at Hogwarts School of Witchcraft and Wizardry.",
+        "imgUrl": "/assets/harry.jpg",
+        "genre": "Mythology",
+        "published": 2017,
+        "ISBN": 9780751565362,
+        "isTrending": true,
+        "isPending": true,
+        "takenDate": "2022-11-03T11:56:01.057Z",
+        "expiryDate": "2022-11-08T11:56:01.057Z",
+        "isPenalty": false
+      },
+      "id": 25
+    },
+    {
+      "empid": "1001",
+      "empname": "Thabrezz",
+      "books": {
+        "id": 2,
+        "title": "400 Days",
+        "Author": "Chetan Bhagat",
+        "desc": "Alia wouldn't stop looking, though. She wanted to know if I could help her",
+        "imgUrl": "/assets/400days.jpg",
+        "genre": "Thriller",
+        "published": 2021,
+        "ISBN": 9781542094085,
+        "isTrending": false,
+        "isPending": true,
+        "takenDate": "2022-11-03T12:07:13.568Z",
+        "expiryDate": "2022-11-08T12:07:13.568Z",
+        "isPenalty": false
+      },
+      "id": 26
     }
   ],
   "requests": [

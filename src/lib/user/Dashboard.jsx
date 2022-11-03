@@ -9,25 +9,18 @@ import Widgets from './Widgets';
 // import { AllBooks } from "../../redux/Action";
 import axios from "axios";
 import FilteredBooks from './FilteredBooks';
+import { useDispatch } from 'react-redux';
+import { fetchAsyncBooks } from '../../redux/BooksSlice';
 
 
 
 
 function Feed() {
-// const [render,setRender]=useState([])
-// const [searched,setSearched]=useState()
 
-//   // for redux
-//   // const dispatch=useDispatch()
-//   useEffect(()=>{
-//     axios.get("http://localhost:3001/books")
-//     .then(res =>{
-//       setRender(res.data)
-//       // dispatch(AllBooks(res.data))
-//     }) 
-//     .catch(err =>console.log(err))
-    
-//   },[])
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAsyncBooks());
+  }, [dispatch]);
 
   
   return (

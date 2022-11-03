@@ -120,7 +120,7 @@ function Cards() {
     });
   };
 
-  // for adding isPenalty
+  // 
   const postBorrow = (isbn) => {
     const borrow = {
       empid: user.empid,

@@ -1,27 +1,31 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Button, Card, CardImg, Image } from 'react-bootstrap'
+import { useSelector } from 'react-redux'
+import { getAllBooks } from '../../redux/BooksSlice'
 
 const SidebarFeed = () => {
 
-    const [allbooks,setAllbooks]=useState([])
+    // const [allbooks,setAllbooks]=useState([])
+
+    const Allbooks = useSelector(getAllBooks)
 
 
-    useEffect(()=>{
-        axios.get("http://localhost:3001/books")
-        .then(res =>setAllbooks(res.data))
-        .catch(err =>console.log(err))
+    // useEffect(()=>{
+    //     axios.get("http://localhost:3001/books")
+    //     .then(res =>setAllbooks(res.data))
+    //     .catch(err =>console.log(err))
     
         
-      },[])
+    //   },[])
 
 
-      let trendingBooks = allbooks.filter(a =>{
+      let trendingBooks = Allbooks.length ? Allbooks.filter(a =>{
         
        return (a.isTrending == true)
          
      }
-     )    
+     )    : ""
 
 
   return (
@@ -30,13 +34,13 @@ const SidebarFeed = () => {
     <p className='text-white px-2' style={{fontSize: "20px",fontWeight:"400",borderRadius:"30px",backgroundColor:"#4682B4"}}>Trending books</p>
       <div className='mt-3' >
 
-        {trendingBooks?.map((tb) => {
+        { Allbooks.length ?  trendingBooks.map((tb) => {
             return (
                 <div className="mb-4">
                 <Image src={tb.imgUrl} style={{width:"150px", height:"200px"}}/>
                 </div>
             )
-        })}
+        }) : <div><h4>Loading. . . .</h4></div>}
        
     
    

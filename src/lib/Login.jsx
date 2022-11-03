@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 // import { useSelector } from "react-redux";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { fetchAsyncBooks } from "../redux/BooksSlice";
 
 
 export var loginCondition = false;
@@ -16,6 +18,11 @@ function App() {
   const [credUser,setCredUser]=useState([]);
   const [invalid,setInvalid]=useState(false)
   
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAsyncBooks());
+  }, [dispatch]);
   
 
   

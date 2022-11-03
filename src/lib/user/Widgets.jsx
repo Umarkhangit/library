@@ -1,38 +1,32 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Image } from 'react-bootstrap'
+import { useSelector } from 'react-redux'
+import { getAllBooks } from '../../redux/BooksSlice'
 
 // import './ButtonDemo.css';
 
 const Widgets = () => {
 
-    const [allbooks,setAllbooks]=useState([])
+    // const [allbooks,setAllbooks]=useState([])d
     const [recent, setRecent] = useState()
-
+    const Allbooks = useSelector(getAllBooks);
 
     useEffect(()=>{
-        axios.get("http://localhost:3001/books")
-        .then(res =>setAllbooks(res.data))
-        .catch(err =>console.log(err))
+       
         RecentBooks()
            
         
-      },[allbooks.length])
+      },[Allbooks.length])
 
 
-    //   let trendingBooks = allbooks.filter(a =>{
-        
-    //    return (a.isTrending == true)
-         
-    //  }
-    //  )    
-     
+   
      const RecentBooks = () => {
-        let BLen = allbooks.length - 1
+        let BLen = Allbooks.length - 1
         
         let due = [];
         for (let i = 0; i <= 2; i++) {
-           due.push(allbooks[BLen])
+           due.push(Allbooks[BLen])
             BLen--
 
             

@@ -149,51 +149,41 @@ const Mybooks = () => {
 
   // console.log(penaltyBooks)
 
-  const [reading,setReading] = useState(true)
+  const [reading,setReading] = useState(readingBooks)
   const [penalty,setPenalty] = useState(false)
 
   const read = ()=>{
-    setReading(!reading)
+    setReading(true)
     setPenalty(false)
   }
 
   const penal = ()=>{
-    setPenalty(!penalty)
+    setPenalty(true)
     setReading(false)
   }
+
+  let renderBooks = reading;
  
   return (
     <>
       
         <div className="container mt-5">
 
-            <div style={{margin:"0 35%"}}>
+            <div className="text-center">
             <Button className="mx-2" onClick={read}>Reading</Button>
             <Button onClick={penal}>Penalty</Button>
             </div>
 
                 
-          
-            {
-              reading ==true?(
-                <>
-                 {readingBooks?.map((f) => {
+
+            { reading ? readingBooks.length ?  readingBooks?.map((f) => {
                 return (
                 <div className="my-5">
                   <div className="wrapper-books">
                     <div className="outer-books">
                       <div className="content-books animated fadeInLeft">
-                        {f.books.isPenalty ? (
-                          <span className="bg-red animated fadeInDown fs-6 mb-2">
-                            {" "}
-                            Penalty
-                          </span>
-                        ) : (
-                          <span className="bg-books animated fadeInDown fs-6 mb-2">
-                            {" "}
-                            Reading
-                          </span>
-                        )}
+
+
                         <h1 className="h1-books">{f.books.title}</h1>
                         <p className="p-books">
                           Expiry :{" "}
@@ -214,58 +204,45 @@ const Mybooks = () => {
                   </div>
                 </div>
               );
-            })}
-                </>
-              ):("")
-            }
+            }) : <div className="text-center mt-5"><h4>No books currently in your Record</h4></div> : ""}
+
+
+              
+                 { penalty ? penaltyBooks.length ?  penaltyBooks?.map((f) => {
+                return (
+                <div className="my-5">
+                  <div className="wrapper-books">
+                    <div className="outer-books">
+                      <div className="content-books animated fadeInLeft">
+
+
+                        <h1 className="h1-books">{f.books.title}</h1>
+                        <p className="p-books">
+                          Expiry :{" "}
+                          {moment(f?.books.expiryDate).format("DD-MM-YYYY")}
+                        </p>
+                        <p className="p-books">{f.books.desc}</p>
+  
+                        <div className="button-books">
+                          <Button onClick={() => Return(f)}> Return</Button>
+                        </div>
+                      </div>
+                      <img
+                        src={f.books.imgUrl}
+                        width="300px"
+                        className=" img-books animated fadeInRight"
+                      />
+                    </div>
+                  </div>
+                </div>
+              );
+            }) : <div className="text-center mt-5"> <h4> No books found in penalty</h4></div> : ""}
+               
+             
+            
            
 
-          {
-            penalty?(
-              <>
-                {penaltyBooks?.map((f) => {
-                return (
-                <div className="my-5">
-                  <div className="wrapper-books">
-                    <div className="outer-books">
-                      <div className="content-books animated fadeInLeft">
-                        {f.books.isPenalty ? (
-                          <span className="bg-red animated fadeInDown fs-6 mb-2">
-                            {" "}
-                            Penalty
-                          </span>
-                        ) : (
-                          <span className="bg-books animated fadeInDown fs-6 mb-2">
-                            {" "}
-                            Reading
-                          </span>
-                        )}
-                        <h1 className="h1-books">{f.books.title}</h1>
-                        <p className="p-books">
-                          Expiry :{" "}
-                          {moment(f?.books.expiryDate).format("DD-MM-YYYY")}
-                        </p>
-                        <p className="p-books">{f.books.desc}</p>
-  
-                        <div className="button-books">
-                          <Button onClick={() => Return(f)}> Return</Button>
-                        </div>
-                      </div>
-                      <div>
-                      <img
-                        src={f.books.imgUrl}
-                        width="300px"
-                        className=" img-books animated fadeInRight"
-                      />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-              </>
-            ):("")
-          }
+         
  
         </div>
     
