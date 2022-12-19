@@ -5,16 +5,16 @@ import Button from '@mui/material/Button';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { toast } from "react-toastify";
+import { useDispatch } from 'react-redux';
+import { addUser } from '../../redux/BooksSlice';
 
 const AddUser = () => {
 
-
+    const dispatch = useDispatch();
     const {register,handleSubmit,formState: { errors },reset} = useForm();
     const onSubmit=(data) =>{
         
-        axios.post("http://localhost:3001/user",data)
-        .then(res=> console.log(res.data))
-        .catch(err=> console.log(err))        
+        dispatch(addUser(data))    
         reset()
         toast.success("Added Successfully",{autoClose:2000})
     }

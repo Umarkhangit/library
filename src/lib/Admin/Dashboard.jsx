@@ -2,51 +2,65 @@ import axios from "axios";
 import React,{useState,useEffect} from "react";
 import Card from "react-bootstrap/Card";
 import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAsyncBooks, fetchAsyncBorrow, getAllBorrowed, getAllBooks  } from '../../redux/BooksSlice';
+
 
 
 const Dashboard = () => {
 
   const [tUser,setTUser]=useState([]);
-  const [tBooks,setTBooks]=useState([]);
-  const [pen,setPen]=useState([]);
- 
+  // const [tBooks,setTBooks]=useState([]);
+  // const [pen,setPen]=useState([]);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAsyncBooks());
+    dispatch(fetchAsyncBorrow());
+  }, [dispatch]);
+
+  const Allbooks=useSelector(getAllBooks);
+  const Allborrowed = useSelector(getAllBorrowed);
+
+  console.log("allBorrowed", Allborrowed)
+
 
   useEffect(() =>{
     axios.get("http://localhost:3001/user")
     .then(res =>setTUser(res.data))
     .catch(err =>console.log(err))
 
-    axios.get("http://localhost:3001/books")
-    .then(res =>setTBooks(res.data))
-    .catch(err =>console.log(err))
+    // axios.get("http://localhost:3001/books")
+    // .then(res =>setTBooks(res.data))
+    // .catch(err =>console.log(err))
 
-    axios.get("http://localhost:3001/borrowed")
-    .then(res =>setPen(res.data))
-    .catch(err =>console.log(err))
+  //   axios.get("http://localhost:3001/borrowed")
+  //   .then(res =>setPen(res.data))
+  //   .catch(err =>console.log(err))
 
   },[])
 
   // Available filter
-  var available = tBooks.filter(a =>{
-    return !pen.find(p =>{
+  var available =   Allborrowed.length ?  Allbooks.filter(a =>{
+    return !Allborrowed.find(p =>{
         return a.ISBN === p.books.ISBN
     })
-})   
+})    : ""
 
 //Penalty Filter
 
-var ava = pen.filter(a =>{
+var ava = Allborrowed.length ? Allborrowed.filter(a =>{
      
   return a.books.isPenalty === true
 
-})    
+})    : ""
 
 
   // console.log(available.length);
 
   return (
     <>
-      <div className="" style={{ marginTop: "10%", width:'100vw' }}>
+      <div style={{ marginTop: "10%", width:'100vw' }}>
 
         <div className="cards fs-3">
 
@@ -69,7 +83,7 @@ var ava = pen.filter(a =>{
                 <Card.Title><b>Total Books</b></Card.Title>
 
                 <Card.Text style={{color:"#C58A11",fontSize:"55px"}}>
-                  {tBooks.length}             
+                  {Allbooks.length ? Allbooks.length : <span className="fs-6">Loading. . </span>}             
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -85,7 +99,7 @@ var ava = pen.filter(a =>{
                 <Card.Title><b>Pending</b></Card.Title>
 
                 <Card.Text style={{color:"#E03666",fontSize:"55px"}}>
-                {pen.length}            
+                {Allborrowed.length ? Allborrowed.length : <span className="fs-6">Loading. . </span>}             
                 </Card.Text>
               </Card.Body>
             </Card>

@@ -4,21 +4,26 @@ import DataTable from 'react-data-table-component';
 // import { useDispatch } from 'react-redux';
 // import { pending } from '../../redux/Action';
 import moment from 'moment/moment';
+import { getAllBorrowed } from '../../redux/BooksSlice';
+import { useSelector } from 'react-redux';
 
 const Pending = () => {
 
+    const Allborrowed = useSelector(getAllBorrowed);
+
+
     // const [penalty, setPenalty] = useState(null)
-    const [borrow,setBorrow]=useState([])
+    // const [borrow,setBorrow]=useState([])
     // const dispatch=useDispatch();
-    useEffect(()=>{
-        axios.get("http://localhost:3001/borrowed")
-        .then(res =>{
-            setBorrow(res.data)
-            // dispatch(pending(res.data))
-        })
-        .catch(err => console.log(err))
-        // runPenalty()
-    },[])
+    // useEffect(()=>{
+    //     axios.get("http://localhost:3001/borrowed")
+    //     .then(res =>{
+    //         setBorrow(res.data)
+    //         // dispatch(pending(res.data))
+    //     })
+    //     .catch(err => console.log(err))
+    //     // runPenalty()
+    // },[])
 
 
 //     useEffect(()=>{
@@ -106,7 +111,7 @@ const Pending = () => {
 
         <h1 className='text-center mb-4'>Pending</h1>
 
-    <DataTable columns={columns} data={borrow} pagination highlightOnHover responsive/>
+   {Allborrowed.length ? <DataTable columns={columns} data={Allborrowed} pagination highlightOnHover responsive/> : <span>Fetching....</span>} 
 
     </div>
   )

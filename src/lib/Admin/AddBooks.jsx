@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { toast } from "react-toastify";
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addBook } from '../../redux/BooksSlice';
 
 
 const AddBooks = () => {
@@ -20,7 +22,8 @@ const AddBooks = () => {
         // imgUrl:"https://source.unsplash.com/random",
        
     })
-    
+    const dispatch = useDispatch(); 
+
     const {register,handleSubmit,formState: { errors }} = useForm();
 
     const handleChange= (e) =>{
@@ -60,10 +63,11 @@ const AddBooks = () => {
             isTrending: false
             
         }
-       
-            axios.post("http://localhost:3001/books",fVal)
-            .then(res=>console.log(res.data))
-            .catch(err=>console.log(err))   
+
+            dispatch(addBook(fVal));
+            // axios.post("http://localhost:3001/books",fVal)
+            // .then(res=>console.log(res.data))
+            // .catch(err=>console.log(err))   
             navigate("/admin/allbooks")
             toast.success("Book Added successfully",{autoClose:2000})
         

@@ -26,9 +26,12 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import Badge from "@mui/material/Badge";
 import axios from "axios";
 import Avatar from "@mui/material/Avatar";
-
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAsyncBooks, fetchAsyncBorrow } from '../../redux/BooksSlice';
 // mui
 const drawerWidth = 200;
+
+
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -57,6 +60,12 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 const SideNav = () => {
+  const dispatch = useDispatch();
+useEffect(() => {
+  dispatch(fetchAsyncBooks());
+  dispatch(fetchAsyncBorrow());
+}, [dispatch]);
+
   const [head, sethead] = useState("");
 
   const navigate = useNavigate();
@@ -140,50 +149,20 @@ const SideNav = () => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      {borrowed.length ? (
-        <div
-          style={{ width: "auto", padding: "10px", maxHeight: "250px" }}
-          className="table-responsive-md"
-        >
-          <table className="table table-sm table-borderless">
-            <thead>
-              <tr>
-                <td>#</td>
-                <th>Emp ID</th>
-                <th>Emp Name</th>
-                <th>Book</th>
-              </tr>
-            </thead>
-            <tbody>
-              {borrowed.map((val) => {
-                return (
-                  <>
-                    <tr onClick={() => message(val)}>
-                      <td>
-                        <Avatar
-                          sx={{ bgcolor: "orange", width: 30, height: 30 }}
-                          alt={val.empname}
-                          src="/broken-image.jpg"
-                        />
-                      </td>
-                      <td>{val.empid}</td>
-                      <td>
-                        <b>{val.empname}</b> &nbsp;
-                        {val.books.isPenalty == true
-                          ? "has fallen penalty"
-                          : "has borrowed the book"}
-                      </td>
-                      <td>{val.books.title}</td>
-                    </tr>
-                  </>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      ) : (
-        <div>empty</div>
-      )}
+      <div className="d-flex flex-row p-2 " style={{width:"450px"}}>
+
+        <div className="align-self-center p-3"><Avatar/></div>
+        <div className="text-black">
+        
+
+          <p className=" text-black-50 fw-semibold  m-1" style={{fontSize: "15px"}}> Thabrez Ahmed</p>
+          <p className="text-black m-1 fw-semibold  " style={{fontSize: "15px"}}> Borrowed the book - Harry Potter </p>
+          <p className="text-black-50 m-1" style={{fontSize: "12px"}}> Just now</p>
+          </div>
+       
+
+      </div>
+    
     </Menu>
   );
 

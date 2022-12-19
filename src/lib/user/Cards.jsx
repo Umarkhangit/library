@@ -14,7 +14,7 @@ function Cards() {
   console.log(vacation);
 
   const [chnBtn, setChnBtn] = useState(false);
-  const [borrowed, setBorrowed] = useState([]);
+  // const [borrowed, setBorrowed] = useState([]);
 
   const [borrow, setBorrow] = useState([]);
   // const dispatch=useDispatch();
@@ -31,7 +31,7 @@ function Cards() {
 
   let currDate = moment();
 
-  let newDate = moment().add(5, "days");
+  let newDate = moment().add(2, "days");
   // let nDate = moment(currDate, "DD-MM-YYYY").add(-20, 'days');
 
   const [user, setUser] = useState([]);
@@ -103,7 +103,7 @@ function Cards() {
   // for confirm dialog box
   const [visible, setVisible] = useState(false);
   const accept = () => {
-    postBorrow(vacation.state);
+    // postBorrow(vacation.state);
   };
 
   const reject = () => {
@@ -133,7 +133,7 @@ function Cards() {
       },
     };
 
-    console.log(borrow);
+    // console.log(borrow);
 
     axios
       .post("http://localhost:3001/borrowed", borrow)
@@ -151,7 +151,7 @@ function Cards() {
   let fborrow = borrow.find((val) => {
     return empid == val.empid && vacation.state.ISBN == val.books.ISBN;
   });
-  console.log(fborrow);
+  //console.log(fborrow);
 
   // if(fborrow?.empid == empid && fborrow.books.ISBN == vacation.state.ISBN){
   //   console.log("true")
@@ -180,7 +180,7 @@ function Cards() {
                   </button>
                 </div>
               ) : (
-                <div onClick={confirm1} icon="pi pi-check" label="Confirm">
+                <div onClick={()=>postBorrow(vacation.state)} icon="pi pi-check" label="Confirm">
                   <button type="button" class="btn btn-primary">
                     Borrow
                   </button>

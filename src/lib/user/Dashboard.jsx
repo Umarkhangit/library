@@ -7,10 +7,10 @@ import Widgets from './Widgets';
 
 // import { useDispatch } from "react-redux";
 // import { AllBooks } from "../../redux/Action";
-import axios from "axios";
+// import axios from "axios";
 import FilteredBooks from './FilteredBooks';
 import { useDispatch } from 'react-redux';
-import { fetchAsyncBooks } from '../../redux/BooksSlice';
+import { fetchAsyncBooks, fetchAsyncBorrow } from '../../redux/BooksSlice';
 
 
 
@@ -20,13 +20,14 @@ function Feed() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAsyncBooks());
+    dispatch(fetchAsyncBorrow());
   }, [dispatch]);
 
   
   return (
    <>
 
-   <div id="main__flex" style={{backgroundColor:"#eee"}}>
+   <div id="main__flex" style={{backgroundColor:"white"}}>
    <div id="main__left">
     <SidebarFeed/>
 

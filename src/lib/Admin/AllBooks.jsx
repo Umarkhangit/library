@@ -14,27 +14,36 @@ import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
 import "primeicons/primeicons.css";
+import { useDispatch, useSelector } from 'react-redux';
+// import { fetchAsyncBooks } from '../../redux/BooksSlice';
+import { getAllBooks } from "../../redux/BooksSlice";
 
 const AllBooks = () => {
 
-    const [books,setBooks]=useState([])
+    // const [books,setBooks]=useState([])
     const [render,setRender]=useState(0)
   // const [trending,setTrending]=useState(true)
 
+  
+
+  const Allbooks=useSelector(getAllBooks);
+
     // const dispatch=useDispatch()
-    useEffect(()=>{
-        axios.get("http://localhost:3001/books")
-        .then(res=> {
-          setBooks(res.data)
-        // dispatch(Books(res.data))
-        })
-        .catch(err=> console.log(err))
-    },[render])
+    // useEffect(()=>{
+    //     axios.get("http://localhost:3001/books")
+    //     .then(res=> {
+    //       setBooks(res.data)
+    //     // dispatch(Books(res.data))
+    //     })
+    //     .catch(err=> console.log(err))
+    // },[render])
 
     // const data=useSelector(state=>state)
   //  console.log(data);
 
   // for deleting
+
+
     
 
        
@@ -140,14 +149,7 @@ const AllBooks = () => {
         }
     ];
 
-    const customStyles={
-      rows: {
-        style: {
-            // minHeight: '75px',
-            minWidth:"70px" // override the row height
-        },
-    }
-  }
+    
   return (
     <div className='container pb-5' style={{marginTop:"7%",marginLeft:"7%"}}>
 
@@ -155,7 +157,7 @@ const AllBooks = () => {
     <Button variant="primary" className='float-end ' ><NavLink to="/admin/addbooks" className="text-decoration-none text-light "><AddCircleOutlineIcon/> Add Books</NavLink> </Button>
     <br /><br />
     
-    <DataTable columns={columns} data={books} pagination highlightOnHover responsive customStyles={customStyles} />
+   {Allbooks.length ? <DataTable columns={columns} data={Allbooks} pagination highlightOnHover responsive  /> : <span className='fs-6'>Fetching Data</span> } 
 
   {/* confirm dialog */}
   <ConfirmDialog />

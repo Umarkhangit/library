@@ -56,10 +56,10 @@ console.log(requests)
    
     <div className='d-flex text-center justify-content-center my-5 card' style={{backgroundImage: `url(${int})`}} >
       
-        <div className='my-4 '>
+        <div className='my-5 '>
             <div >
-            <h3 className='text-dark'> Didn't find your desired book?  </h3>
-            <h5> We will arrange it for you!</h5>
+            <h3 className='text-dark' style={{fontFamily:"Source Serif Pro"}}> Didn't find your desired book?  </h3>
+            {/* <h6 style={{fontWeight: 400}}> We will arrange it for you!</h6> */}
             <Button variant="contained" onClick={handleClickOpen}>
 Request Book      </Button>
             </div>

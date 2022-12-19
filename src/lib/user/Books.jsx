@@ -16,7 +16,8 @@ import 'swiper/css/free-mode';
 import { Navigation } from "swiper";
 import "swiper/css/navigation";
 import RequestBook from "./RequestBook";
-import { getAllBooks } from "../../redux/BooksSlice";
+import { getAllBooks, getAllBorrowed } from "../../redux/BooksSlice";
+
 
 
 
@@ -25,11 +26,12 @@ import { getAllBooks } from "../../redux/BooksSlice";
 const Books = () => {
   
   // const [allbooks,setAllbooks]=useState([]);
-  const [borrow, setBorrowed] = useState([]);
+  // const [borrow, setBorrowed] = useState([]);
 
    
   const Allbooks=useSelector(getAllBooks)
-  console.log(Allbooks)
+  const Allborrowed = useSelector(getAllBorrowed);
+
 
 
   const [Gen, setGenre] = useState("Romance")
@@ -59,22 +61,22 @@ const Books = () => {
 
   //Below code for PenaltyFunction 
 
-  useEffect(()=>{
-      axios.get("http://localhost:3001/borrowed")
-      .then(res =>{
-        setBorrowed(res.data)
+  // useEffect(()=>{
+  //     axios.get("http://localhost:3001/borrowed")
+  //     .then(res =>{
+  //       setBorrowed(res.data)
           
   
-      })
-      .catch(err =>console.log(err))
+  //     })
+  //     .catch(err =>console.log(err))
   
       
-    },[])
+  //   },[])
 
-
+  
   useEffect(()=>{
     runPenalty() 
-  })
+  }) 
   
   //PenaltyFunc
   
@@ -87,13 +89,12 @@ const Books = () => {
                         books : {...d.books, isPenalty : penalty}
                         }
   
-    axios.put(`http://localhost:3001/borrowed/${d.id}`, putState).then((res) => console.log(res.data))
+    axios.put(`http://localhost:3001/borrowed/${d.id}`, putState)
   }
   
   
-  const runPenalty =() => 
-  {
-  borrow.map((d, index) => {
+  const runPenalty =  () =>  {
+   return Allborrowed.length ?  Allborrowed.map((d, index) => {
    
     let currDate2 = moment()
   
@@ -121,8 +122,9 @@ const Books = () => {
     }
            
   
-  })
-  }
+  }) 
+  : ""
+  }  
 
   // for penalty books
  
@@ -130,8 +132,8 @@ const Books = () => {
   
 
   let genreBooks = Allbooks.length ?  Allbooks.filter(a =>{
-    console.log(a.genre == "Thriller")
-    console.log({Gen})
+    // console.log(a.genre == "Thriller")
+    // console.log({Gen})
    return (a.genre == Gen)
      
  }
@@ -158,19 +160,29 @@ const Books = () => {
   // console.log(allbooks)
 
   
-    
+  const filterGenre = Allbooks.length ? Allbooks.map(gen => {
+    return gen.genre;
+  }) : "";
+
+  console.log(filterGenre);
+  const btnGenre = [...new Set(filterGenre)]
  
 
   const changeGenre = (s) => {
+    // console.log(s, "Genre")
     setGenre(s)
   }
+
+
+
+
     
 
 
   return (
     <> 
-      <div className="text-center pb-2 mt-5">
-        <h2>All Books</h2>
+      <div className=" pb-2 mt-5  "  style={{padding : "10px 30px"}}>
+        <h2 className="text-dark " style={{fontFamily:"Source Serif Pro"}}>All Books</h2>
       </div>
 
       
@@ -180,7 +192,7 @@ const Books = () => {
           freeMode = {true}
           grabCursor = {true}
           modules = {[FreeMode, Navigation]}
-          className="mySwiper"
+          className="mySwiper square border"
           slidesPerView = {4}
           spacesBetween = {10}
           navigation={true}
@@ -247,24 +259,24 @@ const Books = () => {
       
         
 
-    <div className="text-center pb-2 mt-5">
-      <h2>Genre</h2>
-      <div className="d-flex justify-content-center gap-5">
+                    <div className=" pb-2 mt-5  "  style={{padding : "10px 30px"}}>
+        <h2 className="text-dark " style={{fontFamily:"Source Serif Pro"}}>Books by Genre</h2>
+      <div className="d-flex justify-content-center gap-2 mt-4 mb-3">
         <p className="text-dark ">Filter by :</p>
-        <Button  onClick={() => changeGenre("Romance")}>
-         Love
-        </Button>
-          
+       
+       {
+        btnGenre.map(bt => {
+          return <Button  onClick={() => changeGenre(bt)}>
+          {bt}
+         </Button>
 
-        <Button  onClick={() => changeGenre("Thriller")}>
-          Thriller
-        </Button>
-        <Button onClick={() => changeGenre("War")}>
-          War
-        </Button>
-        <Button onClick={() => changeGenre("Mythology")}>
-          Mythology
-        </Button>
+        }
+        )
+}
+        
+       
+        
+         
       </div>
     </div>
     
@@ -273,7 +285,7 @@ const Books = () => {
           freeMode = {true}
           grabCursor = {true}
           modules = {[FreeMode, Navigation]}
-          className="mySwiper"
+          className="mySwiper square border"
           slidesPerView = {4}
           spacesBetween = {10}
           navigation={true}

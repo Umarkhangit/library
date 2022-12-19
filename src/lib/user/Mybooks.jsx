@@ -10,6 +10,10 @@ import {
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { Badge, Button } from "react-bootstrap";
+import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
+import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
+import "primereact/resources/primereact.min.css"; //core css
+import "primeicons/primeicons.css";
 
 import "./Mybooks.css";
 
@@ -68,6 +72,25 @@ const Mybooks = () => {
 
   //     return a.books.isPenalty == checkBooks
   // })
+
+    // for confirm dialog box
+    const [visible, setVisible] = useState(false);
+
+
+  const confirm1 = (f) => {
+    confirmDialog({
+      message: "Are you sure you want to proceed?",
+      header: "Confirmation",
+      icon: "pi pi-exclamation-triangle",
+      accept:() => Return(f),
+      reject,
+    });
+  };
+
+  const reject = () => {
+    setVisible(!visible);
+  };
+
 
   const Return = (f) => {
     axios
@@ -192,7 +215,7 @@ const Mybooks = () => {
                         <p className="p-books">{f.books.desc}</p>
   
                         <div className="button-books">
-                          <Button onClick={() => Return(f)}> Return</Button>
+                          <Button onClick={() => confirm1(f)}> Return</Button>
                         </div>
                       </div>
                       <img
@@ -224,7 +247,7 @@ const Mybooks = () => {
                         <p className="p-books">{f.books.desc}</p>
   
                         <div className="button-books">
-                          <Button onClick={() => Return(f)}> Return</Button>
+                          <Button onClick={() => confirm1   (f)}> Return</Button>
                         </div>
                       </div>
                       <img
@@ -245,7 +268,7 @@ const Mybooks = () => {
          
  
         </div>
-    
+            <ConfirmDialog/>
     </>
   );
 };

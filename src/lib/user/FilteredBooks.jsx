@@ -4,54 +4,64 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { useNavigate } from "react-router-dom";
 import Card from "@mui/material/Card";
+import { useSelector } from 'react-redux';
+// import { fetchAsyncBooks } from '../../redux/BooksSlice';
+import { getAllBooks } from "../../redux/BooksSlice";
 import "./Books.css";
 
 const FilteredBooks = () => {
-  const [render, setRender] = useState([]);
+  // const [render, setRender] = useState([]);
   const [searched, setSearched] = useState();
 
   // for redux
   // const dispatch=useDispatch()
-  useEffect(() => {
-    axios
-      .get("http://localhost:3001/books")
-      .then((res) => {
-        setRender(res.data);
-        // dispatch(AllBooks(res.data))
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:3001/books")
+  //     .then((res) => {
+  //       setRender(res.data);
+  //       // dispatch(AllBooks(res.data))
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
 
-  const defaultProps = {
-    options: render,
-    getOptionLabel: (option) => option.title,
-  };
-
-  const handle = (newValue) => {
-    // setVal(newValue)
-    console.log(newValue.title);
-    setSearched(newValue.title);
-  };
-  console.log(searched);
+  const Allbooks = useSelector(getAllBooks);
   
-  let s = render.find((r) => {
-    return r.title == searched;
-  });
+ 
+
+  const defaultProps = Allbooks.length ?  {
+    options: Allbooks,
+    getOptionLabel: (option) => option.title,
+  } : "";
+
+  const handle = (e, newValue) => {
+    // setVal(newValue)
+    console.log(newValue, "valueeee");
+    setSearched(newValue.title);
+    navigate("/user/cards", { state: newValue });
+
+   
+
+  
+  };
+  
+ 
 
   const navigate = useNavigate();
 
   const postBook = () => {
-    console.log(s);
-    navigate("/user/cards", { state: s });
+    
   };
+
 
   return (
     <div>
       <Autocomplete
         {...defaultProps}
         id="controllable-states-demo"
-        clearOnEscape
+        clearOnEscape 
         value={searched}
+     
         onChange={handle}
         renderInput={(params) => (
           <TextField {...params} label="Search Books" variant="standard" />
@@ -59,19 +69,7 @@ const FilteredBooks = () => {
         className="mt-2 mx-3"
       />
 
-      {s ? (
-        <div className="filterbooks-card text-center mx-5" onClick={postBook}>
-          <div
-            className="filterbooks-card-image"
-            style={{
-              backgroundImage: `url(${s?.imgUrl})`,
-            }}
-          ></div>
-          <p className="filterbooks-card-title text-black">{s?.title}</p>
-        </div>
-      ) : (
-        ""
-      )}
+     
     </div>
   );
 };
